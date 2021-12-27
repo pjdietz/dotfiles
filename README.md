@@ -14,5 +14,8 @@ ln -s "${PWD}/.zshrc" ~/.zshrc
 ln -s "${PWD}/.gitconfig" ~/.gitconfig
 mkdir -p ~/.config/git
 ln -s "${PWD}/.gitignore_global" ~/.config/git/ignore
+
+# Vim
+ln -s "${PWD}/.vimrc" ~/.vimrc
 ```
 
