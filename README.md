@@ -19,3 +19,13 @@ ln -s "${PWD}/.gitignore_global" ~/.config/git/ignore
 ln -s "${PWD}/.vimrc" ~/.vimrc
 ```
 
+## Setting up a new machine (Windows)
+
+Run the following from an elevated PowerShell in the repository root to create symlinks.
+
+```PowerShell
+# Git
+New-Item -ItemType SymbolicLink -Path ~/.gitconfig -Target "$pwd/.gitconfig"
+New-Item -ItemType Directory -Force -Path ~/.config/git
+New-Item -ItemType SymbolicLink -Path ~/.config/git/ignore -Target "$pwd/.gitignore_global"
+ ```
