@@ -10,8 +10,6 @@
 [user]
 	email = pjdietz@gmail.com
 	name = PJ Dietz
-[commit]
-	template = /Users/pjdietz/.stCommitMsg
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
