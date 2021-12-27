@@ -19,15 +19,10 @@ set showmode
 set showmatch
 set hlsearch
 set history=1000
-set cursorline
+set cursorline 		" Highlight the line with the cursor
+set vb t_vb=		" No visual bell & flash
 
 colorscheme slate
-
-
-" MAPPINGS --------------------------------------------------------------- {{{
-map <F2> :bprev<CR>
-map <F3> :bnext<CR>
-" }}}
 
 
 " PLUGINS ---------------------------------------------------------------- {{{
@@ -39,14 +34,25 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'preservim/nerdtree'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 call plug#end()
+
+" Configure NERDTree
+let NERDTreeShowHidden=1
 
 " Configure Material colorscheme
 let g:material_terminal_italics = 0
 let g:material_theme_style = 'default'
 silent! colorscheme material
 
+" }}}
+
+
+" MAPPINGS --------------------------------------------------------------- {{{
+map <F1> :NERDTreeToggle<CR>
+map <F2> :bprev<CR>
+map <F3> :bnext<CR>
 " }}}
 
 
