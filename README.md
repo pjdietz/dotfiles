@@ -7,7 +7,12 @@ My personal configuration files for zsh, vim, git, etc.
 Run the following from the repository root to create symlinks as needed.
 
 ```sh
-# .zshrc
+# Z shell
 ln -s "${PWD}/.zshrc" ~/.zshrc
+
+# Git 
+ln -s "${PWD}/.gitconfig" ~/.gitconfig
+mkdir -p ~/.config/git
+ln -s "${PWD}/.gitignore_global" ~/.config/git/ignore
 ```
 
