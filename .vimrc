@@ -42,6 +42,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin(data_dir . '/plugged')
 Plug 'preservim/nerdtree'
+Plug 'airblade/vim-gitgutter'
 Plug 'romainl/vim-cool'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 call plug#end()
