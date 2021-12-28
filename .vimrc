@@ -22,8 +22,10 @@ set history=1000
 set cursorline 		" Highlight the line with the cursor
 set vb t_vb=		" No visual bell & flash
 
-colorscheme slate
+set splitbelow splitright
+set fillchars+=vert:\ 
 
+colorscheme slate
 
 " PLUGINS ---------------------------------------------------------------- {{{
 
@@ -40,6 +42,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin(data_dir . '/plugged')
 Plug 'preservim/nerdtree'
+Plug 'romainl/vim-cool'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 call plug#end()
 
