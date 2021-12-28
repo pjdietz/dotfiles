@@ -21,11 +21,15 @@ set hlsearch
 set history=1000
 set cursorline 		" Highlight the line with the cursor
 set vb t_vb=		" No visual bell & flash
+set updatetime=100
 
+" Splits
 set splitbelow splitright
 set fillchars+=vert:\ 
 
+" Default colorscheme. This is replaced later after plugins load.
 colorscheme slate
+
 
 " PLUGINS ---------------------------------------------------------------- {{{
 
