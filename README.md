@@ -31,4 +31,9 @@ New-Item -ItemType SymbolicLink -Path ~/.config/git/ignore -Target "$pwd/.gitign
 
 # Vim
 New-Item -ItemType SymbolicLink -Path ~/_vimrc -Target "$pwd/.vimrc"
+
+# Windows Terminal
+Remove-Item -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState -Force -Recurse
+New-Item -ItemType SymbolicLink -Path "$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState" -Target "${pwd}\WindowsTerminal"
+
 ```
