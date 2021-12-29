@@ -21,7 +21,7 @@ set incsearch
 
 " Splits
 set splitbelow splitright
-set fillchars+=vert:\ 
+set fillchars=vert:│
 
 " Undo and swap
 set noswapfile
@@ -37,10 +37,9 @@ set updatetime=50
 let mapleader = "\<space>"
 
 " Move lines up or down
-nnoremap <leader>j :m .+1<CR>==
-nnoremap <leader>k :m .-2<CR>==
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
+nnoremap <C-k> :m .-2<CR>==
+nnoremap <C-j> :m .+1<CR>==
+
 " Reload configuratio
 nnoremap <F5> :so $MYVIMRC<CR>
 
@@ -64,16 +63,25 @@ source ~/.config/nvim/plugins/airline.vim
 source ~/.config/nvim/plugins/floaterm.vim
 source ~/.config/nvim/plugins/fugitive.vim
 source ~/.config/nvim/plugins/git-gutter.vim
-source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/telescope.vim
 source ~/.config/nvim/plugins/theme.vim
 
 call plug#end()
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-   \| PlugInstall --sync | source $MYVIMRC
+	\| PlugInstall --sync | source $MYVIMRC
 \| endif
 
 doautocmd User PlugLoaded
 
+" -----------------------------------------------------------------------------
+" Auto Commands
+" -----------------------------------------------------------------------------
+
+augroup CUSTOM
+	autocmd!
+	" Remove trailing whitepace on save.
+	autocmd BufWritePre * %s/\s\+$//e
+augroup end

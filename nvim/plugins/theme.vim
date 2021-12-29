@@ -8,4 +8,5 @@ augroup MaterialOverrides
 	autocmd!
 	autocmd User PlugLoaded ++nested colorscheme material
 	autocmd User PlugLoaded ++nested exec 'hi ColorColumn guibg=' . material_colorscheme_map.guides.gui . ' ctermbg=' . material_colorscheme_map.guides.cterm
+	autocmd User PlugLoaded ++nested exec 'hi VertSplit guifg=' . material_colorscheme_map.guides.gui . ' ctermfg=' . material_colorscheme_map.guides.cterm
 augroup end
