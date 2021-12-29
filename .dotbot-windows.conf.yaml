@@ -1,0 +1,11 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+#- clean: ['~', '~/.config']
+
+- link:
+    ~/.config/git: git
+    ~/AppData/Local/nvim: nvim
+
