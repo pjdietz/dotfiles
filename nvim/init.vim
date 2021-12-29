@@ -8,8 +8,8 @@ set number
 set signcolumn=yes
 
 " Rulers
-"set colorcolumn=80,100
-"highlight ColorColumn ctermbg=black guibg=darkgrey
+set colorcolumn=80,100
+highlight ColorColumn ctermbg=1 guibg=#ffffff
 
 set termguicolors
 set scrolloff=8
@@ -18,6 +18,10 @@ set noerrorbells
 " Search
 set nohlsearch
 set incsearch
+
+" Splits
+set splitbelow splitright
+set fillchars+=vert:\ 
 
 " Undo and swap
 set noswapfile
