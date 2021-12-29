@@ -9,7 +9,8 @@
     ~/.config/iterm2_profile: iTerm2
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
-      
+    ~/.zshrc: zshrc
+
 - shell:
     # Configure iTerm2 to look in ~/.config for settings.
     - [defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm2_profile"]

@@ -53,4 +53,5 @@ source <(kubectl completion zsh)
 alias gitgraph="git log --oneline --graph --color --all --decorate"
 alias k=kubectl
 alias phpstorm="open . -a phpstorm"
+alias vim='nvim'
 alias mvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
