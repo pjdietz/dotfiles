@@ -1,0 +1,14 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    ~/.config/iterm2_profile: iTerm2
+      
+- shell:
+    # Configure iTerm2 to look in ~/.config for settings.
+    - [defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm2_profile"]
+    - [defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true]
