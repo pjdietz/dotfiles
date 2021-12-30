@@ -35,6 +35,9 @@ New-Item -ItemType SymbolicLink -Path ~/AppData/Local/nvim -Target "$pwd/nvim"
 # Windows Terminal
 Remove-Item -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState -Force -Recurse
 New-Item -ItemType SymbolicLink -Path "$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState" -Target "${pwd}\WindowsTerminal"
+
+# PowerShell
+New-Item -ItemType SymbolicLink -Path $profile.CurrentUserCurrentHost -Target "$pwd/PowerShell/profile.ps1" -Force
 ```
 
 The process is a little rough on Windows. Dotbot doesn't seem to be able to create all the symlinks like it should, and auto installing vim-plug doesn't work.
