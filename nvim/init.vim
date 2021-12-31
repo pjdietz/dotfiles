@@ -28,6 +28,7 @@ set noswapfile
 set nobackup
 set undofile
 
+set mouse=a
 set updatetime=50
 
 " -----------------------------------------------------------------------------
@@ -39,6 +40,17 @@ let mapleader = "\<space>"
 " Move lines up or down
 nnoremap <C-k> :m .-2<CR>==
 nnoremap <C-j> :m .+1<CR>==
+
+" Buffers
+nnoremap <leader>b :bn<CR>
+
+" Splits
+nnoremap <leader>\| <C-w>v
+nnoremap <leader>- <C-w>s
+nnoremap <C-h> :wincmd h<CR>
+nnoremap <C-j> :wincmd j<CR>
+nnoremap <C-k> :wincmd k<CR>
+nnoremap <C-l> :wincmd l<CR>
 
 " Reload configuratio
 nnoremap <F5> :so $MYVIMRC<CR>
@@ -65,6 +77,7 @@ source ~/.config/nvim/plugins/fugitive.vim
 source ~/.config/nvim/plugins/git-gutter.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/telescope.vim
+source ~/.config/nvim/plugins/tmuxline.vim
 source ~/.config/nvim/plugins/theme.vim
 
 call plug#end()
