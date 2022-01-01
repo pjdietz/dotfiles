@@ -47,10 +47,10 @@ nnoremap <leader>b :bn<CR>
 " Splits
 nnoremap <leader>\| <C-w>v
 nnoremap <leader>- <C-w>s
-nnoremap <C-h> :wincmd h<CR>
-nnoremap <C-j> :wincmd j<CR>
-nnoremap <C-k> :wincmd k<CR>
-nnoremap <C-l> :wincmd l<CR>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
 
 " Reload configuratio
 nnoremap <F5> :so $MYVIMRC<CR>
