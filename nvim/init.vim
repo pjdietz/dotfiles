@@ -78,6 +78,7 @@ source ~/.config/nvim/plugins/floaterm.vim
 source ~/.config/nvim/plugins/fugitive.vim
 source ~/.config/nvim/plugins/markdown-preview.vim
 source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/synstack.vim
 source ~/.config/nvim/plugins/telescope.vim
 source ~/.config/nvim/plugins/tmuxline.vim
 source ~/.config/nvim/plugins/theme.vim
@@ -90,15 +91,6 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 	\| endif
 
 doautocmd User PlugLoaded
-
-function! SynStack()
-	if !exists("*synstack")
-		return
-	endif
-	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-nnoremap <leader>c :call SynStack()<CR>
 
 " -----------------------------------------------------------------------------
 " Auto Commands
