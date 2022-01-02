@@ -87,15 +87,15 @@ call plug#end()
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 	\| PlugInstall --sync | source $MYVIMRC
-\| endif
+	\| endif
 
 doautocmd User PlugLoaded
 
 function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+	if !exists("*synstack")
+		return
+	endif
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
 nnoremap <leader>c :call SynStack()<CR>
