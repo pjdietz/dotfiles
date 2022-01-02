@@ -80,7 +80,6 @@ source ~/.config/nvim/plugins/markdown-preview.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/telescope.vim
 source ~/.config/nvim/plugins/tmuxline.vim
-source ~/.config/nvim/plugins/termtoggle.vim
 source ~/.config/nvim/plugins/theme.vim
 
 call plug#end()
