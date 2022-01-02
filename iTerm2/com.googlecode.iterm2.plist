@@ -3054,6 +3054,8 @@
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>IRMemory</key>
+	<integer>4</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -3712,7 +3714,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>DroidSansMonoNerdFontComplete- 15</string>
+			<string>JetBrainsMonoNerdFontComplete-Bold 15</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
