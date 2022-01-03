@@ -38,11 +38,11 @@ set updatetime=50
 let mapleader = "\<space>"
 
 " Move lines up or down
-nnoremap <C-K> :m .-2<CR>==
-nnoremap <C-J> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+nnoremap <M-j> :m .+1<CR>==
 
 " Buffers
-nnoremap <leader>b :bn<CR>
+nnoremap <S-TAB> :bn<CR>
 
 " Splits
 nnoremap <leader>\| <C-w>v
