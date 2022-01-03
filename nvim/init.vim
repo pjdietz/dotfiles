@@ -38,8 +38,8 @@ set updatetime=50
 let mapleader = "\<space>"
 
 " Move lines up or down
-nnoremap <C-k> :m .-2<CR>==
-nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-K> :m .-2<CR>==
+nnoremap <C-J> :m .+1<CR>==
 
 " Buffers
 nnoremap <leader>b :bn<CR>
@@ -80,6 +80,7 @@ source ~/.config/nvim/plugins/markdown-preview.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/synstack.vim
 source ~/.config/nvim/plugins/telescope.vim
+source ~/.config/nvim/plugins/tmux-navigator.vim
 source ~/.config/nvim/plugins/tmuxline.vim
 source ~/.config/nvim/plugins/theme.vim
 
