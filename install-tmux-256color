@@ -10,7 +10,7 @@
 # https://jdhao.github.io/2018/10/19/tmux_nvim_true_color/
 
 # Download terminfo provided by the tmux maintainers:
-curl -sSL https://gist.github.com/nicm/ea9cf3c93f22e0246ec858122d9abea1 > tmux-256color
+curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz && gunzip terminfo.src.gz
 
 # Compile tmux-256color terminal info:
 /usr/bin/tic -xe tmux-256color terminfo.src

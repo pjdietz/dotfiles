@@ -72,7 +72,12 @@ endif
 call plug#begin(data_dir . '/plugins')
 
 source ~/.config/nvim/plugins/airline.vim
-source ~/.config/nvim/plugins/coc.vim
+
+call system("node -v")
+if v:shell_error == 0
+	source ~/.config/nvim/plugins/coc.vim
+endif
+
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/floaterm.vim
 source ~/.config/nvim/plugins/fugitive.vim

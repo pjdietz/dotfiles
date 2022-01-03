@@ -21,6 +21,36 @@ Run the following from the repository root to create symlinks as needed.
 
 Dotbot should be able to create all symlinks as needed. If it fails, you may need to delete some existing directories and run it again.
 
+### Additional Installs
+
+#### Tmux
+
+```bash
+# Install tmux
+brew install tmux
+# Update the tmux-256color profile
+./install-tmux-256color
+```
+
+#### Node.js and Python Providers
+
+Some plugins such as [CoC](https://github.com/neoclide/coc.nvim) require Node.js and Python
+
+```bash
+brew install node
+npm install -g neovim
+```
+
+```bash
+pip3 install pynvim
+```
+
+#### Fonts
+
+If the system does not already have fonts available, download them from [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+
+I'm partial to Droid Sans.
+
 
 ## Setting up a new machine (Windows)
 
