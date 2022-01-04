@@ -42,7 +42,7 @@ nnoremap <M-k> :m .-2<CR>==
 nnoremap <M-j> :m .+1<CR>==
 
 " Buffers
-nnoremap <S-TAB> :bn<CR>
+nnoremap <TAB> :bn<CR>
 
 " Splits
 nnoremap <leader>\| <C-w>v
@@ -87,6 +87,7 @@ source ~/.config/nvim/plugins/synstack.vim
 source ~/.config/nvim/plugins/telescope.vim
 source ~/.config/nvim/plugins/tmux-navigator.vim
 source ~/.config/nvim/plugins/tmuxline.vim
+source ~/.config/nvim/plugins/tree-sitter.vim
 source ~/.config/nvim/plugins/theme.vim
 
 call plug#end()
