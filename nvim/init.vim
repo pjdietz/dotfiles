@@ -53,7 +53,7 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
-" Reload configuratio
+" Reload configuration
 nnoremap <F5> :so $MYVIMRC<CR>
 
 " Allow gf to open non-existent files

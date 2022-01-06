@@ -24,6 +24,7 @@
       "dockerhub",
       "envar",
       "fastcgi",
+      "floaterm",
       "proxying"
     ]
 }
