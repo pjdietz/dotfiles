@@ -43,6 +43,7 @@ nnoremap <M-j> :m .+1<CR>==
 
 " Buffers
 nnoremap <TAB> :bn<CR>
+nnoremap <S-TAB> :bp<CR>
 
 " Splits
 nnoremap <leader>\| <C-w>v

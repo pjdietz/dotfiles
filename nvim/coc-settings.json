@@ -16,5 +16,14 @@
     "git.changeRemovedSign.text": "▔",
 	"intelephense.environment.phpVersion": "8",
     "tailwindCSS.validate": true,
-    "tailwindCSS.emmetCompletions": true
+    "tailwindCSS.emmetCompletions": true,
+    "cSpell.userWords": [
+      "americanreading",
+      "arcid",
+      "buildx",
+      "dockerhub",
+      "envar",
+      "fastcgi",
+      "proxying"
+    ]
 }
