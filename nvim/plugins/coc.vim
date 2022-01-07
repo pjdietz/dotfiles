@@ -40,8 +40,8 @@ nmap <silent> ]h <Plug>(coc-git-nextchunk)
 nmap <silent> [h <Plug>(coc-git-prevchunk)
 
 " Code actions
-vmap <leader>a <Plug>(coc-codeaction-selected)<CR>
-nmap <leader>a <Plug>(coc-codeaction-selected)<CR>
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>

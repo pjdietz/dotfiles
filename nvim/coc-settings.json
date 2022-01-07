@@ -18,13 +18,22 @@
     "tailwindCSS.validate": true,
     "tailwindCSS.emmetCompletions": true,
     "cSpell.userWords": [
+      "Creds",
+      "Minikube",
       "americanreading",
       "arcid",
+      "arcit",
       "buildx",
       "dockerhub",
       "envar",
+      "envars",
       "fastcgi",
       "floaterm",
-      "proxying"
+      "fullname",
+      "kube",
+      "kubernetes",
+      "nindent",
+      "proxying",
+      "tolerations"
     ]
 }

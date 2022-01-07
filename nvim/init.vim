@@ -44,6 +44,7 @@ nnoremap <M-j> :m .+1<CR>==
 " Buffers
 nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
+nnoremap <leader><TAB> :bp\|bd #<CR>
 
 " Splits
 nnoremap <leader>\| <C-w>v
@@ -99,6 +100,9 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 	\| endif
 
 doautocmd User PlugLoaded
+
+hi! Normal ctermbg=NONE guibg=NONE
+hi! clear SignColumn
 
 " -----------------------------------------------------------------------------
 " Auto Commands
