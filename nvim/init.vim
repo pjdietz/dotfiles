@@ -1,6 +1,8 @@
 " Tabs
 set tabstop=4 softtabstop=4
 set shiftwidth=4
+set autoindent
+set smartindent
 
 " Line numbers
 set relativenumber
@@ -9,7 +11,6 @@ set signcolumn=yes
 
 " Rulers
 set colorcolumn=80,100
-highlight ColorColumn ctermbg=1 guibg=#ffffff
 
 set termguicolors
 set scrolloff=8
@@ -31,6 +32,8 @@ set undofile
 set mouse=a
 set updatetime=50
 
+set wildmode=longest,list,full
+
 " -----------------------------------------------------------------------------
 " Mappings
 " -----------------------------------------------------------------------------
@@ -38,8 +41,8 @@ set updatetime=50
 let mapleader = "\<space>"
 
 " Move lines up or down
-nnoremap <M-k> :m .-2<CR>==
-nnoremap <M-j> :m .+1<CR>==
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
 
 " Buffers
 nnoremap <TAB> :bn<CR>
