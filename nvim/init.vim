@@ -3,6 +3,7 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
+set nowrap
 
 " Line numbers
 set relativenumber
@@ -105,8 +106,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 doautocmd User PlugLoaded
 
 hi! Normal ctermbg=NONE guibg=NONE
-hi! clear SignColumn
-
+" hi! clear SignColumn
+highlight SignColumn guibg=NONE
 " -----------------------------------------------------------------------------
 " Auto Commands
 " -----------------------------------------------------------------------------
