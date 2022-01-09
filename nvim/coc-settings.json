@@ -20,21 +20,32 @@
     "cSpell.userWords": [
       "Creds",
       "Minikube",
+      "Xuyuanp",
       "americanreading",
       "arcid",
       "arcit",
       "buildx",
+      "christoomey",
       "dockerhub",
+      "edkolev",
       "envar",
       "envars",
       "fastcgi",
       "floaterm",
       "fullname",
       "goyo",
+      "iamcco",
+      "junegunn",
+      "kaicataldo",
       "kube",
       "kubernetes",
+      "mkdp",
+      "neoclide",
       "nindent",
       "proxying",
-      "tolerations"
+      "tiagofumo",
+      "tolerations",
+      "tpope",
+      "voldikss"
     ]
 }

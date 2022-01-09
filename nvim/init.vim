@@ -1,40 +1,3 @@
-" Tabs
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set autoindent
-set smartindent
-set nowrap
-
-" Line numbers
-set relativenumber
-set number
-set signcolumn=yes
-
-" Rulers
-set colorcolumn=80,100
-
-set termguicolors
-set scrolloff=8
-set noerrorbells
-
-" Search
-set nohlsearch
-set incsearch
-
-" Splits
-set splitbelow splitright
-set fillchars=vert:│
-
-" Undo and swap
-set noswapfile
-set nobackup
-set undofile
-
-set mouse=a
-set updatetime=50
-
-set wildmode=longest,list,full
-
 " -----------------------------------------------------------------------------
 " Mappings
 " -----------------------------------------------------------------------------
@@ -77,26 +40,32 @@ endif
 
 call plug#begin(data_dir . '/plugins')
 
-source ~/.config/nvim/plugins/airline.vim
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Goyo and Limelight
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+" Nerdtree
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
-call system("node -v")
-if v:shell_error == 0
-	source ~/.config/nvim/plugins/coc.vim
-endif
-
-source ~/.config/nvim/plugins/commentary.vim
-source ~/.config/nvim/plugins/floaterm.vim
-source ~/.config/nvim/plugins/fugitive.vim
-source ~/.config/nvim/plugins/goyo.vim
-source ~/.config/nvim/plugins/limelight.vim
-source ~/.config/nvim/plugins/markdown-preview.vim
-source ~/.config/nvim/plugins/nerdtree.vim
-source ~/.config/nvim/plugins/synstack.vim
-source ~/.config/nvim/plugins/telescope.vim
-source ~/.config/nvim/plugins/tmux-navigator.vim
-source ~/.config/nvim/plugins/tmuxline.vim
-source ~/.config/nvim/plugins/tree-sitter.vim
-source ~/.config/nvim/plugins/theme.vim
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb'
+Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
@@ -107,69 +76,17 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 doautocmd User PlugLoaded
 
-"Theme adjustments
-function! FixThemeColors()
-	hi! Normal ctermbg=NONE guibg=NONE
-	highlight SignColumn guibg=NONE
-	" Rulers and split dividers
-	exec 'hi ColorColumn guibg=' . g:material_colorscheme_map.guides.gui . ' ctermbg=' . g:material_colorscheme_map.guides.cterm
-	exec 'hi VertSplit guifg=' . g:material_colorscheme_map.guides.gui . ' ctermfg=' . g:material_colorscheme_map.guides.cterm
-	" Comments and line numbers
-	hi Comment guifg=#617b87
-	hi LineNr guifg=#617b87 guibg=NONE
-	" Git
-	hi DiffAdd guibg=NONE
-	hi DiffChange guibg=NONE
-	hi DiffDelete guibg=NONE
-	" PHP (color $ same as variable)
-	exec 'hi Identifier guifg=' . g:material_colorscheme_map.orange.gui . ' ctermfg=' . g:material_colorscheme_map.orange.cterm
-	exec 'hi phpVarSelector guifg=' . g:material_colorscheme_map.orange.gui . ' ctermfg=' . g:material_colorscheme_map.orange.cterm
-	" PHP (braces and parens)
-	exec 'hi phpParent guifg=' . g:material_colorscheme_map.cyan.gui . ' ctermfg=' . g:material_colorscheme_map.cyan.cterm
-endfunction
+" -----------------------------------------------------------------------------
+" After plugins
+" -----------------------------------------------------------------------------
+
+nmap <leader>mp <Plug>MarkdownPreviewToggle
 
 colorscheme material
-call FixThemeColors()
 
-"Goyo Settings
-function! s:goyo_enter()
-	if executable('tmux') && strlen($TMUX)
-		silent !tmux set status off
-		silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-	endif
-	set noshowmode
-	set noshowcmd
-	set scrolloff=999
-	set signcolumn=no
-	Limelight
-	" ...
-endfunction
-
-function! s:goyo_leave()
-	if executable('tmux') && strlen($TMUX)
-		silent !tmux set status on
-		" silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-	endif
-	set showmode
-	set showcmd
-	set scrolloff=5
-	set signcolumn=yes
-	Limelight!
-	call FixThemeColors()
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-nnoremap <leader><ENTER> :Goyo<CR>
-
-function TmuxToggleZoom()
-	if executable('tmux') && strlen($TMUX)
-		silent !tmux resize-pane -Z
-	endif
-endfunction
-
-nnoremap <leader>z :call TmuxToggleZoom()<CR>
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'darker-community'
+let g:airline_theme = 'material'
 
 " -----------------------------------------------------------------------------
 " Auto Commands
