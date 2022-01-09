@@ -66,6 +66,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb'
 Plug 'voldikss/vim-floaterm'
+Plug 'liuchengxu/vim-which-key'
 
 call plug#end()
 
@@ -81,6 +82,8 @@ doautocmd User PlugLoaded
 " -----------------------------------------------------------------------------
 
 nmap <leader>mp <Plug>MarkdownPreviewToggle
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+set timeoutlen=500
 
 colorscheme material
 
