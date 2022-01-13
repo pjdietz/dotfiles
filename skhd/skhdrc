@@ -1,0 +1,8 @@
+# https://github.com/koekeishiya/skhd/blob/master/examples/skhdrc
+
+# open terminal, blazingly fast compared to iTerm/Hyper
+hyper - t : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+
+# skdh reload
+hyper - r : skhd --reload
+
