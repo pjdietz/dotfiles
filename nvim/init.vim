@@ -67,9 +67,10 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'vim-airline/vim-airline'
-Plug 'nvim-lualine/lualine.nvim'
+Plug 'StanAngeloff/php.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'

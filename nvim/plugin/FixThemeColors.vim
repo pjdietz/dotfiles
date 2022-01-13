@@ -1,7 +1,9 @@
 "Theme adjustments
 function! FixThemeColors()
-	hi! Normal ctermbg=NONE guibg=NONE
-	highlight SignColumn guibg=NONE
+	if !exists('g:neovide')
+		hi! Normal ctermbg=NONE guibg=NONE
+		highlight SignColumn guibg=NONE
+	endif
 	" Rulers and split dividers
 	exec 'hi ColorColumn guibg=' . g:material_colorscheme_map.guides.gui . ' ctermbg=' . g:material_colorscheme_map.guides.cterm
 	exec 'hi VertSplit guifg=' . g:material_colorscheme_map.guides.gui . ' ctermfg=' . g:material_colorscheme_map.guides.cterm

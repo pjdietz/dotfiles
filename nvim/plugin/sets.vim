@@ -29,6 +29,8 @@ set scrolloff=8
 set noerrorbells
 set mouse=a
 
+" Fonts
+set guifont=DroidSansMono\ Nerd\ Font\:h16
 " Search
 set nohlsearch
 set incsearch
