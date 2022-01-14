@@ -30,7 +30,7 @@ set noerrorbells
 set mouse=a
 
 " Fonts
-set guifont=DroidSansMono\ Nerd\ Font\:h16
+set guifont=DroidSansMono\ Nerd\ Font\:h18
 " Search
 set nohlsearch
 set incsearch
