@@ -14,8 +14,8 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr ' *' # %u
 zstyle ':vcs_info:*' stagedstr ' +'   # %c
 # This line obtains information from the vcs.
-zstyle ':vcs_info:git:*' formats       ' %F{green}(%b%u%c%m)%f'
-zstyle ':vcs_info:git:*' actionformats ' %F{red}(%b|%a%u%c%m)%f'
+zstyle ':vcs_info:git:*' formats       ' %F{green}( %b%u%c%m)%f'
+zstyle ':vcs_info:git:*' actionformats ' %F{red}( %b|%a%u%c%m)%f'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
 precmd() {
