@@ -67,6 +67,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
+Plug 'akinsho/toggleterm.nvim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
@@ -78,7 +79,6 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb'
-Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vim-which-key'
 Plug 'lewis6991/gitsigns.nvim'
 
@@ -147,6 +147,17 @@ require('lspconfig')['intelephense'].setup {
 }
 require('lspconfig')['phpactor'].setup {
 	capabilities = capabilities
+}
+EOF
+
+lua <<EOF
+require('toggleterm').setup {
+	open_mapping = [[<leader>t]],
+	direction = vertical,
+	size = 20,
+	close_on_exit = true,
+	hide_numbers = true,
+	start_in_insert = true
 }
 EOF
 
