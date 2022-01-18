@@ -32,7 +32,7 @@ set mouse=a
 " Fonts
 set guifont=DroidSansMono\ Nerd\ Font\:h18
 " Search
-set nohlsearch
+set hlsearch
 set incsearch
 
 " Splits

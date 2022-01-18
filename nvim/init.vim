@@ -24,6 +24,9 @@ nnoremap <leader>l :wincmd l<CR>
 " Toggle invisibles
 nnoremap <leader>i :set list!<CR>
 
+" Clear search hightlight
+nnoremap <leader><esc> :noh<CR>
+
 " Reload configuration
 nnoremap <F5> :so $MYVIMRC<CR>
 
@@ -152,12 +155,13 @@ EOF
 
 lua <<EOF
 require('toggleterm').setup {
-	open_mapping = [[<leader>t]],
+	open_mapping = [[<F1>]],
 	direction = vertical,
 	size = 20,
 	close_on_exit = true,
 	hide_numbers = true,
-	start_in_insert = true
+	start_in_insert = true,
+	shade_terminals = false
 }
 EOF
 

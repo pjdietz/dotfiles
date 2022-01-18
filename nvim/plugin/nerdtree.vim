@@ -4,7 +4,7 @@ let NERDTreeMinimalUI=1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
-nnoremap <F1> :NERDTreeToggle <CR>
+nnoremap <leader>t :NERDTreeToggle <CR>
 
 " avoid crashes when calling vim-plug functions while the cursor is on the NERDTree window
 let g:plug_window = 'noautocmd vertical topleft new'
