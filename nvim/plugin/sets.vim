@@ -45,6 +45,8 @@ set nobackup
 set undofile
 set updatetime=50
 
+set modeline
+
 " Wild menu
 set wildmenu
 set wildmode=list:longest,full
