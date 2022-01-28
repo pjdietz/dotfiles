@@ -179,4 +179,6 @@ augroup CUSTOM
 	autocmd!
 	" Remove trailing whitepace on save.
 	autocmd BufWritePre * %s/\s\+$//e
+	" Use // for commenting out lines in PHP
+	autocmd FileType php setlocal commentstring=//\ %s
 augroup end
