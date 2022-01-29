@@ -1,7 +1,5 @@
 setopt NO_CASE_GLOB
 
-readonly KUBE_PS1_PATH='/usr/local/opt/kube-ps1/share/kube-ps1.sh'
-
 PATH="${HOME}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 
@@ -20,7 +18,7 @@ zstyle ':vcs_info:git:*' actionformats ' %F{red}( %b|%a%u%c%m)%f'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
 precmd() {
-    vcs_info
+  vcs_info
 }
 
 +vi-git-untracked() {
@@ -38,9 +36,10 @@ setopt prompt_subst
 PROMPT='[%F{blue}%1~%f${vcs_info_msg_0_}] '
 
 # If kube-ps1 is installed, add it to the prompt.
+KUBE_PS1_PATH='/usr/local/opt/kube-ps1/share/kube-ps1.sh'
 if [[ -f "${KUBE_PS1_PATH}" ]]; then
-  source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-  PROMPT='$(kube_ps1)'$PROMPT
+  source "${KUBE_PS1_PATH}"
+  RPROMPT='$(kube_ps1)'$RPROMPT
   kubeoff
 fi
 
@@ -80,8 +79,8 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
+  zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+  echo -ne "\e[5 q"
 }
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
