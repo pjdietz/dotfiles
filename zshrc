@@ -51,7 +51,9 @@ compinit
 _comp_options+=(globdots)
 
 # kubectl autocompletion
-source <(kubectl completion zsh)
+if command -v kubectl; then
+  source <(kubectl completion zsh)
+fi
 
 # Vi mode
 bindkey -v
