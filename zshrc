@@ -51,7 +51,7 @@ compinit
 _comp_options+=(globdots)
 
 # kubectl autocompletion
-if command -v kubectl; then
+if command -v kubectl &> /dev/null; then
   source <(kubectl completion zsh)
 fi
 
