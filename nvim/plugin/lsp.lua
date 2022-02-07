@@ -39,12 +39,16 @@ nvim_lsp.intelephense.setup {
 	on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
-    }
-}
-nvim_lsp.intelephense.setup {
-    filetypes = { "php" },
-	on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
+    },
+	settings = {
+		intelephense = {
+			stubs = {
+				"bcmath",
+				"Core",
+				"pdo",
+				"redis",
+				"standard"
+			}
+		}
+	}
 }
