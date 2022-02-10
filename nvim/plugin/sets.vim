@@ -5,6 +5,7 @@ set fileencoding=utf8
 " Tabs
 set tabstop=4 softtabstop=4
 set shiftwidth=4
+set expandtab
 set nowrap
 set smartindent
 set autoindent
