@@ -11,6 +11,7 @@
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/skhd: skhd
+    ~/.local/bin: bin
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
 

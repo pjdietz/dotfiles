@@ -89,9 +89,13 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Aliases
+alias d='docker'
 alias dc='docker-compose'
+alias dcr='docker-compose run --rm'
+alias dce='docker-compose exec'
 alias gitgraph='git log --oneline --graph --color --all --decorate'
 alias k='kubectl'
 alias phpstorm='open . -a phpstorm'
 alias vim='nvim'
 alias mvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
+alias tmw='tmux-window'

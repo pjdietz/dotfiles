@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+set -x
+
+if [[ $# -eq 1 ]]; then
+  selected_dir=$1
+else
+  selected_dir=$(find ~/projects/arc ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+if [[ -z "${selected_dir}" ]]; then
+  exit 0
+fi
+
+name=$(basename "${selected_dir}" | tr . _)
+tmux new-window -n "${name}" -c ${selected_dir}
