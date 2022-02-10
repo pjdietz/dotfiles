@@ -36,19 +36,24 @@ end
 nvim_lsp.intelephense.setup {
     cmd = { "intelephense", "--stdio" },
     filetypes = { "php" },
-	on_attach = on_attach,
+    on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     },
-	settings = {
-		intelephense = {
-			stubs = {
-				"bcmath",
-				"Core",
-				"pdo",
-				"redis",
-				"standard"
-			}
-		}
-	}
+    settings = {
+        intelephense = {
+            stubs = {
+                "bcmath",
+                "Core",
+                "filter",
+                "json",
+                "memcached",
+                "pdo",
+                "redis",
+                "regex",
+                "session",
+                "standard"
+            }
+        }
+    }
 }
