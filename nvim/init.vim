@@ -9,8 +9,8 @@ xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
 " Buffers
-nnoremap <TAB> :bn<CR>
-nnoremap <S-TAB> :bp<CR>
+nnoremap <S-TAB> :bn<CR>
+nnoremap <A-TAB> :bp<CR>
 nnoremap <leader><TAB> :bp\|bd #<CR>
 
 " Splits
