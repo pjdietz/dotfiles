@@ -1,7 +1,11 @@
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 
-let g:NERDTreeDirArrowExpandable = '▸'
+let NERDTreeWinSize = 40
+
+" let g:NERDTreeDirArrowExpandable = "\u00a0"
+" let g:NERDTreeDirArrowExpandable = "\u00a0"
+let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 nnoremap <leader>t :NERDTreeToggle <CR>
