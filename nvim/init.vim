@@ -1,37 +1,4 @@
-" -----------------------------------------------------------------------------
-" Mappings
-" -----------------------------------------------------------------------------
-
 let mapleader = "\<space>"
-
-" Move lines up or down
-xnoremap K :move '<-2<CR>gv-gv
-xnoremap J :move '>+1<CR>gv-gv
-
-" Buffers
-nnoremap <S-TAB> :bn<CR>
-nnoremap <A-TAB> :bp<CR>
-nnoremap <leader><TAB> :bp\|bd #<CR>
-
-" Splits
-nnoremap <leader>\| <C-w>v
-nnoremap <leader>- <C-w>s
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-
-" Toggle invisibles
-nnoremap <leader>i :set list!<CR>
-
-" Clear search hightlight
-nnoremap <leader><esc> :noh<CR>
-
-" Reload configuration
-nnoremap <F5> :so $MYVIMRC<CR>
-
-" Allow gf to open non-existent files
-map gf :edit <cfile><cr>
 
 " -----------------------------------------------------------------------------
 " Plugins
@@ -40,8 +7,8 @@ map gf :edit <cfile><cr>
 " Automatically install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
-	silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin(data_dir . '/plugins')
@@ -89,8 +56,8 @@ call plug#end()
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-		\| PlugInstall --sync | source $MYVIMRC
-		\| endif
+        \| PlugInstall --sync | source $MYVIMRC
+        \| endif
 
 " -----------------------------------------------------------------------------
 " After plugins
@@ -106,81 +73,19 @@ let g:airline_theme='material'
 
 colorscheme material
 if exists('*FixThemeColors')
-	call FixThemeColors()
+    call FixThemeColors()
 endif
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-	ensure_installed = "maintained",
-	sync_install = false,
-	highlight = {
-		enable = true,
-		disable = { "c", "rust" },
-		additional_vim_regex_highlighting = false,
-	},
-}
-EOF
-
-lua <<EOF
--- Setup nvim-cmp.
-local cmp = require'cmp'
-cmp.setup({
-	mapping = {
-		['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-		['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-		['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		['<C-e>'] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-	},
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-	}, {
-		{ name = 'buffer' },
-	})
-})
-
--- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('lspconfig')['intelephense'].setup {
-	capabilities = capabilities
-}
-require('lspconfig')['phpactor'].setup {
-	capabilities = capabilities
-}
-EOF
-
-lua <<EOF
-require('toggleterm').setup {
-	open_mapping = [[<F1>]],
-	direction = vertical,
-	size = 20,
-	close_on_exit = true,
-	hide_numbers = true,
-	start_in_insert = true,
-	shade_terminals = false
-}
-EOF
-
-lua <<EOF
-require('gitsigns').setup {
-	signcolumn = true
-}
-EOF
 
 " -----------------------------------------------------------------------------
 " Auto Commands
 " -----------------------------------------------------------------------------
 
 augroup CUSTOM
-	autocmd!
-	" Remove trailing whitepace on save.
-	autocmd BufWritePre * %s/\s\+$//e
-	" Use // for commenting out lines in PHP
-	autocmd FileType php setlocal commentstring=//\ %s
-	" 2-spaces for shell scripts
-	autocmd FileType sh setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd!
+    " Remove trailing whitepace on save.
+    autocmd BufWritePre * %s/\s\+$//e
+    " Use // for commenting out lines in PHP
+    autocmd FileType php setlocal commentstring=//\ %s
+    " 2-spaces for shell scripts
+    autocmd FileType sh setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 augroup end
