@@ -2,15 +2,6 @@
 
 My personal configuration files for zsh, vim, git, etc.
 
-## Setting up on a new machine
-
-When cloning the project to a new machine, run the following commands to checkout the dotbot submodule if this doesn't happen automatically:
-
-```bash
-git submodule init
-git submodule update
-```
-
 ## Setting up on a new machine (Mac)
 
 Run the following from the repository root to create symlinks as needed.
@@ -34,8 +25,6 @@ brew install tmux
 
 #### Node.js and Python Providers
 
-Some plugins such as [CoC](https://github.com/neoclide/coc.nvim) require Node.js and Python
-
 ```bash
 brew install node
 npm install -g neovim
@@ -50,7 +39,6 @@ pip3 install pynvim
 If the system does not already have fonts available, download them from [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 
 I'm partial to Droid Sans.
-
 
 ## Setting up a new machine (Windows)
 
