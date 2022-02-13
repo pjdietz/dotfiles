@@ -16,7 +16,11 @@ cmp.setup({
         { name = 'nvim_lsp' },
     }, {
         { name = 'buffer' },
-    })
+    }),
+    experimental = {
+        native_menu = false,
+        ghost_text = true
+    }
 })
 
 -- Setup lspconfig.
