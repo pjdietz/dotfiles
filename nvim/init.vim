@@ -30,6 +30,7 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'onsails/lspkind-nvim'
 " CMP
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
