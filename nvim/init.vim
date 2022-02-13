@@ -39,7 +39,6 @@ Plug 'hrsh7th/nvim-cmp'
 
 Plug 'akinsho/toggleterm.nvim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'vim-airline/vim-airline'
 Plug 'StanAngeloff/php.vim'
@@ -51,6 +50,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb'
 Plug 'liuchengxu/vim-which-key'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'towolf/vim-helm'
 
 call plug#end()
 
