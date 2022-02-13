@@ -13,8 +13,8 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr ' *' # %u
 zstyle ':vcs_info:*' stagedstr ' +'   # %c
 # This line obtains information from the vcs.
-zstyle ':vcs_info:git:*' formats       ' %F{green}( %b%u%c%m)%f'
-zstyle ':vcs_info:git:*' actionformats ' %F{red}( %b|%a%u%c%m)%f'
+zstyle ':vcs_info:git:*' formats       ' %F{green} %b%c%u%m%f'
+zstyle ':vcs_info:git:*' actionformats ' %F{red} %b|%a%u%u%m%f'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
 precmd() {
@@ -33,7 +33,10 @@ precmd() {
 setopt prompt_subst
 
 # Set the prompt
-PROMPT='[%F{blue}%1~%f${vcs_info_msg_0_}] '
+# PROMPT='[%F{blue}%1~%f${vcs_info_msg_0_}] '
+PROMPT='%F{blue}%1~%f'
+PROMPT=${PROMPT}'${vcs_info_msg_0_}'
+PROMPT=${PROMPT}' %F{blue}%f '
 
 # If kube-ps1 is installed, add it to the prompt.
 KUBE_PS1_PATH='/usr/local/opt/kube-ps1/share/kube-ps1.sh'
