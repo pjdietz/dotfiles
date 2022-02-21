@@ -55,6 +55,7 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'towolf/vim-helm'
 Plug 'fatih/vim-go'
+Plug 'vim-test/vim-test'
 
 call plug#end()
 
