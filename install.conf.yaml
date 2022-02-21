@@ -12,6 +12,7 @@
     ~/.config/nvim: nvim
     ~/.config/skhd: skhd
     ~/.local/bin: bin
+    ~/.tmux: tmux
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
 

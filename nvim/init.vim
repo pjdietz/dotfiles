@@ -49,6 +49,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-obsession'
 Plug 'liuchengxu/vim-which-key'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'towolf/vim-helm'
