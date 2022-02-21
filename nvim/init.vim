@@ -52,6 +52,7 @@ Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb'
 Plug 'liuchengxu/vim-which-key'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'towolf/vim-helm'
+Plug 'fatih/vim-go'
 
 call plug#end()
 

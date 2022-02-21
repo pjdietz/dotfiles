@@ -42,6 +42,8 @@ nvim_lsp.intelephense.setup {
             stubs = {
                 "bcmath",
                 "Core",
+                "curl",
+                "date",
                 "filter",
                 "json",
                 "memcached",
@@ -49,6 +51,7 @@ nvim_lsp.intelephense.setup {
                 "redis",
                 "regex",
                 "session",
+                "SPL",
                 "standard"
             }
         }
