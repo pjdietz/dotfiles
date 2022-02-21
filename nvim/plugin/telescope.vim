@@ -1,10 +1,11 @@
 lua <<EOF
-local telescope = require("telescope")
+local telescope = require('telescope')
 telescope.setup()
-telescope.load_extension "file_browser"
+telescope.load_extension 'file_browser'
 EOF
 
 " Files and buffers, etc.
+nnoremap <leader>fr :lua require('telescope.builtin').resume()<CR>
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>FF :lua require('telescope.builtin').find_files({ no_ignore=true })<CR>
 nnoremap <leader>fi :lua require('telescope.builtin').live_grep()<CR>

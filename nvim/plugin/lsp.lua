@@ -31,8 +31,8 @@ local on_attach = function(client, bufnr)
 end
 
 nvim_lsp.intelephense.setup {
-    cmd = { "intelephense", "--stdio" },
-    filetypes = { "php" },
+    cmd = { 'intelephense', '--stdio' },
+    filetypes = { 'php' },
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
@@ -40,19 +40,19 @@ nvim_lsp.intelephense.setup {
     settings = {
         intelephense = {
             stubs = {
-                "bcmath",
-                "Core",
-                "curl",
-                "date",
-                "filter",
-                "json",
-                "memcached",
-                "pdo",
-                "redis",
-                "regex",
-                "session",
-                "SPL",
-                "standard"
+                'bcmath',
+                'Core',
+                'curl',
+                'date',
+                'filter',
+                'json',
+                'memcached',
+                'pdo',
+                'redis',
+                'regex',
+                'session',
+                'SPL',
+                'standard'
             }
         }
     }
