@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-set -x
-
 if [[ $# -eq 1 ]]; then
   selected_dir=$1
 else
