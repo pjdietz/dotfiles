@@ -1,0 +1,18 @@
+let mapleader=" "
+
+""" Plugins -------------------------------------------------------------------
+set surround
+set commentary
+
+set showmode
+set incsearch
+set hlsearch
+
+""" Key Maps ------------------------------------------------------------------
+
+" Move lines up or down
+xnoremap K :move '<-2<CR>
+xnoremap J :move '>+1<CR>
+
+" Clear search hightlight
+nnoremap <leader><esc> :noh<CR>

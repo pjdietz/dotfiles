@@ -8,7 +8,7 @@ xnoremap J :move '>+1<CR>gv-gv
 nnoremap <S-TAB> :bn<CR>
 nnoremap <A-TAB> :bp<CR>
 nnoremap <leader><TAB> :bp\|bd #<CR>
-
+nnoremap <leader>ww :bufdo bwipeout<CR>
 " Splits
 nnoremap <leader>\| <C-w>v
 nnoremap <leader>- <C-w>s
