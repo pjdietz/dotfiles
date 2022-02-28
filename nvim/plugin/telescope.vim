@@ -10,6 +10,7 @@ nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>FF :lua require('telescope.builtin').find_files({ no_ignore=true })<CR>
 nnoremap <leader>fi :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fq :lua require('telescope.builtin').quickfix()<CR>
+nnoremap <leader>fo :lua require('telescope.builtin').buffers()<CR>
 nnoremap <leader>fb :Telescope file_browser<CR>
 nnoremap <leader>fc :lua require('telescope.builtin').commands()<CR>
 " Git
