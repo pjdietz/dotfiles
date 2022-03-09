@@ -93,4 +93,6 @@ augroup CUSTOM
     autocmd FileType php setlocal commentstring=//\ %s
     " 2-spaces for shell scripts
     autocmd FileType sh setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    " Go templates as text by default
+    autocmd BufRead,BufNewFile *.tmpl set filetype=gotexttmpl
 augroup end
