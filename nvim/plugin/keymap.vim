@@ -28,3 +28,8 @@ nnoremap <F5> :so $MYVIMRC<CR>
 
 " Allow gf to open non-existent files
 map gf :edit <cfile><cr>
+
+" Git and merge
+nmap <leader>gh :diffget //2<CR>
+nmap <leader>gl :diffget //3<CR>
+nmap <leader>gs :G<CR>

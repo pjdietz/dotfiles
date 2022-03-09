@@ -1,21 +1,6 @@
 [core]
 	editor = nvim
 	precomposeunicode = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[user]
-	email = pjdietz@gmail.com
-	name = PJ Dietz
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
 [color]
 	branch = auto
 	diff = auto
@@ -34,12 +19,38 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-[pull]
-	ff = only
+
 [init]
 	defaultBranch = main
 [fetch]
     prune = true
+[pull]
+	ff = only
+
+[diff]
+    tool = nvimdiff
+[difftool]
+    prompt = true
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[merge]
+    tool = fugitive
+[mergetool]
+    keepBackup = false
+[mergetool "fugitive"]
+    cmd = "nvim -f -c \"Gvdiffsplit!\" \"$MERGED\""
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[user]
+	email = pjdietz@gmail.com
+	name = PJ Dietz
+
 [alias]
     # Pruning fully merged branches
     cleanup-list =        "!git branch --merged | grep -E -v '(master|main|develop|dev)'"
