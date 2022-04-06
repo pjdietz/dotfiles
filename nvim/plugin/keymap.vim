@@ -1,14 +1,22 @@
 " Key bindings for built-in features.
 
+" Y works like C and D
+nnoremap Y y$
+
 " Move lines up or down
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
+
+" Indent and keep selection
+:vnoremap < <gv
+:vnoremap > >gv
 
 " Buffers
 nnoremap <S-TAB> :bn<CR>
 nnoremap <A-TAB> :bp<CR>
 nnoremap <leader><TAB> :bp\|bd #<CR>
 nnoremap <leader>ww :bufdo bwipeout<CR>
+
 " Splits
 nnoremap <leader>\| <C-w>v
 nnoremap <leader>- <C-w>s
