@@ -57,3 +57,11 @@ nvim_lsp.intelephense.setup {
         }
     }
 }
+
+nvim_lsp.bashls.setup {
+    filetypes = { 'sh' },
+    on_attach = on_attach
+}
+
+-- Toggle diagnostic
+require'toggle_lsp_diagnostics'.init()
