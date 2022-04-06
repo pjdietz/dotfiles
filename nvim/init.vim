@@ -37,6 +37,9 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+" Neo Tree
+Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
+Plug 'MunifTanjim/nui.nvim'
 
 Plug 'akinsho/toggleterm.nvim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
