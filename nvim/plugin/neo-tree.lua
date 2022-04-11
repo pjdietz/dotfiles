@@ -136,6 +136,6 @@ require("neo-tree").setup({
 
 vim.cmd [[
     nnoremap \ :Neotree reveal<cr>
-    nnoremap <leader>n :NeoTreeShowToggle<cr>
+    nnoremap <leader>e :NeoTreeShowToggle<cr>
     nnoremap <leader>fg :Neotree git_status<cr>
 ]]

@@ -16,11 +16,6 @@ call plug#begin(data_dir . '/plugins')
 " Goyo and Limelight
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-" Nerdtree
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -41,6 +36,7 @@ Plug 'hrsh7th/nvim-cmp'
 " Neo Tree
 Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
 Plug 'MunifTanjim/nui.nvim'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'akinsho/toggleterm.nvim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
