@@ -82,6 +82,13 @@ if exists('*FixThemeColors')
 endif
 
 " -----------------------------------------------------------------------------
+" Commands
+" -----------------------------------------------------------------------------
+
+" Set consistent tab size with arg and expand tabs to spaces
+command -nargs=1 SetTab :setlocal tabstop=<args> shiftwidth=<args> softtabstop=<args> expandtab
+
+" -----------------------------------------------------------------------------
 " Auto Commands
 " -----------------------------------------------------------------------------
 
@@ -92,7 +99,8 @@ augroup CUSTOM
     " Use // for commenting out lines in PHP
     autocmd FileType php setlocal commentstring=//\ %s
     " 2-spaces for shell scripts
-    autocmd FileType sh setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd FileType sh SetTab 2
+    autocmd FileType zsh SetTab 2
     " Go templates as text by default
     autocmd BufRead,BufNewFile *.tmpl set filetype=gotexttmpl
 augroup end
