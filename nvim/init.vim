@@ -103,6 +103,10 @@ augroup CUSTOM
     " 2-spaces for shell scripts
     autocmd FileType sh SetTab 2
     autocmd FileType zsh SetTab 2
+    " Soft-wrap Markdown
+    autocmd FileType markdown setlocal wrap linebreak
     " Go templates as text by default
     autocmd BufRead,BufNewFile *.tmpl set filetype=gotexttmpl
+    " Disable diagnostics for env files
+    autocmd BufEnter .env lua vim.diagnostic.disable(0)
 augroup end

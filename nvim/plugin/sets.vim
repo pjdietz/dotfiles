@@ -24,6 +24,9 @@ set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
 " Rulers
 set colorcolumn=80,100
 
+" Global status line
+set laststatus=3
+
 " Terminal colors and features
 set termguicolors
 set scrolloff=8
