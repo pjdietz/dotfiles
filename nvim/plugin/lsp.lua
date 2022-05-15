@@ -38,12 +38,19 @@ nvim_lsp.intelephense.setup {
       debounce_text_changes = 150,
     },
     settings = {
+        -- https://github.com/bmewburn/intelephense-docs/blob/master/installation.md#configuration-options
         intelephense = {
+            diagnostics = {
+                -- Prophecy causes a lot of false positives.
+                undefinedMethods = false
+            },
+            -- https://github.com/JetBrains/phpstorm-stubs
             stubs = {
                 'bcmath',
                 'Core',
                 'curl',
                 'date',
+                'ds',
                 'filter',
                 'json',
                 'memcached',
@@ -52,7 +59,8 @@ nvim_lsp.intelephense.setup {
                 'regex',
                 'session',
                 'SPL',
-                'standard'
+                'standard',
+                'zlib'
             }
         }
     }
