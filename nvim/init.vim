@@ -1,4 +1,5 @@
 let mapleader = "\<space>"
+let maplocalleader = "\<space>"
 
 " -----------------------------------------------------------------------------
 " Plugins
@@ -38,6 +39,7 @@ Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
 Plug 'MunifTanjim/nui.nvim'
 Plug 'ryanoasis/vim-devicons'
 
+Plug 'jceb/vim-orgmode'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
