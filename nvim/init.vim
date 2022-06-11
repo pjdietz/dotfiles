@@ -38,8 +38,13 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
 Plug 'MunifTanjim/nui.nvim'
 Plug 'ryanoasis/vim-devicons'
-
+" Org Mode
 Plug 'jceb/vim-orgmode'
+
+Plug 'othree/html5.vim'
+Plug 'nelsyeung/twig.vim'
+
+Plug 'stevearc/dressing.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
@@ -103,6 +108,7 @@ augroup CUSTOM
     " 2-spaces for shell scripts
     autocmd FileType sh SetTab 2
     autocmd FileType zsh SetTab 2
+    autocmd FileType org SetTab 2
     " Soft-wrap Markdown
     autocmd FileType markdown setlocal wrap linebreak
     " Go templates as text by default

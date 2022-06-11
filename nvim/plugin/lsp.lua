@@ -48,6 +48,8 @@ nvim_lsp.intelephense.setup {
             stubs = {
                 'bcmath',
                 'Core',
+                'Reflection',
+                'crypto',
                 'curl',
                 'date',
                 'ds',

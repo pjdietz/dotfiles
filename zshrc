@@ -91,6 +91,9 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
+# Environment
+export JAVA_HOME="$(/usr/libexec/java_home)"
+
 # Aliases
 alias d='docker'
 alias dc='docker-compose'

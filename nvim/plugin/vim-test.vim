@@ -5,4 +5,4 @@ nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>tv :TestVisit<CR>
 
 let test#strategy = 'neovim'
-let test#php#phpunit#executable = 'docker-compose run --rm php phpunit'
+let test#php#phpunit#executable = 'docker-compose run --rm php phpunit --no-coverage'

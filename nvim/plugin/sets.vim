@@ -53,5 +53,5 @@ set modeline
 
 " Wild menu
 set wildmenu
-set wildmode=list:longest,full
+set wildmode=longest:full,full
 
