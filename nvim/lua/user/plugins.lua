@@ -47,10 +47,25 @@ return require('packer').startup(function(use)
   -- Themes
   use 'marko-cerovac/material.nvim'
 
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter', 
+    run = ':TSUpdate'
+  }
+
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'jose-elias-alvarez/null-ls.nvim'
+  use 'onsails/lspkind-nvim'
   use 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
+
+  -- Completion
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
 
   -- Telescope
   use {
