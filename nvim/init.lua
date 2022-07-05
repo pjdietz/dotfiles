@@ -8,3 +8,5 @@ require 'user.treesitter'
 require 'user.lsp'
 require 'user.completion'
 
+require 'user.gitsigns'
+
