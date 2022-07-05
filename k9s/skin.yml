@@ -1,0 +1,6 @@
+k9s:
+  body:
+    bgColor: default
+  views:
+    table:
+      bgColor: default

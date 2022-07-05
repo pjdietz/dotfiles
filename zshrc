@@ -93,12 +93,14 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Environment
 export JAVA_HOME="$(/usr/libexec/java_home)"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Aliases
 alias d='docker'
 alias dc='docker-compose'
 alias dcr='docker-compose run --rm'
 alias dce='docker-compose exec'
+alias flush-dns='sudo killall -HUP mDNSResponder'
 alias gitgraph='git graph'
 alias gg='git graph'
 alias k='kubectl'
