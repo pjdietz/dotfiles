@@ -8,8 +8,8 @@ local options = {
 
   -- Tabs
   expandtab = true,                        -- convert tabs to spaces
-  shiftwidth = 2,                          -- the number of spaces inserted for each indentation
-  tabstop = 2,                             -- insert 2 spaces for a tab
+  shiftwidth = 4,                          -- the number of spaces inserted for each indentation
+  tabstop = 4,                             -- insert 2 spaces for a tab
   smartindent = true,                      -- make indenting smarter again
   backspace = { 'indent', 'eol', 'start' },
 
@@ -52,7 +52,7 @@ local options = {
   updatetime = 50,                         -- faster completion (4000ms default)
   cursorline = true,                       -- highlight the current line
   guifont = 'DroidSansMono Nerd Font:h18', -- the font used in graphical neovim applications
-  showmode = true,                        -- -- INSERT -- 
+  showmode = true,                        -- -- INSERT --
   modeline = true,
   errorbells = false,
 

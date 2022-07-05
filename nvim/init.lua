@@ -10,3 +10,5 @@ require 'user.completion'
 
 require 'user.gitsigns'
 
+require 'user.commands'
+require 'user.autocommands'
