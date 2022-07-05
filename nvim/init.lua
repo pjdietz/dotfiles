@@ -10,6 +10,8 @@ require 'user.null-ls'
 require 'user.completion'
 
 require 'user.gitsigns'
+require 'user.neo-tree'
+require 'user.toggleterm'
 
 require 'user.commands'
 require 'user.autocommands'

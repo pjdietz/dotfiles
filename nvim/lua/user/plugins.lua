@@ -75,8 +75,22 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
 
+  -- Neo Tree
+  use {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = "v2.x",
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+    }
+  }
+
   -- Misc
+  use 'akinsho/toggleterm.nvim'
   use 'lewis6991/gitsigns.nvim'
+  use 'christoomey/vim-tmux-navigator'
+  use 'stevearc/dressing.nvim'
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-obsession'
