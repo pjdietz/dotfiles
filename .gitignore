@@ -1,3 +1,5 @@
 *.backup
 k9s/config.yml
+packer_compiled.lua
 tmux
+
