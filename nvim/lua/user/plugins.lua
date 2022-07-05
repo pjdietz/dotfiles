@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
 
   -- Treesitter
   use {
-    'nvim-treesitter/nvim-treesitter', 
+    'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
 
@@ -74,6 +74,13 @@ return require('packer').startup(function(use)
   }
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
+
+  -- Misc
+  use 'lewis6991/gitsigns.nvim'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-obsession'
+  use 'tpope/vim-surround'
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
