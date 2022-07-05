@@ -57,6 +57,7 @@ nvim_lsp.intelephense.setup {
                 'json',
                 'memcached',
                 'pdo',
+                'pcre',
                 'redis',
                 'regex',
                 'session',
