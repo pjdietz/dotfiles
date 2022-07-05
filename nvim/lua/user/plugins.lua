@@ -47,12 +47,18 @@ return require('packer').startup(function(use)
   -- Themes
   use 'marko-cerovac/material.nvim'
 
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
+
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use { "nvim-telescope/telescope-file-browser.nvim" } 
+  use 'nvim-telescope/telescope-file-browser.nvim'
+  use 'nvim-telescope/telescope-fzy-native.nvim'
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

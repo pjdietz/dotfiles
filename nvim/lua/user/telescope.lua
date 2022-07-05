@@ -5,6 +5,7 @@ end
 
 telescope.setup()
 telescope.load_extension 'file_browser'
+telescope.load_extension 'fzy_native'
 
 local builtin = require('telescope.builtin')
 
