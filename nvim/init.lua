@@ -6,6 +6,7 @@ require 'user.colorscheme'
 require 'user.telescope'
 require 'user.treesitter'
 require 'user.lsp'
+require 'user.null-ls'
 require 'user.completion'
 
 require 'user.gitsigns'
