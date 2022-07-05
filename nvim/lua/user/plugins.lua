@@ -44,11 +44,16 @@ return require('packer').startup(function(use)
   -- Packer can mangage itself.
   use 'wbthomason/packer.nvim'
 
+  -- Themes
+  use 'marko-cerovac/material.nvim'
+
+  -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  
+  use { "nvim-telescope/telescope-file-browser.nvim" } 
+
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require('packer').sync()
