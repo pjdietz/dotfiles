@@ -99,6 +99,13 @@ return require('packer').startup(function(use)
   use 'tpope/vim-obsession'
   use 'tpope/vim-surround'
 
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function () vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+  }
+
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require('packer').sync()
