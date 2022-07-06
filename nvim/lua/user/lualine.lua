@@ -77,8 +77,8 @@ lualine.setup({
     lualine_a = { 'mode' },
     lualine_b = { branch },
     lualine_c = { diff },
-    lualine_x = { 'filetype', diagnostics, 'encoding', 'fileformat' },
-    lualine_y = { 'progress', 'location' },
+    lualine_x = { 'filetype', diagnostics, 'encoding', 'fileformat', 'progress', 'location' },
+    lualine_y = {},
     lualine_z = {}
   },
   inactive_sections = {

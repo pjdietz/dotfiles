@@ -48,7 +48,7 @@ return require('packer').startup(function(use)
   use 'marko-cerovac/material.nvim'
 
   use 'nvim-lualine/lualine.nvim'
-  use 'edkolev/tmuxline.vim'
+  -- use 'edkolev/tmuxline.vim'
 
   -- Treesitter
   use {
