@@ -17,7 +17,7 @@ map('n', '<C-l>', '<C-w>l')
 -- Buffers
 map('n', '<S-tab>', '<CMD>bn<CR>')
 map('n', '<Leader><Tab>', '<CMD>bp|bd #<CR>')
-map('n', '<Leader>ww', '<CMD>bufdo bwideout<CR>')
+map('n', '<Leader>ww', '<CMD>bufdo bwipeout<CR>')
 
 -- Toggle invisibles
 map('n', '<Leader>i', '<CMD>set list!<CR>')

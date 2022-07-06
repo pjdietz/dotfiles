@@ -1,4 +1,7 @@
-local nvim_lsp = require('lspconfig')
+local status_ok, lspconfig = pcall(require, 'lspconfig')
+if not status_ok then
+  return
+end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -10,7 +13,7 @@ local on_attach = function (client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
@@ -30,7 +33,7 @@ local on_attach = function (client, bufnr)
 
 end
 
-nvim_lsp.intelephense.setup {
+lspconfig.intelephense.setup({
   cmd = { 'intelephense', '--stdio' },
   filetypes = { 'php' },
   on_attach = on_attach,
@@ -67,12 +70,16 @@ nvim_lsp.intelephense.setup {
       }
     }
   }
-}
+})
 
-nvim_lsp.bashls.setup {
+lspconfig.bashls.setup {
   filetypes = { 'sh' },
   on_attach = on_attach
 }
 
--- Toggle diagnostic
-require('toggle_lsp_diagnostics').init()
+-- Toggle diagnostics
+local status_ok, toggle_lsp_diagnostics = pcall(require, 'toggle_lsp_diagnostics')
+if not status_ok then
+  return
+end
+toggle_lsp_diagnostics.init()
