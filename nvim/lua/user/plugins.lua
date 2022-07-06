@@ -32,7 +32,7 @@ end
 -- Have packer use a popup window
 packer.init({
   display = {
-    open_fn = function()
+    open_fn = function ()
       return require('packer.util').float({ border = 'rounded' })
     end,
   },
@@ -47,7 +47,6 @@ return require('packer').startup(function(use)
   -- Themes
   use 'marko-cerovac/material.nvim'
 
-  use 'akinsho/bufferline.nvim'
   use 'nvim-lualine/lualine.nvim'
   use 'edkolev/tmuxline.vim'
 
