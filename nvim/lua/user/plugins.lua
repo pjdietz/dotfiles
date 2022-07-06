@@ -98,6 +98,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-obsession'
   use 'tpope/vim-surround'
+  use 'vim-test/vim-test'
 
   use {
     "iamcco/markdown-preview.nvim",

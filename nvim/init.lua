@@ -16,6 +16,7 @@ require 'user.gitsigns'
 require 'user.neo-tree'
 require 'user.toggleterm'
 require 'user.markdown-preview'
+require 'user.vim-test'
 
 require 'user.commands'
 require 'user.autocommands'
