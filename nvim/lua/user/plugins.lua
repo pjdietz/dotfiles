@@ -47,6 +47,9 @@ return require('packer').startup(function(use)
   -- Themes
   use 'marko-cerovac/material.nvim'
 
+  use 'akinsho/bufferline.nvim'
+	use 'nvim-lualine/lualine.nvim'
+
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',

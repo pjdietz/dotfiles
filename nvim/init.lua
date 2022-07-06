@@ -3,6 +3,9 @@ require 'user.keymap'
 require 'user.plugins'
 require 'user.colorscheme'
 
+require 'user.lualine'
+require 'user.bufferline'
+
 require 'user.telescope'
 require 'user.treesitter'
 require 'user.lsp'
