@@ -45,10 +45,13 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Themes
-  use 'marko-cerovac/material.nvim'
+  -- use 'marko-cerovac/material.nvim'
+  use 'kaicataldo/material.vim'
+  use 'vim-airline/vim-airline'
 
   use 'akinsho/bufferline.nvim'
 	use 'nvim-lualine/lualine.nvim'
+  use 'edkolev/tmuxline.vim'
 
   -- Treesitter
   use {
@@ -91,8 +94,10 @@ return require('packer').startup(function(use)
 
   -- Misc
   use 'akinsho/toggleterm.nvim'
-  use 'lewis6991/gitsigns.nvim'
   use 'christoomey/vim-tmux-navigator'
+  use 'jceb/vim-orgmode'
+  use 'lewis6991/gitsigns.nvim'
+  use 'liuchengxu/vim-which-key'
   use 'stevearc/dressing.nvim'
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
@@ -100,12 +105,18 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'vim-test/vim-test'
 
+  -- Languages
   use {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     setup = function () vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
   }
+  use 'othree/html5.vim'
+  use 'nelsyeung/twig.vim'
+  use 'towolf/vim-helm'
+  use 'fatih/vim-go'
+  use 'StanAngeloff/php.vim'
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

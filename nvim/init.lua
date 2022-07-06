@@ -2,9 +2,10 @@ require 'user.options'
 require 'user.keymap'
 require 'user.plugins'
 require 'user.colorscheme'
+require 'user.airline'
 
-require 'user.lualine'
-require 'user.bufferline'
+-- require 'user.lualine'
+-- require 'user.bufferline'
 
 require 'user.telescope'
 require 'user.treesitter'
