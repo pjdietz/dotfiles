@@ -86,7 +86,8 @@ return packer.startup(function (use)
       'nvim-lua/plenary.nvim',
       'kyazdani42/nvim-web-devicons',
       'MunifTanjim/nui.nvim',
-    }
+    },
+    config = function () vim.g.neo_tree_remove_legacy_commands = 1 end
   }
 
   -- Misc
