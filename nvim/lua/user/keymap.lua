@@ -15,9 +15,19 @@ map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
 -- Buffers
-map('n', '<S-tab>', '<CMD>bn<CR>')
-map('n', '<Leader><Tab>', '<CMD>bp|bd #<CR>')
-map('n', '<Leader>ww', '<CMD>bufdo bwipeout<CR>')
+map('n', '<C-n>', '<CMD>bn<CR>')
+map('n', '<C-p>', '<CMD>bp<CR>')
+map('n', '<Leader>WW', '<CMD>bp|bd #<CR>')
+map('n', '<Leader>WA', '<CMD>Neotree close<CR><CMD>bufdo bwipeout<CR>')
+
+-- Keep cursor in place while navigating, joining.
+map('n', 'n', 'nzzzv')
+map('n', 'N', 'Nzzzv')
+map('n', 'J', 'mzJ`z')
+
+-- Yank to clipboard
+map({ 'n', 'v' }, '<Leader>y', '"+y')
+map('n', '<Leader>Y', '"+Y', { remap = true })
 
 -- Toggle invisibles
 map('n', '<Leader>i', '<CMD>set list!<CR>')
