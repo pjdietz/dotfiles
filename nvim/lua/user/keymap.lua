@@ -9,6 +9,8 @@ map('n', 'Y', 'y$')
 -- Splits
 map('n', '<Leader>|', '<C-w>v')
 map('n', '<Leader>-', '<C-w>s')
+-- Open a tmux vertical split if this is the only pane.
+map('n', '<Leader>j', '<CMD>TmuxAutoPane<CR>')
 
 -- Buffers
 map('n', '<C-n>', '<CMD>bn<CR>')
