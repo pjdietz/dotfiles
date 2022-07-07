@@ -33,6 +33,7 @@ local on_attach = function (client, bufnr)
 
 end
 
+-- PHP
 lspconfig.intelephense.setup({
   cmd = { 'intelephense', '--stdio' },
   filetypes = { 'php' },
@@ -72,10 +73,39 @@ lspconfig.intelephense.setup({
   }
 })
 
-lspconfig.bashls.setup {
+-- Bash
+lspconfig.bashls.setup({
   filetypes = { 'sh' },
-  on_attach = on_attach
-}
+  on_attach = on_attach,
+})
+
+-- Lua
+-- brew install lua-language-server
+lspconfig.sumneko_lua.setup({
+  filetypes = { 'lua' },
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      format = {
+        enable = true,
+        defaultConfig = {
+          indent_style = 'space',
+          indent_size = '2',
+        }
+      },
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = { 'vim' }
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true)
+      }
+    }
+  }
+})
 
 -- Toggle diagnostics
 local status_ok, toggle_lsp_diagnostics = pcall(require, 'toggle_lsp_diagnostics')
