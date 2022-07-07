@@ -7,6 +7,7 @@ vim.cmd [[
     autocmd FileType php setlocal commentstring=//\ %s
     " 2-spaces for certain file types
     autocmd FileType lua SetTab 2
+    autocmd FileType markdown SetTab 2
     autocmd FileType org SetTab 2
     autocmd FileType sh SetTab 2
     autocmd FileType yaml SetTab 2

@@ -101,6 +101,11 @@ return packer.startup(function (use)
   use 'tpope/vim-obsession'
   use 'tpope/vim-surround'
   use 'vim-test/vim-test'
+  use 'vimwiki/vimwiki'
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function () require('colorizer').setup() end
+  }
 
   -- Languages
   use {
