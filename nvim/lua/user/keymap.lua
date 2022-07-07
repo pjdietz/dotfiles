@@ -42,8 +42,20 @@ map('v', 'J', "<CMD>move '>+1<CR>gv=gv")
 map('v', 'K', "<CMD>move '<-2<CR>gv=gv")
 
 -- Indent and keep selection
-map({'v', 'x'}, '<', '<gv')
-map({'v', 'x'}, '>', '>gv')
+map({ 'v', 'x' }, '<', '<gv')
+map({ 'v', 'x' }, '>', '>gv')
+
+-- Toggle rulers
+local function toggle_column_guides()
+  local default = { 80, 100 }
+  local current = vim.inspect(vim.opt.colorcolumn:get())
+  if current == "{}" then
+    vim.opt.colorcolumn = default
+  else
+    vim.opt.colorcolumn = {}
+  end
+end
+vim.keymap.set('n', '<Leader>cg', toggle_column_guides)
 
 -- Reload init.lua and all user modules
 local function reload()
