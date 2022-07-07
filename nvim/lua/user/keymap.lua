@@ -30,9 +30,20 @@ map('n', '<Leader>gh', '<CMD>diffget //2<CR>')
 map('n', '<Leader>gl', '<CMD>diffget //3<CR>')
 
 -- Move lines up or down
-map('x', 'K', "<CMD>move '<-2<CR>gv-gv")
-map('x', 'J', "<CMD>move '>+1<CR>gv-gv")
+map('v', 'J', "<CMD>move '>+1<CR>gv=gv")
+map('v', 'K', "<CMD>move '<-2<CR>gv=gv")
 
 -- Indent and keep selection
 map({'v', 'x'}, '<', '<gv')
 map({'v', 'x'}, '>', '>gv')
+
+-- Reload init.lua and all user modules
+local function reload()
+  for name,_ in pairs(package.loaded) do
+    if name:match('^user') then
+      package.loaded[name] = nil
+    end
+  end
+  dofile(vim.env.MYVIMRC)
+end
+vim.keymap.set('n', '<Leader>r', reload)
