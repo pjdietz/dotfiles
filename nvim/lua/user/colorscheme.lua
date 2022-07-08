@@ -4,12 +4,19 @@ if not status_ok then
 end
 
 local colors = require('material.colors')
+colors.bg_alt2 = '#2C2C2C'
 
 material.setup({
   custom_highlights = {
     Comment = {
       fg = colors.text,
       italic = true
+    },
+    ColorColumn = {
+      bg = colors.bg_alt2
+    },
+    CursorLine = {
+      bg = colors.bg_alt2
     }
   }
 })

@@ -18,8 +18,14 @@ local branch = {
 local diff = {
   'diff',
   colored = false,
-  symbols = { added = '+', modified = '*', removed = '-' },
+  symbols = { added = '+', modified = '~', removed = '-' },
   cond = hide_in_width
+}
+
+local filetype = {
+  'filetype',
+  icons_enabled = true,
+  colored = false,
 }
 
 local diagnostics = {
@@ -31,6 +37,16 @@ local diagnostics = {
   update_in_insert = false,
   always_visible = true
 }
+
+local function location()
+  -- Display position as row/total:column
+  -- Pad the row to the total row and column to 3 digits
+  local row, column = unpack(vim.api.nvim_win_get_cursor(0))
+  local total_rows = vim.api.nvim_buf_line_count(0)
+  local total_width = math.floor(math.log10(total_rows) + 2)
+  -- return string.format('%' .. total_width .. 'd/%d  %-3d', row, total_rows, column)
+  return string.format('%' .. total_width .. 'd/%d : %-3d', row, total_rows, column)
+end
 
 local buffers = {
   'buffers',
@@ -77,7 +93,7 @@ lualine.setup({
     lualine_a = { 'mode' },
     lualine_b = { branch },
     lualine_c = { diff },
-    lualine_x = { 'filetype', diagnostics, 'encoding', 'fileformat', 'progress', 'location' },
+    lualine_x = { filetype, diagnostics, location },
     lualine_y = {},
     lualine_z = {}
   },

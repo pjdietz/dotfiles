@@ -1,12 +1,12 @@
 local colors = require('material.colors')
-colors.bg_alt2 = '#2c2c2c'
+colors.bg_alt2 = '#2C2C2C'
 
 local material = {}
 
 material.normal = {
   a = { fg = colors.bg, bg = colors.blue, gui = 'bold' },
   b = { fg = colors.title, bg = colors.bg_alt2 },
-  c = { fg = colors.fg, bg = colors.selection }
+  c = { fg = colors.fg, bg = colors.border }
 }
 
 material.insert = {
