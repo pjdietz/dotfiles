@@ -1,2 +1,2 @@
-vim.keymap.set('n', '<leader>mp', '<Plug>MarkdownPreviewToggle<cr>')
+vim.keymap.set("n", "<leader>mp", "<Plug>MarkdownPreviewToggle<CR>")
 

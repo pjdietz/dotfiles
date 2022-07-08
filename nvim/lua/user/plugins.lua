@@ -1,17 +1,17 @@
 local fn = vim.fn
 
 -- Automatically install packer
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system({
-    'git',
-    'clone',
-    '--depth',
-    '1',
-    'https://github.com/wbthomason/packer.nvim',
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
     install_path,
   })
-  print('Installing packer close and reopen Neovim...')
+  print("Installing packer close and reopen Neovim...")
   vim.cmd([[packadd packer.nvim]])
 end
 
@@ -23,8 +23,8 @@ vim.cmd([[
   augroup end
 ]])
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, 'packer')
+-- Use a protected call so we don"t error out on first use
+local status_ok, packer = pcall(require, "packer")
 if not status_ok then
   return
 end
@@ -33,7 +33,7 @@ end
 packer.init({
   display = {
     open_fn = function ()
-      return require('packer.util').float({ border = 'rounded' })
+      return require("packer.util").float({ border = "rounded" })
     end,
   },
 })
@@ -42,92 +42,92 @@ packer.init({
 return packer.startup(function (use)
 
   -- Packer can mangage itself.
-  use 'wbthomason/packer.nvim'
+  use "wbthomason/packer.nvim"
 
   -- Themes
-  use 'marko-cerovac/material.nvim'
+  use "marko-cerovac/material.nvim"
 
-  use 'nvim-lualine/lualine.nvim'
-  -- use 'edkolev/tmuxline.vim'
+  use "nvim-lualine/lualine.nvim"
+  -- use "edkolev/tmuxline.vim"
 
   -- Treesitter
   use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate"
   }
-  use 'nvim-treesitter/playground'
+  use "nvim-treesitter/playground"
 
   -- LSP
-  use 'neovim/nvim-lspconfig'
-  use 'jose-elias-alvarez/null-ls.nvim'
-  use 'onsails/lspkind-nvim'
-  use 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
+  use "neovim/nvim-lspconfig"
+  use "jose-elias-alvarez/null-ls.nvim"
+  use "onsails/lspkind-nvim"
+  use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
 
   -- Completion
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-nvim-lua'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lua"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-cmdline"
+  use "hrsh7th/nvim-cmp"
 
   -- Snipets
-  use 'L3MON4D3/LuaSnip'
+  use "L3MON4D3/LuaSnip"
 
   -- Telescope
   use {
-    'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    "nvim-telescope/telescope.nvim",
+    requires = { {"nvim-lua/plenary.nvim"} }
   }
-  use 'nvim-telescope/telescope-file-browser.nvim'
-  use 'nvim-telescope/telescope-fzy-native.nvim'
+  use "nvim-telescope/telescope-file-browser.nvim"
+  use "nvim-telescope/telescope-fzy-native.nvim"
 
   -- Neo Tree
   use {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v2.x',
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
     requires = {
-      'nvim-lua/plenary.nvim',
-      'kyazdani42/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
     },
     config = function () vim.g.neo_tree_remove_legacy_commands = 1 end
   }
 
   -- Misc
-  use 'akinsho/toggleterm.nvim'
-  use 'christoomey/vim-tmux-navigator'
-  use 'jceb/vim-orgmode'
-  use 'lewis6991/gitsigns.nvim'
-  use 'liuchengxu/vim-which-key'
-  use 'stevearc/dressing.nvim'
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-obsession'
-  use 'tpope/vim-surround'
-  use 'vim-test/vim-test'
-  use 'vimwiki/vimwiki'
+  use "akinsho/toggleterm.nvim"
+  use "christoomey/vim-tmux-navigator"
+  use "jceb/vim-orgmode"
+  use "lewis6991/gitsigns.nvim"
+  use "liuchengxu/vim-which-key"
+  use "stevearc/dressing.nvim"
+  use "tpope/vim-commentary"
+  use "tpope/vim-fugitive"
+  use "tpope/vim-obsession"
+  use "tpope/vim-surround"
+  use "vim-test/vim-test"
+  use "vimwiki/vimwiki"
   use {
-    'norcalli/nvim-colorizer.lua',
-    config = function () require('colorizer').setup() end
+    "norcalli/nvim-colorizer.lua",
+    config = function () require("colorizer").setup() end
   }
 
   -- Languages
   use {
-    'iamcco/markdown-preview.nvim',
-    run = 'cd app && npm install',
-    setup = function () vim.g.mkdp_filetypes = { 'markdown' } end,
-    ft = { 'markdown' },
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function () vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
   }
-  use 'othree/html5.vim'
-  use 'nelsyeung/twig.vim'
-  use 'towolf/vim-helm'
-  use 'fatih/vim-go'
-  use 'StanAngeloff/php.vim'
+  use "othree/html5.vim"
+  use "nelsyeung/twig.vim"
+  use "towolf/vim-helm"
+  use "fatih/vim-go"
+  use "StanAngeloff/php.vim"
 
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
-    require('packer').sync()
+    require("packer").sync()
   end
 
 end)

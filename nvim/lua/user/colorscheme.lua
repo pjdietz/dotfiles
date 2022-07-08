@@ -1,11 +1,8 @@
-local status_ok, material = pcall(require, 'material')
-if not status_ok then
-	return
-end
+local material = require "material"
+local colors = require "material.colors"
 
-local colors = require('material.colors')
-colors.bg_alt2 = '#2C2C2C'
-colors.subtle = '#94A7B0'
+colors.bg_alt2 = "#2C2C2C"
+colors.subtle = "#94A7B0"
 
 material.setup({
   custom_highlights = {
@@ -22,5 +19,5 @@ material.setup({
   }
 })
 
-vim.g.material_style = 'darker'
-vim.cmd 'colorscheme material'
+vim.g.material_style = "darker"
+vim.cmd "colorscheme material"

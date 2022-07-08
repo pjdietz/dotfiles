@@ -1,25 +1,31 @@
-require 'user.options'
-require 'user.keymap'
-require 'user.plugins'
+-- Leader key -> <Space>
+-- Set this early to avoid adding keymaps with the default leder
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-require 'user.colorscheme'
-require 'user.lualine'
+-- Load configurations from the module found in ./lua/user
+require "user.options"
+require "user.keymap"
+require "user.plugins"
 
-require 'user.telescope'
-require 'user.luasnip'
-require 'user.treesitter'
-require 'user.lsp'
-require 'user.null-ls'
-require 'user.completion'
+require "user.colorscheme"
+require "user.lualine"
 
-require 'user.gitsigns'
-require 'user.neo-tree'
-require 'user.toggleterm'
-require 'user.markdown-preview'
-require 'user.vimwiki'
-require 'user.vim-test'
+require "user.telescope"
+require "user.luasnip"
+require "user.treesitter"
+require "user.lsp"
+require "user.null-ls"
+require "user.completion"
 
-require 'user.tmux-auto-pane'
+require "user.gitsigns"
+require "user.neo-tree"
+require "user.toggleterm"
+require "user.markdown-preview"
+require "user.vimwiki"
+require "user.vim-test"
 
-require 'user.commands'
-require 'user.autocommands'
+require "user.tmux-auto-pane"
+
+require "user.commands"
+require "user.autocommands"
