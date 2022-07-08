@@ -45,6 +45,9 @@ map('v', 'K', "<CMD>move '<-2<CR>gv=gv")
 map({ 'v', 'x' }, '<', '<gv')
 map({ 'v', 'x' }, '>', '>gv')
 
+-- Lookup Treesitter highlight groups under cursor
+map('n', '<Leader>th', '<CMD>TSHighlightCapturesUnderCursor<CR>')
+
 -- Toggle rulers
 local function toggle_column_guides()
   local default = { 80, 100 }

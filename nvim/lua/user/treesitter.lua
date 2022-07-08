@@ -15,3 +15,7 @@ configs.setup({
     enable = true
   }
 })
+
+require('nvim-treesitter.highlight').set_custom_captures {
+  ['user.dollar'] = 'UserDollar'
+}
