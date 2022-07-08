@@ -71,6 +71,9 @@ return packer.startup(function (use)
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
 
+  -- Snipets
+  use 'L3MON4D3/LuaSnip'
+
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',

@@ -6,6 +6,7 @@ require 'user.colorscheme'
 require 'user.lualine'
 
 require 'user.telescope'
+require 'user.luasnip'
 require 'user.treesitter'
 require 'user.lsp'
 require 'user.null-ls'
