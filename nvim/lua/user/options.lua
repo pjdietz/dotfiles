@@ -52,7 +52,7 @@ local options = {
   updatetime = 50,                         -- faster completion (4000ms default)
   cursorline = true,                       -- highlight the current line
   guifont = 'DroidSansMono Nerd Font:h18', -- the font used in graphical neovim applications
-  showmode = true,                        -- -- INSERT --
+  showmode = false,                        -- -- INSERT --
   modeline = true,
   errorbells = false,
 
