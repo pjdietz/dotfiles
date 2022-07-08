@@ -54,7 +54,7 @@ local buffers = {
   }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
 
   buffers_color = {
-    active = { bg = colors.cyan, fg = colors.bg },
+    active = { bg = colors.darkblue, fg = colors.bg },
     inactive = { bg = colors.border, fg = colors.fg }
   },
 

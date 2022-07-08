@@ -4,7 +4,7 @@ colors.bg_alt2 = '#2c2c2c'
 local material = {}
 
 material.normal = {
-  a = { fg = colors.bg, bg = colors.cyan, gui = 'bold' },
+  a = { fg = colors.bg, bg = colors.darkblue, gui = 'bold' },
   b = { fg = colors.title, bg = colors.bg_alt2 },
   c = { fg = colors.fg, bg = colors.selection }
 }
