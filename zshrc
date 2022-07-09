@@ -92,8 +92,8 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Environment
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export XDG_CONFIG_HOME="$HOME/.config"
+export MANPAGER="nvim +Man!"
+export XDG_CONFIG_HOME="${HOME}/.config"
 
 # Aliases
 alias d='docker'
