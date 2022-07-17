@@ -27,6 +27,3 @@ require "user.vimwiki"
 require "user.vim-test"
 
 require "user.tmux-auto-pane"
-
-require "user.commands"
-require "user.autocommands"
