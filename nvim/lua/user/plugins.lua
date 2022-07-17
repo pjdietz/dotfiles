@@ -118,10 +118,15 @@ return packer.startup(function (use)
     config = function () require("colorizer").setup() end
   }
 
-  use({
+  use {
     "kylechui/nvim-surround",
     config = function () require("nvim-surround").setup() end
-  })
+  }
+
+  use {
+    "rmagatti/auto-session",
+    config = function () require("auto-session").setup() end
+  }
 
   -- Languages
   use {
