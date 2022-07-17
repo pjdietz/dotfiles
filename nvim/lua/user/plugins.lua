@@ -110,13 +110,18 @@ return packer.startup(function (use)
   use "tpope/vim-fugitive"
   use "tpope/vim-obsession"
   use "tpope/vim-projectionist"
-  use "tpope/vim-surround"
   use "vim-test/vim-test"
   use "vimwiki/vimwiki"
+
   use {
     "norcalli/nvim-colorizer.lua",
     config = function () require("colorizer").setup() end
   }
+
+  use({
+    "kylechui/nvim-surround",
+    config = function () require("nvim-surround").setup() end
+  })
 
   -- Languages
   use {
