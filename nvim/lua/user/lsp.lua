@@ -45,6 +45,7 @@ lspconfig.intelephense.setup({
         -- Prophecy causes a lot of false positives.
         undefinedMethods = false
       },
+      formatting = true,
       -- https://github.com/JetBrains/phpstorm-stubs
       stubs = {
         "Core",
