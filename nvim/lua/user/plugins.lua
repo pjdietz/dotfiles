@@ -94,6 +94,11 @@ return packer.startup(function (use)
     config = function () vim.g.neo_tree_remove_legacy_commands = 1 end
   }
 
+  use {
+    "NTBBloodbath/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+  }
+
   -- Misc
   use "akinsho/toggleterm.nvim"
   use "christoomey/vim-tmux-navigator"
