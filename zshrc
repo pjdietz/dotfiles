@@ -2,6 +2,7 @@ setopt NO_CASE_GLOB
 
 PATH="${HOME}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
+PATH="${HOME}/.krew/bin:${PATH}"
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -97,9 +98,9 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 
 # Aliases
 alias d='docker'
-alias dc='docker-compose'
-alias dcr='docker-compose run --rm'
-alias dce='docker-compose exec'
+alias dc='docker compose'
+alias dcr='docker compose run --rm'
+alias dce='docker compose exec'
 alias flush-dns='sudo killall -HUP mDNSResponder'
 alias gitgraph='git graph'
 alias gg='git graph'
