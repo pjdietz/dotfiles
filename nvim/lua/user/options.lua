@@ -1,3 +1,8 @@
+-- Leader key -> <Space>
+-- Set this early to avoid adding keymaps with the default leader.
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 local options = {
 
   -- Line Numbers

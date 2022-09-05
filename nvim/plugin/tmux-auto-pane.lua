@@ -20,6 +20,6 @@ M.autopane = function ()
   open_pane()
 end
 
-vim.cmd('command! -nargs=0 TmuxAutoPane lua require("user.tmux-auto-pane").autopane()')
+vim.api.nvim_create_user_command('TmuxAutoPane', M.autopane, { nargs = 0 })
 
 return M
