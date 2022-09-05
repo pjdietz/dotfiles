@@ -28,7 +28,11 @@ end
 -- Files and buffers
 vim.keymap.set("n", "<Leader>fr", builtin.resume)
 vim.keymap.set("n", "<Leader>ff", builtin.find_files)
-vim.keymap.set("n", "<Leader>FF", function () builtin.find_files({ hidden = true }) end)
+vim.keymap.set("n", "<Leader>FF", function ()
+  builtin.find_files({
+    hidden = true,
+    no_ignore = true
+  }) end)
 vim.keymap.set("n", "<Leader>fi", builtin.live_grep)
 vim.keymap.set("n", "<Leader>fh", builtin.help_tags)
 vim.keymap.set("n", "<Leader>fq", builtin.quickfix)
