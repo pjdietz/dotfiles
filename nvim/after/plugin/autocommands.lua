@@ -7,14 +7,6 @@ api.nvim_create_autocmd("BufWritePre", {
   group = group
 })
 
--- Use // for line comments in PHP.
-api.nvim_create_autocmd("FileType", {
-  pattern = "php",
-  callback = function ()
-    vim.opt_local.commentstring = '// %s'
-  end
-})
-
 -- Use 2 spaces for these file types.
 api.nvim_create_autocmd("FileType", {
   pattern = { "lua", "markdown", "sh", "yaml", "zsh" },
