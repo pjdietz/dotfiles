@@ -102,16 +102,31 @@ return packer.startup(function (use)
   -- Misc
   use "akinsho/toggleterm.nvim"
   use "christoomey/vim-tmux-navigator"
+  use "folke/twilight.nvim"
+  use "folke/zen-mode.nvim"
   use "jceb/vim-orgmode"
   use "lewis6991/gitsigns.nvim"
   use "liuchengxu/vim-which-key"
+  use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
   use "stevearc/dressing.nvim"
   use "tpope/vim-commentary"
   use "tpope/vim-fugitive"
   use "tpope/vim-obsession"
   use "tpope/vim-projectionist"
   use "vim-test/vim-test"
-  use "vimwiki/vimwiki"
+
+  use {
+    "vimwiki/vimwiki",
+    setup = function()
+      vim.g.vimwiki_list = {
+        {
+          path = "~/vimwiki/",
+          syntax = "markdown",
+          ext = ".md"
+        }
+      }
+    end
+  }
 
   use {
     "norcalli/nvim-colorizer.lua",
@@ -125,7 +140,10 @@ return packer.startup(function (use)
 
   use {
     "rmagatti/auto-session",
-    config = function () require("auto-session").setup() end
+    config = function () require("auto-session").setup {
+        pre_save_cmds = {"Neotree close"}
+      }
+    end
   }
 
   -- Languages
