@@ -57,6 +57,7 @@ local buffers = {
   -- it can also be a function that returns
   -- the value of `max_length` dynamically.
   filetype_names = {
+    ["neo-tree"] = "Neo-tree",
     TelescopePrompt = "Telescope",
     dashboard = "Dashboard",
     packer = "Packer",
