@@ -1,5 +1,9 @@
 local configs = require("nvim-treesitter.configs")
 
+require("nvim-treesitter.highlight").set_custom_captures {
+  ["user.dollar"] = "UserDollar"
+}
+
 configs.setup({
   ensure_installed = "all",
   sync_install = false,
@@ -13,6 +17,3 @@ configs.setup({
   }
 })
 
-require("nvim-treesitter.highlight").set_custom_captures {
-  ["user.dollar"] = "UserDollar"
-}
