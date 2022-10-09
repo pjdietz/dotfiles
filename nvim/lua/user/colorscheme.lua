@@ -18,6 +18,7 @@ local highlights = {
   ColorColumn = { bg = colors.bg_alt2 },
   CursorLine = { bg = colors.bg_alt2 },
   TSAttribute = { fg = colors.green },
+  TSField = { fg = colors.green },
   TSInclude = { fg = colors.darkblue },
   TSKeyword = { fg = colors.purple },
   TSKeywordReturn = { fg = colors.purple },

@@ -79,6 +79,12 @@ lspconfig.bashls.setup({
   on_attach = on_attach,
 })
 
+-- Go
+lspconfig.gopls.setup {
+  cmd = { "gopls" },
+  on_attach = on_attach,
+}
+
 -- Lua
 -- brew install lua-language-server
 lspconfig.sumneko_lua.setup({
