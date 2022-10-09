@@ -105,6 +105,7 @@ return packer.startup(function (use)
   use "folke/twilight.nvim"
   use "folke/zen-mode.nvim"
   use "jceb/vim-orgmode"
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
   use "lewis6991/gitsigns.nvim"
   use "liuchengxu/vim-which-key"
   use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
