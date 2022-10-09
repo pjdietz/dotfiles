@@ -94,6 +94,15 @@ return packer.startup(function (use)
     config = function () vim.g.neo_tree_remove_legacy_commands = 1 end
   }
 
+  -- Neotest
+  use {
+    'nvim-neotest/neotest',
+    requires = {
+      'nvim-neotest/neotest-go',
+      'olimorris/neotest-phpunit'
+    },
+  }
+
   use {
     "NTBBloodbath/rest.nvim",
     requires = { "nvim-lua/plenary.nvim" },
