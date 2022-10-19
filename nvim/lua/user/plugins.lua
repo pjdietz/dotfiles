@@ -63,6 +63,9 @@ return packer.startup(function (use)
   use "onsails/lspkind-nvim"
   use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
 
+  -- Mason
+  use "williamboman/mason.nvim"
+
   -- Completion
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"

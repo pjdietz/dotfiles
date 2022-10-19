@@ -1,8 +1,6 @@
 local configs = require("nvim-treesitter.configs")
 
-require("nvim-treesitter.highlight").set_custom_captures {
-  ["user.dollar"] = "UserDollar"
-}
+vim.api.nvim_set_hl(0, "@user.dollar", { link = "UserDollar" })
 
 configs.setup({
   ensure_installed = "all",

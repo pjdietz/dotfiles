@@ -36,9 +36,12 @@ if vim.g.material_style == "lighter" then
   highlights.UserDollar = { fg = colors.orange }
 end
 
-
 material.setup {
-  custom_highlights = highlights
+  custom_highlights = highlights,
+  plugins = {
+    "gitsigns",
+    "telescope"
+  }
 }
 
 vim.cmd "colorscheme material"
