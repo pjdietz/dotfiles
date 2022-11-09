@@ -1,13 +1,5 @@
 local colors = require('material.colors')
 
-if vim.g.material_style == "darker" then
-  colors.editor.bg_alt2 = "#2C2C2C"
-  colors.editor.subtle = "#94A7B0"
-else
-  colors.editor.bg_alt2 = "#E7E7E8"
-  colors.editor.subtle = colors.syntax.comments
-end
-
 local material = {}
 
 material.normal = {
