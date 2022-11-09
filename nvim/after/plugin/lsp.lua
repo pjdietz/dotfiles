@@ -32,11 +32,18 @@ local on_attach = function (_, bufnr)
 
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+
 -- PHP
 lspconfig.intelephense.setup({
   CMD = { "intelephense", "--stdio" },
   filetypes = { "php" },
   on_attach = on_attach,
+  capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,
   },
@@ -79,12 +86,14 @@ lspconfig.intelephense.setup({
 lspconfig.bashls.setup({
   filetypes = { "sh" },
   on_attach = on_attach,
+  capabilities = capabilities,
 })
 
 -- Go
 lspconfig.gopls.setup {
   cmd = { "gopls" },
   on_attach = on_attach,
+  capabilities = capabilities,
 }
 
 -- Lua
@@ -92,6 +101,7 @@ lspconfig.gopls.setup {
 lspconfig.sumneko_lua.setup({
   filetypes = { "lua" },
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       format = {
@@ -119,6 +129,7 @@ lspconfig.sumneko_lua.setup({
 lspconfig.tsserver.setup {
   filetypes = { "javascript", "typescript" },
   on_attach = on_attach,
+  capabilities = capabilities,
   init_options = {
     preferences = {
       disableSuggestions = true,

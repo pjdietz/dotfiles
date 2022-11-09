@@ -1,29 +1,16 @@
+vim.o.foldcolumn = '0' -- Set to '1' to show code fold level
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
+local ufo = require("ufo")
+
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+vim.keymap.set('n', 'zR', ufo.openAllFolds)
+vim.keymap.set('n', 'zM', ufo.closeAllFolds)
 
-require('ufo').setup {
-  provider_selector = function(_, _, _)
-    return {'treesitter', 'indent'}
-  end
-}
+-- Code folding support for language servers is configured in lsp.lua
 
--- -- Tell the server the capability of foldingRange,
--- -- Neovim hasn't added foldingRange to default capabilities, users must add it manually
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.foldingRange = {
---     dynamicRegistration = false,
---     lineFoldingOnly = true
--- }
--- local language_servers = { 'intelephense', 'gopls' }
--- for _, ls in ipairs(language_servers) do
---     require('lspconfig')[ls].setup({
---         capabilities = capabilities,
---         other_fields = ...
---     })
--- end
--- require('ufo').setup()
+ufo.setup()
+
+require("ufo").setup()
