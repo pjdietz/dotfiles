@@ -51,6 +51,9 @@
 	email = pjdietz@gmail.com
 	name = PJ Dietz
 
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/
+
 [alias]
     # Pruning fully merged branches
     cleanup-list =        "!git branch --merged | grep -E -v '(master|main|develop|dev)'"
