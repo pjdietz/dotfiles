@@ -48,7 +48,6 @@ return packer.startup(function (use)
   use "marko-cerovac/material.nvim"
 
   use "nvim-lualine/lualine.nvim"
-  -- use "edkolev/tmuxline.vim"
 
   -- Treesitter
   use {
@@ -61,10 +60,11 @@ return packer.startup(function (use)
   use "neovim/nvim-lspconfig"
   use "jose-elias-alvarez/null-ls.nvim"
   use "onsails/lspkind-nvim"
-  use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+  use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
   -- Mason
   use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
 
   -- Completion
   use "hrsh7th/cmp-nvim-lsp"

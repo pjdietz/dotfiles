@@ -1,3 +1,6 @@
+require("mason").setup()
+require("mason-lspconfig").setup()
+
 local lspconfig = require "lspconfig"
 
 -- Use an on_attach function to only map the following keys
@@ -25,7 +28,6 @@ local on_attach = function (_, bufnr)
   buf_set_keymap("n", "<Leader>rn", "<CMD>lua vim.lsp.buf.rename()<CR>", opts)
   buf_set_keymap("n", "<Leader>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_set_keymap("n", "<Leader>f", "<CMD>lua vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap("n", "<Leader>e", "<CMD>lua vim.diagnostic.open_float()<CR>", opts)
   buf_set_keymap("n", "<Leader>q", "<CMD>lua vim.diagnostic.setloclist()<CR>", opts)
 
 end
@@ -113,5 +115,13 @@ lspconfig.sumneko_lua.setup({
   }
 })
 
--- Toggle diagnostics
-require("toggle_lsp_diagnostics").init()
+-- tsserver
+lspconfig.tsserver.setup {
+  filetypes = { "javascript", "typescript" },
+  on_attach = on_attach,
+  init_options = {
+    preferences = {
+      disableSuggestions = true,
+    },
+  },
+}
