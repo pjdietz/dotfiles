@@ -11,3 +11,19 @@ require('ufo').setup {
     return {'treesitter', 'indent'}
   end
 }
+
+-- -- Tell the server the capability of foldingRange,
+-- -- Neovim hasn't added foldingRange to default capabilities, users must add it manually
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.foldingRange = {
+--     dynamicRegistration = false,
+--     lineFoldingOnly = true
+-- }
+-- local language_servers = { 'intelephense', 'gopls' }
+-- for _, ls in ipairs(language_servers) do
+--     require('lspconfig')[ls].setup({
+--         capabilities = capabilities,
+--         other_fields = ...
+--     })
+-- end
+-- require('ufo').setup()
