@@ -5,6 +5,6 @@ vim.cmd [[
   nnoremap <Leader>tl <CMD>TestLast<CR>
   nnoremap <Leader>tv <CMD>TestVisit<CR>
 
-  let test#strategy = "neovim"
+  let test#strategy = "toggleterm"
   let test#php#phpunit#executable = "docker-compose run --rm php phpunit --no-coverage"
 ]]
