@@ -107,7 +107,7 @@ return packer.startup(function (use)
   }
 
   use {
-    "NTBBloodbath/rest.nvim",
+    "rest-nvim/rest.nvim",
     requires = { "nvim-lua/plenary.nvim" },
   }
 
@@ -116,7 +116,6 @@ return packer.startup(function (use)
   use "christoomey/vim-tmux-navigator"
   use "folke/twilight.nvim"
   use "folke/zen-mode.nvim"
-  use "jceb/vim-orgmode"
   use { "kevinhwang91/nvim-ufo", requires = 'kevinhwang91/promise-async' }
   use "lewis6991/gitsigns.nvim"
   use "liuchengxu/vim-which-key"
