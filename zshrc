@@ -3,6 +3,7 @@ setopt NO_CASE_GLOB
 PATH="${HOME}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 PATH="${HOME}/.krew/bin:${PATH}"
+PATH="$(go env GOPATH)/bin:${PATH}"
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -57,6 +58,9 @@ _comp_options+=(globdots)
 # kubectl autocompletion
 if command -v kubectl &> /dev/null; then
   source <(kubectl completion zsh)
+  if kubectl stern --version &> /dev/null; then
+    source <(kubectl stern --completion=zsh)
+  fi
 fi
 
 # Vi mode
@@ -104,6 +108,7 @@ alias dce='docker compose exec'
 alias flush-dns='sudo killall -HUP mDNSResponder'
 alias gitgraph='git graph'
 alias gg='git graph'
+alias gs='git status'
 alias k='kubectl'
 alias wk='watch kubectl'
 alias phpstorm='open . -a phpstorm'
