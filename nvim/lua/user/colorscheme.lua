@@ -5,6 +5,7 @@ colors.main.darkorange = "#E2795B"
 colors.editor.bg_alt2 = "#2C2C2C"
 colors.editor.subtle = "#94A7B0"
 
+-- vim.g.material_style = "deep ocean"
 vim.g.material_style = "darker"
 -- vim.g.material_style = "lighter"
 
@@ -25,6 +26,7 @@ local highlights = {
   ["@method"] = { fg = colors.main.blue },
   ["@property"] = { fg = colors.editor.fg },
   ["@type"] = { fg = colors.main.white },
+  ["@type.qualifier"] = { fg = colors.main.darkpurple },
   ["@variable"] = { fg = colors.main.orange },
   ["@variable.builtin"] = { fg = colors.main.white },
   ["@user.dollar"] = { fg = colors.editor.fg },
