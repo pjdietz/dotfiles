@@ -162,6 +162,15 @@ return packer.startup(function (use)
     end
   }
 
+  -- Lua
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {}
+    end
+  }
+
   -- Languages
   use {
     "iamcco/markdown-preview.nvim",

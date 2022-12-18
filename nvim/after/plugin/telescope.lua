@@ -38,6 +38,7 @@ vim.keymap.set("n", "<Leader>fh", builtin.help_tags)
 vim.keymap.set("n", "<Leader>fq", builtin.quickfix)
 vim.keymap.set("n", "<Leader>fo", user_buffers)
 vim.keymap.set("n", "<Leader>fb", "<CMD>Telescope file_browser<CR>")
+vim.keymap.set("n", "<Leader>ft", "<CMD>TodoTelescope keywords=TODO,FIX<CR>")
 -- Commands
 vim.keymap.set("n", "<Leader>fc", builtin.commands)
 -- Git
