@@ -76,6 +76,8 @@ return packer.startup(function (use)
 
   -- Snipets
   use "L3MON4D3/LuaSnip"
+  use "rafamadriz/friendly-snippets"
+  use "saadparwaiz1/cmp_luasnip"
 
   -- Telescope
   use {

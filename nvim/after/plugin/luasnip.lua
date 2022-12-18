@@ -25,6 +25,11 @@ vim.keymap.set("i", "<C-l>", function ()
 end)
 
 vim.keymap.set("n", "<Leader><Leader>s", "<CMD>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
+require("luasnip/loaders/from_vscode").lazy_load()
+
+-- -----------------------------------------------------------------------------
+-- Friendly Snippets
+ls.filetype_extend("php", { "php", "twig" })
 
 -- -----------------------------------------------------------------------------
 -- TODO Move to external file and require
