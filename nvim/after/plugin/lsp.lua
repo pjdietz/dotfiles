@@ -9,6 +9,21 @@ local on_attach = function (_, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+  local nmap = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
+    end
+
+    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  nmap("gr", function()
+    require("telescope.builtin").lsp_references({
+      show_line = false
+    })
+  end, "[G]oto [R]eferences")
+  -- nmap("gr", require("telescope.builtin").lsp_references({layout_strategy="vertical"}), "[G]oto [R]eferences")
+
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -20,7 +35,8 @@ local on_attach = function (_, bufnr)
   buf_set_keymap("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opts)
   buf_set_keymap("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>", opts)
-  buf_set_keymap("n", "gr", "<CMD>lua vim.lsp.buf.references()<CR>", opts)
+
+  -- buf_set_keymap("n", "gr", "<CMD>lua vim.lsp.buf.references()<CR>", opts)
   buf_set_keymap("n", "gt", "<CMD>lua vim.lsp.buf.type_definition()<CR>", opts)
   buf_set_keymap("n", "<Leader>dj", "<CMD>lua vim.diagnostic.goto_prev()<CR>", opts)
   buf_set_keymap("n", "<Leader>dk", "<CMD>lua vim.diagnostic.goto_next()<CR>", opts)

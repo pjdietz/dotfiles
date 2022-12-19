@@ -138,5 +138,5 @@ neotree.setup {
 
 vim.keymap.set("n", "<Leader>\\", "<CMD>Neotree reveal<CR>")
 vim.keymap.set("n", "<F2>", "<CMD>Neotree toggle<CR>")
-vim.keymap.set("n", "<Leader>nt", "<CMD>Neotree toggle<CR>")
-vim.keymap.set("n", "<Leader>fg", "<CMD>Neotree git_status<CR>")
+vim.keymap.set("n", "<Leader>nt", "<CMD>Neotree toggle<CR>", { desc = "[N]eotree [T]oggle" })
+vim.keymap.set("n", "<Leader>gs", "<CMD>Neotree git_status<CR>", { desc = "[G]it [S]tatus" })
