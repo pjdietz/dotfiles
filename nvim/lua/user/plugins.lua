@@ -54,6 +54,10 @@ return packer.startup(function (use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate"
   }
+  use { -- Additional text objects via treesitter
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+  }
   use "nvim-treesitter/playground"
 
   -- LSP
@@ -127,6 +131,7 @@ return packer.startup(function (use)
   use "tpope/vim-fugitive"
   use "tpope/vim-obsession"
   use "tpope/vim-projectionist"
+  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use "vim-test/vim-test"
 
   use {

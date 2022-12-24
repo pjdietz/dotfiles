@@ -42,7 +42,7 @@ local function multi_buffers()
 end
 
 local nmap = function(keys, func, desc)
-  vim.keymap.set("n", keys, func, {  desc = desc })
+  vim.keymap.set("n", keys, func, { desc = desc })
 end
 
 --------------------------------------------------------------------------------
@@ -59,6 +59,7 @@ end, "[/] Fuzzy search in current buffer")
 nmap("<Leader>fr", builtin.resume, "[F]ind [R]esume (open previous Telescope)")
 nmap("<Leader>fi", builtin.live_grep, "[F]ind [I]nside file (live grep)")
 nmap("<Leader>ff", builtin.find_files, "[F]ind [F]iles")
+nmap("<Leader>fd", builtin.diagnostics, "[F]ind [D]iagnostics")
 
 nmap("<Leader>FF", function()
   builtin.find_files({
@@ -67,7 +68,11 @@ nmap("<Leader>FF", function()
   })
 end, "[F]ind [F]ile (include hidden)")
 
-nmap("<Leader>fq", builtin.quickfix, "[F]ind in [Q]uickfix")
+nmap("<Leader>fq", function()
+  builtin.quickfix({
+    show_line = false
+  })
+end, "[F]ind in [Q]uickfix")
 nmap("<Leader>ft", "<CMD>TodoTelescope keywords=TODO,FIX<CR>", "[F]ind [T]ODO and [F]IX")
 nmap("<Leader>fb", "<CMD>Telescope file_browser<CR>", "[F]ile [B]rowser")
 nmap("<Leader>fs", builtin.treesitter, "[F]ind Treesitter [S]ymbols")

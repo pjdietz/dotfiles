@@ -5,9 +5,7 @@ local lspconfig = require "lspconfig"
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function (_, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+local on_attach = function(_, bufnr)
 
   local nmap = function(keys, func, desc)
     if desc then
@@ -17,53 +15,46 @@ local on_attach = function (_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
+  -- See `:help K` for why this keymap
+  nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+  nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+
+  nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+  nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+  nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
   nmap("gr", function()
     require("telescope.builtin").lsp_references({
       show_line = false
     })
   end, "[G]oto [R]eferences")
-  -- nmap("gr", require("telescope.builtin").lsp_references({layout_strategy="vertical"}), "[G]oto [R]eferences")
+  nmap("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype definition")
+  nmap("<Leader>rn", vim.lsp.buf.rename, "[R]e[N]ame")
+  nmap("<Leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  -- Mappings.
-  local opts = { noremap = true, silent = true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>", opts)
-  buf_set_keymap("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>", opts)
-
-  -- buf_set_keymap("n", "gr", "<CMD>lua vim.lsp.buf.references()<CR>", opts)
-  buf_set_keymap("n", "gt", "<CMD>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_set_keymap("n", "<Leader>dj", "<CMD>lua vim.diagnostic.goto_prev()<CR>", opts)
-  buf_set_keymap("n", "<Leader>dk", "<CMD>lua vim.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap("n", "<c-k>", "<CMD>lua vim.lsp.buf.signature_help()<CR>", opts)
-  buf_set_keymap("n", "<Leader>rn", "<CMD>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap("n", "<Leader>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>", opts)
-  buf_set_keymap("n", "<Leader>f", "<CMD>lua vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap("n", "<Leader>q", "<CMD>lua vim.diagnostic.setloclist()<CR>", opts)
+  -- Diagnostics
+  nmap("[d", vim.diagnostic.goto_next, "Next [D]iagnostic")
+  nmap("]d", vim.diagnostic.goto_prev, "Previous [D]iagnostic")
+  nmap("<Leader>lf", vim.lsp.buf.format, "[L]SP [F]ormat")
+  nmap("<Leader>q", vim.diagnostic.setloclist, "Diagnostics to locallist")
 
 end
 
 local signs = {
-    Error = " ",
-    Warn = " ",
-    Hint = " ",
-    Info = " "
+  Error = " ",
+  Warn = " ",
+  Hint = " ",
+  Info = " "
 }
 
 for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
+  dynamicRegistration = false,
+  lineFoldingOnly = true
 }
 
 -- PHP
