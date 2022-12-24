@@ -65,6 +65,7 @@ return packer.startup(function (use)
   use "jose-elias-alvarez/null-ls.nvim"
   use "onsails/lspkind-nvim"
   use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+  use "j-hui/fidget.nvim" -- Useful status updates for LSP
 
   -- Mason
   use "williamboman/mason.nvim"

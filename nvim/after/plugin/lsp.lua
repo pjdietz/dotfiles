@@ -1,6 +1,8 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 
+require("fidget").setup()
+
 local lspconfig = require "lspconfig"
 
 -- Use an on_attach function to only map the following keys
