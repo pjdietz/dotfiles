@@ -191,6 +191,16 @@ return packer.startup(function (use)
   use "towolf/vim-helm"
   use "fatih/vim-go"
   use "StanAngeloff/php.vim"
+  use {
+    "stephpy/vim-php-cs-fixer",
+    setup = function ()
+      vim.g.php_cs_fixer_config_file = '.php-cs-fixer.dist.php'
+      vim.g.php_cs_fixer_php_path = "php"
+      vim.g.php_cs_fixer_enable_default_mapping = 1
+      vim.g.php_cs_fixer_dry_run = 0
+      vim.g.php_cs_fixer_verbose = 0
+    end
+  }
 
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
