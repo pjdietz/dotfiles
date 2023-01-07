@@ -2,7 +2,7 @@ local telescope = require "telescope"
 
 telescope.setup {
   defaults = {
-    winblend = 8
+    winblend = 10
   }
 }
 
@@ -57,22 +57,29 @@ nmap("<leader>/", function()
 end, "[/] Fuzzy search in current buffer")
 
 nmap("<Leader>fr", builtin.resume, "[F]ind [R]esume (open previous Telescope)")
-nmap("<Leader>fi", builtin.live_grep, "[F]ind [I]nside file (live grep)")
-nmap("<Leader>ff", builtin.find_files, "[F]ind [F]iles")
+nmap("<Leader>fi", builtin.live_grep, "[F]ind [I]nside files (live grep)")
 nmap("<Leader>fd", builtin.diagnostics, "[F]ind [D]iagnostics")
+
+nmap("<Leader>ff", function()
+  builtin.find_files({
+    -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+  })
+end, "[F]ind [F]iles")
 
 nmap("<Leader>FF", function()
   builtin.find_files({
     hidden = true,
     no_ignore = true
   })
-end, "[F]ind [F]ile (include hidden)")
+end, "[F]ind [F]iles (include ignored)")
 
 nmap("<Leader>fq", function()
   builtin.quickfix({
     show_line = false
   })
 end, "[F]ind in [Q]uickfix")
+
 nmap("<Leader>ft", "<CMD>TodoTelescope keywords=TODO,FIX<CR>", "[F]ind [T]ODO and [F]IX")
 nmap("<Leader>fb", "<CMD>Telescope file_browser<CR>", "[F]ile [B]rowser")
 nmap("<Leader>fs", builtin.treesitter, "[F]ind Treesitter [S]ymbols")
