@@ -110,6 +110,13 @@ lspconfig.bashls.setup({
   capabilities = capabilities,
 })
 
+-- C#
+lspconfig.omnisharp.setup {
+  cmd = { "omnisharp" },
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 -- Go
 lspconfig.gopls.setup {
   cmd = { "gopls" },
