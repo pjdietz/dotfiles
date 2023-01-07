@@ -3,4 +3,5 @@
 .idea
 .vscode
 .phpunit.result.cache
+.php-cs-fixer.cache
 *.swp
