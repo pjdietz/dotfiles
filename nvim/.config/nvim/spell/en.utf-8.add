@@ -9,3 +9,7 @@ uri
 json
 PJ
 callables
+RabbitMQ
+Kubernetes
+bitnami
+k8s
