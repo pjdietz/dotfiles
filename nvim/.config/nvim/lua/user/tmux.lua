@@ -1,7 +1,7 @@
 local M = {}
 
 function M.show_status()
-  vim.fn.system([[tmux set status off]])
+  vim.fn.system([[tmux set status on]])
 end
 
 function M.hide_status()
