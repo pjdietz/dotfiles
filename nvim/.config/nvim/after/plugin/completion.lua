@@ -48,3 +48,13 @@ cmp.setup({
     ghost_text = true
   }
 })
+
+cmp.setup.filetype({ 'markdown', 'vimwiki' }, {
+  completion = {
+    autocomplete = false
+  },
+  sources = {
+    { name = "path" },
+    { name = "buffer" }
+  }
+})
