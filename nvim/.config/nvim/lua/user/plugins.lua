@@ -164,7 +164,8 @@ return packer.startup(function (use)
 
   use {
     "rmagatti/auto-session",
-    config = function () require("auto-session").setup {
+    config = function ()
+      require("auto-session").setup {
         pre_save_cmds = {"Neotree close"}
       }
     end
