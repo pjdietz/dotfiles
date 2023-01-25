@@ -89,6 +89,7 @@ lspconfig.intelephense.setup({
         "json",
         "memcached",
         "openssl",
+        "pcntl",
         "pcre",
         "pdo",
         "redis",
