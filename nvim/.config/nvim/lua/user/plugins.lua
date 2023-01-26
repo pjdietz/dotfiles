@@ -120,9 +120,10 @@ return packer.startup(function (use)
   -- Misc
   use "akinsho/toggleterm.nvim"
   use "christoomey/vim-tmux-navigator"
+  use "echasnovski/mini.nvim"
   use "folke/twilight.nvim"
   use "folke/zen-mode.nvim"
-  use { "kevinhwang91/nvim-ufo", requires = 'kevinhwang91/promise-async' }
+  use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
   use "lewis6991/gitsigns.nvim"
   use "liuchengxu/vim-which-key"
   use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
@@ -131,7 +132,7 @@ return packer.startup(function (use)
   use "tpope/vim-fugitive"
   use "tpope/vim-obsession"
   use "tpope/vim-projectionist"
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  use "tpope/vim-sleuth" -- Detect tabstop and shiftwidth automatically
   use "vim-test/vim-test"
 
   use {
