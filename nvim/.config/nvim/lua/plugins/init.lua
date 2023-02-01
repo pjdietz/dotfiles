@@ -80,8 +80,6 @@ return {
   "akinsho/toggleterm.nvim",
   "christoomey/vim-tmux-navigator",
   "echasnovski/mini.nvim",
-  "folke/twilight.nvim",
-  "folke/zen-mode.nvim",
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
   "liuchengxu/vim-which-key",
   { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
