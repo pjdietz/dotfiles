@@ -16,24 +16,6 @@ return {
   },
   "nvim-treesitter/playground",
 
-  -- LSP
-  "neovim/nvim-lspconfig",
-  "jose-elias-alvarez/null-ls.nvim",
-  "onsails/lspkind-nvim",
-  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-
-  -- Mason
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
-
-  -- Completion
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-nvim-lua",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-cmdline",
-  "hrsh7th/nvim-cmp",
-
   -- Snipets
   "L3MON4D3/LuaSnip",
   "rafamadriz/friendly-snippets",
