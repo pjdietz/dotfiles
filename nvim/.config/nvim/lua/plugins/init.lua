@@ -47,15 +47,6 @@ return {
   "nvim-telescope/telescope-file-browser.nvim",
   "nvim-telescope/telescope-fzy-native.nvim",
 
-  -- Neotest
-  {
-    'nvim-neotest/neotest',
-    dependencies = {
-      'nvim-neotest/neotest-go',
-      'olimorris/neotest-phpunit'
-    },
-  },
-
   {
     "rest-nvim/rest.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -127,7 +118,6 @@ return {
   "folke/twilight.nvim",
   "folke/zen-mode.nvim",
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
-  "lewis6991/gitsigns.nvim",
   "liuchengxu/vim-which-key",
   { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
   "stevearc/dressing.nvim",
