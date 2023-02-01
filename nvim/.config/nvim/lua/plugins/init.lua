@@ -1,9 +1,5 @@
 return {
 
-  -- Themes
-  "marko-cerovac/material.nvim",
-  "nvim-lualine/lualine.nvim",
-
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
@@ -32,19 +28,6 @@ return {
   {
     "rest-nvim/rest.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-  },
-
-  {
-    "vimwiki/vimwiki",
-    init = function()
-      vim.g.vimwiki_list = {
-        {
-          path = "~/vimwiki/",
-          syntax = "markdown",
-          ext = ".md"
-        }
-      }
-    end
   },
 
   {
