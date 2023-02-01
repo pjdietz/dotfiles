@@ -1,30 +1,5 @@
 return {
 
-  -- Treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = function()
-      pcall(require("nvim-treesitter.install").update { with_sync = true })
-    end,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    }
-  },
-  "nvim-treesitter/playground",
-
-  -- Snipets
-  "L3MON4D3/LuaSnip",
-  "rafamadriz/friendly-snippets",
-  "saadparwaiz1/cmp_luasnip",
-
-  -- Telescope
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" }
-  },
-  "nvim-telescope/telescope-file-browser.nvim",
-  "nvim-telescope/telescope-fzy-native.nvim",
-
   {
     "norcalli/nvim-colorizer.lua",
     config = function () require("colorizer").setup(
@@ -39,7 +14,6 @@ return {
     config = function () require("nvim-surround").setup() end
   },
 
-  -- Lua
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
