@@ -67,7 +67,9 @@ local buffers = {
 
   buffers_color = {
     active = { bg = colors.main.blue, fg = colors.editor.bg },
-    inactive = { bg = colors.editor.border, fg = colors.editor.fg }
+    -- TODO: Use variable for color. This stopped working with Lazy, possibly loaded in wrong order.
+    -- inactive = { bg = colors.editor.border, fg = colors.editor.fg }
+    inactive = { bg = "343434", fg = colors.editor.fg }
   },
 
   symbols = {
