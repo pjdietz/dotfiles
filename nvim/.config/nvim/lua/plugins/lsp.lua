@@ -10,6 +10,14 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup()
 
+    local null_ls = require "null-ls"
+    null_ls.setup {
+      sources = {
+        null_ls.builtins.code_actions.shellcheck,
+        null_ls.builtins.diagnostics.shellcheck
+      }
+    }
+
     local lspconfig = require "lspconfig"
 
     -- Use an on_attach function to only map the following keys

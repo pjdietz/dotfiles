@@ -26,11 +26,6 @@ return {
   "nvim-telescope/telescope-fzy-native.nvim",
 
   {
-    "rest-nvim/rest.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-
-  {
     "norcalli/nvim-colorizer.lua",
     config = function () require("colorizer").setup(
       {},
@@ -54,12 +49,6 @@ return {
   },
 
   -- Languages
-  {
-    "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install",
-    init = function () vim.g.mkdp_filetypes = { "markdown" } end,
-    ft = { "markdown" },
-  },
   "othree/html5.vim",
   "nelsyeung/twig.vim",
   "towolf/vim-helm",
@@ -76,10 +65,8 @@ return {
     end
   },
 
-   -- Misc
-  "akinsho/toggleterm.nvim",
+  -- Misc
   "christoomey/vim-tmux-navigator",
-  "echasnovski/mini.nvim",
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
   "liuchengxu/vim-which-key",
   { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
@@ -87,7 +74,12 @@ return {
   "tpope/vim-commentary",
   "tpope/vim-fugitive",
   "tpope/vim-obsession",
-  "tpope/vim-projectionist",
+  {
+    "tpope/vim-projectionist",
+    keys = {
+      { "<Leader>aa", "<CMD>A<CR>", { desc = "Switch to alternate file" } },
+      { "<Leader>av", "<CMD>AV<CR>", { desc = "Switch to alternate file (split)" } },
+    },
+  },
   "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-  "vim-test/vim-test",
 }
