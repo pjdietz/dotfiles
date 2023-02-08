@@ -5,7 +5,7 @@ return {
     { "<Leader>h", "<Plug>RestNvim<CR>", { desc = "[H]TTP request" } }
   },
   ft = { "http" },
-  config = {
+  opts = {
     -- Open request results in a horizontal split
     result_split_horizontal = true,
     -- Keep the http file buffer above|left when split horizontal|vertical

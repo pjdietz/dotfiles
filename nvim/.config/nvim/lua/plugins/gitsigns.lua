@@ -1,6 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
-  config = {
+  opts = {
     signcolumn = true,
     preview_config = {
       -- Options passed to nvim_open_win

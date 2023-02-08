@@ -4,7 +4,7 @@ return {
   keys = {
     { "<F1>", "<CMD>Toggleterm<CR>", { desc = "Toggleterm" } }
   },
-  config = {
+  opts = {
     open_mapping = [[<F1>]],
     direction = "float",
     float_opts = {

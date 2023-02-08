@@ -5,7 +5,7 @@ return {
   keys = {
     { "<Leader>z", "<CMD>ZenMode<CR>", { desc = "[Z]en mode" } }
   },
-  config = {
+  opts = {
     window = {
       backdrop = 0.90,
       width = 100
