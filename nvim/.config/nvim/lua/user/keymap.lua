@@ -12,6 +12,8 @@ map("n", "<Leader>j", "<CMD>TmuxAutoPane<CR>")
 -- Buffers
 map("n", "<C-n>", "<CMD>bn<CR>")
 map("n", "<C-p>", "<CMD>bp<CR>")
+map("n", "<Leader>bd", "<CMD>bd<CR>")
+map("n", "<Leader>by", "gg\"*yG", { desc = "[B]uffer [Y]ank to clipboard" })
 map("n", "<Leader>WW", "<CMD>bp|bd #<CR>")
 map("n", "<Leader>WA", "<CMD>Neotree close<CR><CMD>bufdo bwipeout<CR>")
 

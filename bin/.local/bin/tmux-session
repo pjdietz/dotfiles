@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
   selected_dir=$1
 else
-  selected_dir=$(find ~/dotfiles ~/projects/arc ~/projects ~/projects/wellrested ~/Dropbox -mindepth 1 -maxdepth 1 -type d | fzf)
+  selected_dir=$(find ~/  ~/projects ~/projects/arc ~/projects/wellrested ~/Dropbox -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z "${selected_dir}" ]]; then
