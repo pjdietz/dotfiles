@@ -104,6 +104,7 @@ return {
             "filter",
             "hash",
             "json",
+            "ldap",
             "memcached",
             "openssl",
             "pcntl",

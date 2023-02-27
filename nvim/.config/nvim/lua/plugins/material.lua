@@ -44,6 +44,9 @@ return {
     end
 
     material.setup {
+      disable = {
+        background = false
+      },
       custom_highlights = highlights,
       custom_colors = function (c)
         c.main.darkorange = colors.main.darkorange

@@ -41,6 +41,7 @@ return {
 
   -- Misc
   "christoomey/vim-tmux-navigator",
+  { "johmsalas/text-case.nvim", config = function() require("textcase").setup {} end },
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
   "liuchengxu/vim-which-key",
   { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
