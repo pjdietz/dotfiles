@@ -1,8 +1,10 @@
 window:
   padding:
-    x: 32
-    y: 32
+    x: 20
+    y: 20
   dynamic_padding: true
+  decorations: none
+  opacity: 1
 
 font:
   normal:
@@ -11,10 +13,28 @@ font:
   size: 20.0
   offset:
     x: 0
-    y: 8
+    y: 20
+  glyph_offset:
+    x: 0
+    y: 10
 
-  bell:
-    duration: 0
+colors:
+  primary:
+    foreground: '#B0BEC5'
+    background: '#212121'
+  normal:
+    black:   '#000000'
+    red:     '#F07178'
+    green:   '#C3E88D'
+    yellow:  '#FFC86B'
+    blue:    '#82AAFF'
+    magenta: '#C782EA'
+    cyan:    '#89DDFF'
+    white:   '#EEFFFF'
+  transparent_background_colors: true
 
-  key_bindings:
-    - { key: I, mods: Control, chars: "\x1b[105;5u" }
+bell:
+  duration: 0
+
+key_bindings:
+  - { key: I, mods: Control, chars: "\x1b[105;5u" }
