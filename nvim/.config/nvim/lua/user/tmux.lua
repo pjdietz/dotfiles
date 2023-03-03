@@ -19,4 +19,9 @@ function M.is_zoomed()
   return vim.v.shell_error == 0
 end
 
+function M.get_session_name()
+  local name = vim.fn.system([[tmux display-message -p '#S']])
+  return (name:gsub("^%s*(.-)%s*$", "%1"))
+end
+
 return M

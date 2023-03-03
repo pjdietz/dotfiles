@@ -3,25 +3,25 @@ local colors = require('material.colors')
 local material = {}
 
 material.normal = {
-  a = { fg = colors.editor.bg, bg = colors.main.blue, gui = 'bold' },
-  b = { fg = colors.title, bg = colors.editor.bg_alt2 },
-  c = { fg = colors.editor.fg, bg = colors.editor.border }
+  a = { bg = colors.editor.bg, fg = colors.main.blue, gui = "bold" },
+  b = { fg = colors.title, bg = colors.editor.bg },
+  c = { fg = colors.editor.fg, bg = colors.editor.bg }
 }
 
 material.insert = {
-  a = { fg = colors.editor.bg, bg = colors.main.green, gui = 'bold' }
+  a = { bg = colors.editor.bg, fg = colors.main.green, gui = "bold" }
 }
 
 material.visual = {
-  a = { fg = colors.editor.bg, bg = colors.main.purple, gui = 'bold' }
+  a = { bg = colors.editor.bg, fg = colors.main.purple, gui = "bold" }
 }
 
 material.replace = {
-  a = { fg = colors.editor.bg, bg = colors.main.red, gui = 'bold' }
+  a = { bg = colors.editor.bg, fg = colors.main.red, gui = "bold" }
 }
 
 material.command = {
-  a = { fg = colors.editor.bg, bg = colors.main.yellow, gui = 'bold' }
+  a = { bg = colors.editor.bg, fg = colors.main.yellow, gui = "bold" }
 }
 
 material.inactive = {

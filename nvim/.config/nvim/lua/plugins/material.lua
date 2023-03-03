@@ -20,7 +20,7 @@ return {
     end
 
     local highlights = {
-      Comment = { fg = colors.syntax.comments, italic = true },
+      -- Comment = { fg = colors.syntax.comments, italic = true },
       ColorColumn = { bg = colors.editor.bg_alt2 },
       CursorLine = { bg = colors.editor.bg_alt2 },
       ["@attribute"] = { fg = colors.main.green },

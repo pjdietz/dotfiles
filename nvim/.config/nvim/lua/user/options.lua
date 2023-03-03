@@ -48,10 +48,10 @@ local options = {
   -- Presentation
   colorcolumn = { 80, 100 },
   laststatus = 3,
-  cmdheight = 1,
+  cmdheight = 0,
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   pumheight = 10,                          -- pop up menu height
-  showtabline = 2,                         -- always show tabs
+  showtabline = 0,                         -- never show tabs
   termguicolors = true,                    -- set term gui colors (most terminals support this)
   timeoutlen = 1000,                        -- time to wait for a mapped sequence to complete (in milliseconds)
   updatetime = 50,                         -- faster completion (4000ms default)

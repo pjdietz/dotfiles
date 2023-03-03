@@ -1,10 +1,10 @@
 window:
   padding:
     x: 20
-    y: 20
+    y: 10
   dynamic_padding: true
   decorations: none
-  opacity: 1
+  opacity: 0.90
 
 font:
   normal:

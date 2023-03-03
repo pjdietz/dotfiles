@@ -17,11 +17,13 @@ return {
     -- callback where you can add custom code when the Zen window opens
     on_open = function()
       tmux.zoom()
-      tmux.hide_status()
+      -- tmux.hide_status()
+      vim.o.cmdheight = 1
     end,
     -- callback where you can add custom code when the Zen window closes
     on_close = function()
-      tmux.show_status()
+      -- tmux.show_status()
+      vim.o.cmdheight = 0
     end,
   }
 }

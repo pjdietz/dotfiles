@@ -7,6 +7,7 @@ return {
 
     local lualine = require "lualine"
     local colors = require "material.colors"
+    local tmux = require "user.tmux"
 
     local function hide_in_width()
       return vim.fn.winwidth(0) > 80
@@ -29,6 +30,19 @@ return {
       "filetype",
       icons_enabled = true,
       colored = false,
+    }
+
+    local filetype_icon = {
+      "filetype",
+      icons_enabled = true,
+      icon_only = true,
+      colored = false,
+      -- padding = { left = 1, right = 0 }
+    }
+
+    local filename = {
+      "filename",
+      padding = 0
     }
 
     local diagnostics = {
@@ -94,8 +108,8 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { branch },
-        lualine_c = { diff },
+        lualine_b = { tmux.get_session_name, branch },
+        lualine_c = { filetype_icon, filename, diff },
         lualine_x = { filetype, diagnostics, location },
         lualine_y = {},
         lualine_z = {}
@@ -108,9 +122,7 @@ return {
         lualine_y = {},
         lualine_z = {}
       },
-      tabline = {
-        lualine_a = { buffers }
-      },
+      tabline = {},
       extensions = {}
     })
 
