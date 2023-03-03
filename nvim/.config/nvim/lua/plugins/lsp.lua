@@ -143,7 +143,7 @@ return {
 
     -- Lua
     -- brew install lua-language-server
-    lspconfig.sumneko_lua.setup({
+    lspconfig.lua_ls.setup({
       filetypes = { "lua" },
       on_attach = on_attach,
       capabilities = capabilities,
