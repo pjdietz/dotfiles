@@ -4,6 +4,7 @@ return {
     "nvim-lua/plenary.nvim" ,
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-fzy-native.nvim",
+    "camgraff/telescope-tmux.nvim"
   },
   config = function()
     local telescope = require "telescope"
@@ -91,6 +92,7 @@ return {
     nmap("<Leader>ft", "<CMD>TodoTelescope keywords=TODO,FIX<CR>", "[F]ind [T]ODO and [F]IX")
     nmap("<Leader>fb", "<CMD>Telescope file_browser<CR>", "[F]ile [B]rowser")
     nmap("<Leader>fs", builtin.treesitter, "[F]ind Treesitter [S]ymbols")
+    nmap("<Leader>fj", "<CMD>Telescope tmux sessions<CR>", "Find Tmux Session")
 
     --------------------------------------------------------------------------------
     -- Help and info
