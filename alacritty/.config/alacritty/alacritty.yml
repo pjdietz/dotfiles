@@ -4,7 +4,7 @@ window:
     y: 10
   dynamic_padding: true
   decorations: none
-  opacity: 0.90
+  opacity: 0.95
 
 font:
   normal:
