@@ -3,10 +3,10 @@ function layout() {
         name: "Focus",
         extends: "fullscreen",
         getFrameAssignments: (windows, screenFrame, state, extendedFrames) => {
-            const paddingTop = 0;
-            const paddingRight = 400;
-            const paddingLeft = 400;
-            const paddingBottom = 60;
+            const paddingTop = 50;
+            const paddingRight = 450;
+            const paddingLeft = 450;
+            const paddingBottom = 100;
             return extendedFrames.reduce((frames, extendedFrame) => {
                 const frame = {
                     x: extendedFrame.frame.x + paddingLeft,
