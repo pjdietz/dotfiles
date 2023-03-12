@@ -7,7 +7,6 @@ return {
 
     local lualine = require "lualine"
     local colors = require "material.colors"
-    local tmux = require "user.tmux"
 
     local function hide_in_width()
       return vim.fn.winwidth(0) > 80
@@ -108,7 +107,7 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { tmux.get_session_name, branch },
+        lualine_b = { branch },
         lualine_c = { filetype_icon, filename, diff },
         lualine_x = { filetype, diagnostics, location },
         lualine_y = {},
@@ -128,4 +127,3 @@ return {
 
   end
 }
-
