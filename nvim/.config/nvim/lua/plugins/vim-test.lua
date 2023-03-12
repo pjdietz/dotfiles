@@ -9,7 +9,7 @@ return {
   },
   init = function()
     vim.cmd [[
-      let test#strategy = "toggleterm"
+      let test#strategy = "neovim"
       let test#php#phpunit#executable = "docker-compose run --rm php phpunit --no-coverage"
     ]]
   end
