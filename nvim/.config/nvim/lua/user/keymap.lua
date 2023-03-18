@@ -73,3 +73,11 @@ local function reload()
   dofile(vim.env.MYVIMRC)
 end
 vim.keymap.set("n", "<Leader>r", reload)
+
+vim.keymap.set("n", "<leader>gd", function()
+  if next(require("diffview.lib").views) == nil then
+    vim.cmd("DiffviewOpen")
+  else
+    vim.cmd("DiffviewClose")
+  end
+end, { desc = "Toggle [G]it [D]iffview" })
