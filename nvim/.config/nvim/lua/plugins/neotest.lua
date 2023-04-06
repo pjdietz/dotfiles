@@ -2,6 +2,7 @@ return {
   "nvim-neotest/neotest",
   dependencies = {
     "nvim-neotest/neotest-go",
+    "Issafalcon/neotest-dotnet",
     "olimorris/neotest-phpunit"
   },
   keys = {
@@ -29,6 +30,7 @@ return {
 
     neotest.setup {
       adapters = {
+        require("neotest-dotnet"),
         require("neotest-go"),
         require("neotest-phpunit")
       },
