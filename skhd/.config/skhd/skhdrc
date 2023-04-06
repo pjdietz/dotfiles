@@ -25,16 +25,16 @@ ctrl + alt - k : yabai -m window --warp north
 ctrl + alt - l : yabai -m window --warp east
 
 # Increase: shift + ctrl + wasd
-shift + ctrl - a : yabai -m window --resize left:-100:0
-shift + ctrl - s : yabai -m window --resize bottom:0:100
-shift + ctrl - w : yabai -m window --resize top:0:-100
-shift + ctrl - d : yabai -m window --resize right:100:0
+shift + alt - a : yabai -m window --resize left:-100:0
+shift + alt - s : yabai -m window --resize bottom:0:100
+shift + alt - w : yabai -m window --resize top:0:-100
+shift + alt - d : yabai -m window --resize right:100:0
 
 # Decrease: shift + alt + wasd
-shift + alt - a : yabai -m window --resize left:100:0
-shift + alt - s : yabai -m window --resize bottom:0:-100
-shift + alt - w : yabai -m window --resize top:0:100
-shift + alt - d : yabai -m window --resize right:-100:0
+shift + ctrl - a : yabai -m window --resize left:100:0
+shift + ctrl - s : yabai -m window --resize bottom:0:-100
+shift + ctrl - w : yabai -m window --resize top:0:100
+shift + ctrl - d : yabai -m window --resize right:-100:0
 
 # Move window to space and follow
 # Yabai can't change spaces without disabling SIP, so we have skhd send the
