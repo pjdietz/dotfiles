@@ -1,0 +1,13 @@
+# https://www.youtube.com/watch?v=GfQjJBtO-8Y
+# https://gist.github.com/bashbunni/f6b04fc4703903a71ce9f70c58345106
+# Requires https://github.com/caarlos0/timer to be installed
+pomo() {
+  local duration=${1:-25m}
+  local icon="☕"
+  local title="Time is up!"
+  local subtitle="Take a Break 😊"
+  local sound="Crystal"
+  timer "${duration}" && osascript <<EOF
+display notification "${icon}" with title "${title}" subtitle "${subtitle}" sound name "${sound}"
+EOF
+}
