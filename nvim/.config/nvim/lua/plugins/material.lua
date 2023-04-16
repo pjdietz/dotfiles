@@ -35,6 +35,7 @@ return {
       ["@variable"] = { fg = colors.main.orange },
       ["@variable.builtin"] = { fg = colors.main.white },
       ["@user.dollar"] = { fg = colors.editor.fg },
+      ["VimwikiItalic"] = { fg = colors.main.green },
     }
 
     if vim.g.material_style == "lighter" then

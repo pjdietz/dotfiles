@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd ~/Dropbox/vimwiki/scratch || exit
+nvim
