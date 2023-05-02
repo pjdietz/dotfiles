@@ -130,11 +130,16 @@ return {
     })
 
     -- C#
-    lspconfig.omnisharp.setup {
-      cmd = { "omnisharp" },
+    lspconfig.csharp_ls.setup {
+      cmd = { "csharp-ls" },
       on_attach = on_attach,
       capabilities = capabilities,
     }
+    -- lspconfig.omnisharp.setup {
+    --   cmd = { "omnisharp" },
+    --   on_attach = on_attach,
+    --   capabilities = capabilities,
+    -- }
 
     -- Go
     lspconfig.gopls.setup {

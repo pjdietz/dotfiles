@@ -1,9 +1,12 @@
 setopt NO_CASE_GLOB
 
 PATH="${HOME}/bin:${PATH}"
+PATH="${HOME}/dotnet:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 PATH="${HOME}/.krew/bin:${PATH}"
 PATH="$(go env GOPATH)/bin:${PATH}"
+
+export DOTNET_ROOT="${HOME}/dotnet"
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
