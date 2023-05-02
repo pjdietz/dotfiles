@@ -19,18 +19,18 @@ font:
     y: 10
 
 colors:
-  primary:
-    foreground: '#B0BEC5'
-    background: '#212121'
-  normal:
-    black:   '#000000'
-    red:     '#F07178'
-    green:   '#C3E88D'
-    yellow:  '#FFC86B'
-    blue:    '#82AAFF'
-    magenta: '#C782EA'
-    cyan:    '#89DDFF'
-    white:   '#EEFFFF'
+  # primary:
+  #   foreground: '#B0BEC5'
+  #   background: '#212121'
+  # normal:
+  #   black:   '#000000'
+  #   red:     '#F07178'
+  #   green:   '#C3E88D'
+  #   yellow:  '#FFC86B'
+  #   blue:    '#82AAFF'
+  #   magenta: '#C782EA'
+  #   cyan:    '#89DDFF'
+  #   white:   '#EEFFFF'
   transparent_background_colors: true
 
 bell:
@@ -40,3 +40,6 @@ key_bindings:
   - { key: Equals, mods: Control, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
   - { key: I, mods: Control, chars: "\x1b[105;5u" }
+
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml

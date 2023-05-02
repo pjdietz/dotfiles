@@ -1,12 +1,8 @@
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = {
-      "marko-cerovac/material.nvim",
-  },
   config = function ()
 
     local lualine = require "lualine"
-    local colors = require "material.colors"
 
     local function hide_in_width()
       return vim.fn.winwidth(0) > 80
@@ -36,7 +32,6 @@ return {
       icons_enabled = true,
       icon_only = true,
       colored = false,
-      -- padding = { left = 1, right = 0 }
     }
 
     local filename = {
@@ -63,44 +58,11 @@ return {
       return string.format("%" .. total_width .. "d/%d : %-3d", row, total_rows, column)
     end
 
-    local buffers = {
-      "buffers",
-      show_filename_only = true,          -- Shows shortened relative path when set to false.
-      hide_filename_extension = false,    -- Hide filename extension when set to true.
-      show_modified_status = true,        -- Shows indicator when the buffer is modified.
-      mode = 0, -- 0: Shows buffer name
-      -- 1: Shows buffer index
-      -- 2: Shows buffer name + buffer index
-      -- 3: Shows buffer number
-      -- 4: Shows buffer name + buffer number
-      max_length = vim.o.columns, -- Maximum width of buffers component,
-      -- it can also be a function that returns
-      -- the value of `max_length` dynamically.
-      filetype_names = {
-        ["neo-tree"] = "Neo-tree",
-        TelescopePrompt = "Telescope",
-        dashboard = "Dashboard",
-        packer = "Packer",
-        fzf = "FZF",
-        alpha = "Alpha"
-      }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
-
-      buffers_color = {
-        active = { bg = colors.main.blue, fg = colors.editor.bg },
-        inactive = { bg = colors.editor.border, fg = colors.editor.fg }
-      },
-
-      symbols = {
-        modified = " ●",      -- Text to show when the buffer is modified
-        alternate_file = "", -- Text to show to identify the alternate file
-        directory =  "",     -- Text to show when the buffer is a directory
-      }
-    }
-
     lualine.setup({
       options = {
         icons_enabled = true,
-        theme = "material",
+        -- theme = "material",
+        theme = "catppuccin",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         always_divide_middle = true,

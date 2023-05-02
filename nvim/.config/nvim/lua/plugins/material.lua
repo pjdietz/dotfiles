@@ -60,7 +60,7 @@ return {
       }
     }
 
-    vim.cmd "colorscheme material"
+    -- vim.cmd "colorscheme material"
   end
 
 }
