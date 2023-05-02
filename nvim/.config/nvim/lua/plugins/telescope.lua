@@ -10,9 +10,9 @@ return {
     local telescope = require "telescope"
 
     telescope.setup {
-      defaults = {
-        winblend = 10
-      }
+      -- defaults = {
+      --   winblend = 10
+      -- }
     }
 
     telescope.load_extension "file_browser"
