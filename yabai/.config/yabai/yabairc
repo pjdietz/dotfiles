@@ -15,6 +15,7 @@ yabai -m config mouse_action2 resize
 yabai -m config mouse_drop_action swap
 
 # Ignore Apps
+yabai -m rule --add app="^Azure VPN Client$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^SonicWall Mobile Connect$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off

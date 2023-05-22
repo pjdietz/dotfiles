@@ -52,7 +52,7 @@ shift + ctrl + cmd - h : yabai -m window --space prev
 ctrl + cmd - d : yabai -m window --toggle float
 ctrl + cmd - f : yabai -m window --toggle zoom-fullscreen
 
-crtl + cmd - b : yabia -m space --layout bsp
+ctrl + cmd - b : yabai -m space --layout bsp
 
 ###
 # Space
