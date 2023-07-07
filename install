@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+stow bin
 stow git
 stow nvim
 stow tmux
