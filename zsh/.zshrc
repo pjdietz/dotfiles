@@ -1,5 +1,15 @@
 setopt NO_CASE_GLOB
 
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+export KEYTIMEOUT=1
+export MANPAGER="nvim +Man!"
+export XDG_CONFIG_HOME="${HOME}/.config"
+
+export DOTNET_ROOT="${HOME}/dotnet"
+export PYTHONUSERBASE="${HOME}/.local"
+
 # Array of directories to add to the path in order.
 # Any directories that do not exist will not be added.
 declare -ar PATH_DIRS=(
@@ -15,84 +25,10 @@ main()
 {
   set_path
   set_prompt
+  set_autocomplete
+  set_vi_mode
+  set_aliases
 
-  export DOTNET_ROOT="${HOME}/dotnet"
-  export PYTHONUSERBASE="${HOME}/.local"
-
-  export CLICOLOR=1
-  export LSCOLORS=GxFxCxDxBxegedabagaced
-
-  # Basic auto/tab complete:
-  autoload -U compinit
-  zstyle ':completion:*' menu select
-  zmodload zsh/complist
-  compinit
-  _comp_options+=(globdots)
-
-  # kubectl autocompletion
-  if command -v kubectl &> /dev/null; then
-    source <(kubectl completion zsh)
-    if kubectl stern --version &> /dev/null; then
-      source <(kubectl stern --completion=zsh)
-    fi
-  fi
-
-  # Vi mode
-  bindkey -v
-  export KEYTIMEOUT=1
-  bindkey "^R" history-incremental-search-backward
-
-  # Use vim keys in tab complete menu:
-  bindkey -M menuselect 'h' vi-backward-char
-  bindkey -M menuselect 'k' vi-up-line-or-history
-  bindkey -M menuselect 'l' vi-forward-char
-  bindkey -M menuselect 'j' vi-down-line-or-history
-  bindkey -v '^?' backward-delete-char
-
-  # Change cursor shape for different vi modes.
-  function zle-keymap-select {
-    if [[ ${KEYMAP} == vicmd ]] ||
-       [[ $1 = 'block' ]]; then
-      echo -ne '\e[1 q'
-    elif [[ ${KEYMAP} == main ]] ||
-         [[ ${KEYMAP} == viins ]] ||
-         [[ ${KEYMAP} = '' ]] ||
-         [[ $1 = 'beam' ]]; then
-      echo -ne '\e[5 q'
-    fi
-  }
-  zle -N zle-keymap-select
-  zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-  }
-  zle -N zle-line-init
-  echo -ne '\e[5 q' # Use beam shape cursor on startup.
-  preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
-  # Environment
-  export MANPAGER="nvim +Man!"
-  export XDG_CONFIG_HOME="${HOME}/.config"
-
-  # Aliases
-  alias d='docker'
-  alias dc='docker compose'
-  alias dcr='docker compose run --rm'
-  alias dce='docker compose exec'
-  alias flush-dns='sudo killall -HUP mDNSResponder'
-  alias gitgraph='git graph'
-  alias gg='git graph'
-  alias gs='git status'
-  alias k='kubectl'
-  alias wk='watch kubectl'
-  alias phpstorm='open . -a phpstorm'
-  alias vim='nvim'
-  alias tms='tmux-session'
-  alias tmw='tmux-window'
-
-  ksecret() {
-    kubectl get secrets/$1 --template='{{ range $key, $value := .data }}{{ printf "%s: %s\n" $key ($value | base64decode) }}{{ end }}'
-  }
 
   # Source platform-specific zshrc
   readonly platform_zshrc="${HOME}/.zshrc-$(uname)"
@@ -152,6 +88,81 @@ set_prompt()
     RPROMPT='$(kube_ps1)'$RPROMPT
     kubeoff
   fi
+}
+
+set_autocomplete()
+{
+  # Basic auto/tab complete:
+  autoload -U compinit
+  zstyle ':completion:*' menu select
+  zmodload zsh/complist
+  compinit
+  _comp_options+=(globdots)
+
+  # kubectl autocompletion
+  if command -v kubectl &> /dev/null; then
+    source <(kubectl completion zsh)
+    if kubectl stern --version &> /dev/null; then
+      source <(kubectl stern --completion=zsh)
+    fi
+  fi
+}
+
+set_vi_mode()
+{
+  # Vi mode
+  bindkey -v
+  bindkey "^R" history-incremental-search-backward
+
+  # Use vim keys in tab complete menu:
+  bindkey -M menuselect 'h' vi-backward-char
+  bindkey -M menuselect 'k' vi-up-line-or-history
+  bindkey -M menuselect 'l' vi-forward-char
+  bindkey -M menuselect 'j' vi-down-line-or-history
+  bindkey -v '^?' backward-delete-char
+
+  # Change cursor shape for different vi modes.
+  function zle-keymap-select {
+    if [[ ${KEYMAP} == vicmd ]] ||
+       [[ $1 = 'block' ]]; then
+      echo -ne '\e[1 q'
+    elif [[ ${KEYMAP} == main ]] ||
+         [[ ${KEYMAP} == viins ]] ||
+         [[ ${KEYMAP} = '' ]] ||
+         [[ $1 = 'beam' ]]; then
+      echo -ne '\e[5 q'
+    fi
+  }
+  zle -N zle-keymap-select
+  zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+  }
+  zle -N zle-line-init
+  echo -ne '\e[5 q' # Use beam shape cursor on startup.
+  preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+}
+
+set_aliases()
+{
+  alias d='docker'
+  alias dc='docker compose'
+  alias dcr='docker compose run --rm'
+  alias dce='docker compose exec'
+  alias flush-dns='sudo killall -HUP mDNSResponder'
+  alias gitgraph='git graph'
+  alias gg='git graph'
+  alias gs='git status'
+  alias k='kubectl'
+  alias wk='watch kubectl'
+  alias phpstorm='open . -a phpstorm'
+  alias vim='nvim'
+  alias tms='tmux-session'
+  alias tmw='tmux-window'
+}
+
+ksecret() {
+  kubectl get secrets/$1 --template='{{ range $key, $value := .data }}{{ printf "%s: %s\n" $key ($value | base64decode) }}{{ end }}'
 }
 
 main
