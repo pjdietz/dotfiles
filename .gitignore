@@ -3,4 +3,5 @@ k9s/config.yml
 packer_compiled.lua
 notes
 .tmux
+tmux/.config/tmux/plugins
 
