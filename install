@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+stow git
+stow nvim
+stow tmux
+stow zsh
+
+~/.config/tmux/plugins/tpm/bin/install_plugins
