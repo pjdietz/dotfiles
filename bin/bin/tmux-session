@@ -1,25 +1,86 @@
 #!/usr/bin/env zsh
 
-if [[ $# -eq 1 ]]; then
-  selected_dir=$1
-else
-  selected_dir=$(find ~ ~/projects ~/projects/arc ~/projects/wellrested ~/Dropbox -mindepth 1 -maxdepth 1 -type d | fzf)
-fi
+# Suggest these directories when present.
+declare -a DIRS=(
+  ~/ansible
+  ~/dotfiles
+  ~/vimwiki
+)
 
-if [[ -z "${selected_dir}" ]]; then
-  exit 0
-fi
+# Suggest children of these directories when present.
+declare -ar PARENT_DIRS=(
+  ~/projects
+  ~/projects/arc
+  ~/projects/wellrested
+)
 
-name=$(basename "${selected_dir}" | tr . _)
-tmux_running=$(pgrep tmux)
+################################################################################
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s "${name}" -c ${selected_dir}
-    exit 0
-fi
+main()
+{
+  local directory="$(select_directory $1)"
+  attach_to_sesion "${directory}"
+}
 
-if ! tmux has-session -t "${name}" 2> /dev/null; then
-    tmux new-session -ds "${name}"  -c ${selected_dir}
-fi
+# Prompt for a directory from the suggested list unless a directory is passed
+# as the first argument.
+select_directory()
+{
+  local selected=$1
+  if [[ ! -d "${selected}" ]]; then
+    selected="$(select_directory_from_list)"
+  fi
+  print "${selected}"
+}
 
-tmux switch-client -t "${name}"
+# Gather a list of sueggeted directores and prompt the user with fzf.
+select_directory_from_list()
+{
+  # Suggest these if present.
+  local direct_dirs=($(filter_existing_dirs "${DIRS[@]}"))
+  # Suggest non-hidden child directories.
+  local parent_dirs=($(filter_existing_dirs "${PARENT_DIRS[@]}"))
+  local child_dirs=($(find ${parent_dirs[@]} -mindepth 1 -maxdepth 1 -type d -not -path '*/.*'))
+  # Add suggestions from zoxide, if available.
+  local zoxide_dirs=($(command -v zoxide && zoxide query --list))
+  local all_dirs=("${direct_dirs[@]}" "${child_dirs[@]}" "${zoxide_dirs[@]}")
+
+  # Convert to a sorted list of unique directories.
+  local sorted=($(printf "%s\n" "${all_dirs[@]}" | sort -u))
+  printf "%s\n" ${sorted[@]} | fzf
+}
+
+# Expects an array of possible directories.
+# Prints a subset of those directories that exist.
+# To use: filtered=($(filter_existing_dirs "${dirs[@]}"))
+filter_existing_dirs()
+{
+  typeset -a filtered=()
+  for d in "$@"; do;
+    if [[ -d "${d}" ]]; then
+      filtered+=("${d}")
+    fi
+  done
+  print "$filtered"
+}
+
+# Given a directory, attach to a Tmux session based on the directory name.
+attach_to_sesion()
+{
+  local directory=$(realpath $1)
+  local name=$(basename "${directory}" | tr . _)
+  local tmux_running=$(pgrep tmux)
+
+  if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+      tmux new-session -s "${name}" -c ${directory}
+      exit 0
+  fi
+
+  if ! tmux has-session -t "${name}" 2> /dev/null; then
+      tmux new-session -ds "${name}"  -c ${directory}
+  fi
+
+  tmux switch-client -t "${name}"
+}
+
+main $@

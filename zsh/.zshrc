@@ -16,6 +16,7 @@ declare -ar PATH_DIRS=(
   "${HOME}/bin"
   "${HOME}/.local/bin"
   "/usr/local/bin"
+  "${HOME}/.cargo/bin"
   "${HOME}/.krew/bin"
   "${HOME}/dotnet"
   $(command -v go && go env GOPATH/bin)
@@ -28,7 +29,6 @@ main()
   set_autocomplete
   set_vi_mode
   set_aliases
-
 
   # Source platform-specific zshrc
   readonly platform_zshrc="${HOME}/.zshrc-$(uname)"
@@ -99,6 +99,11 @@ set_autocomplete()
   compinit
   _comp_options+=(globdots)
 
+  # Zoxdie autocompletion
+  if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init zsh)"
+  fi
+
   # kubectl autocompletion
   if command -v kubectl &> /dev/null; then
     source <(kubectl completion zsh)
@@ -153,6 +158,7 @@ set_aliases()
   alias gitgraph='git graph'
   alias gg='git graph'
   alias gs='git status'
+  alias ls='ls --color=auto'
   alias k='kubectl'
   alias wk='watch kubectl'
   alias phpstorm='open . -a phpstorm'
