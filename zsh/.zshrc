@@ -150,6 +150,10 @@ set_vi_mode()
 
 set_aliases()
 {
+  if command -v bat &> /dev/null; then
+    alias cat='bat'
+  fi
+
   alias d='docker'
   alias dc='docker compose'
   alias dcr='docker compose run --rm'
