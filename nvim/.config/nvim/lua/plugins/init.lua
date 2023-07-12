@@ -22,6 +22,23 @@ return {
     end
   },
 
+  -- Send text to another pane
+  {
+    "jpalardy/vim-slime",
+    init = function ()
+      vim.g.slime_target = "tmux"
+      vim.g.slime_paste_file = os.tmpname()
+      vim.g.slime_default_config = {
+        socket_name = "default",
+        target_pane = ":.2"
+      }
+      vim.g.slime_cell_delimiter = "###"
+    end,
+    keys = {
+      { "<Leader>s", "<Plug>SlimeSendCell", { desc = "Send test to another pane" } }
+    },
+  },
+
   -- Languages
   "othree/html5.vim",
   "nelsyeung/twig.vim",
