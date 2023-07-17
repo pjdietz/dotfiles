@@ -3,6 +3,7 @@ setopt NO_CASE_GLOB
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
+export FCEDIT=nvim
 export KEYTIMEOUT=1
 export MANPAGER="nvim +Man!"
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -152,6 +153,12 @@ set_aliases()
 {
   if command -v bat &> /dev/null; then
     alias cat='bat'
+  fi
+  if command -v xh &> /dev/null; then
+    alias xh='http'
+  fi
+  if command -v xhs &> /dev/null; then
+    alias xh='https'
   fi
 
   alias d='docker'

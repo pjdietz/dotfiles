@@ -35,7 +35,8 @@ return {
       vim.g.slime_cell_delimiter = "###"
     end,
     keys = {
-      { "<Leader>s", "<Plug>SlimeSendCell", { desc = "Send test to another pane" } }
+      { "<Leader>s", "<Plug>SlimeSendCell", desc = "Send text in cell to another pane" },
+      { "<Leader>s", "<Plug>SlimeRegionSend", mode="v", desc = "Send text in range to another pane" }
     },
   },
 
