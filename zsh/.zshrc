@@ -178,6 +178,10 @@ set_aliases()
   alias tmw='tmux-window'
 }
 
+db() {
+  mysql --defaults-file="~/.mysql/${1}.cnf" -A
+}
+
 ksecret() {
   kubectl get secrets/$1 --template='{{ range $key, $value := .data }}{{ printf "%s: %s\n" $key ($value | base64decode) }}{{ end }}'
 }
