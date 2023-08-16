@@ -63,7 +63,7 @@ return {
     ----------------------------------------------------------------------------
     -- Files and buffers
 
-    nmap("<Leader><Space>", multi_buffers, "[ ] Find open buffers")
+    nmap("<Leader>fo", multi_buffers, "[F]ind [O]pen buffers")
 
     nmap("<leader>/", function()
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -75,14 +75,14 @@ return {
     nmap("<Leader>fi", builtin.live_grep, "[F]ind [I]nside files (live grep)")
     nmap("<Leader>fd", builtin.diagnostics, "[F]ind [D]iagnostics")
 
-    nmap("<Leader>ff", function()
+    nmap("<Leader><Space>", function()
       builtin.find_files({
         -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
         find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
       })
-    end, "[F]ind [F]iles")
+    end, "Find files")
 
-    nmap("<Leader>FF", function()
+    nmap("<Leader>ff", function()
       builtin.find_files({
         hidden = true,
         no_ignore = true
