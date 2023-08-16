@@ -23,3 +23,9 @@ url
 americanreading
 arcid
 OAuth2
+SFTP
+bool
+qa
+param
+env
+districtId
