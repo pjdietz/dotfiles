@@ -4,7 +4,8 @@ return {
     "nvim-lua/plenary.nvim" ,
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-fzy-native.nvim",
-    "camgraff/telescope-tmux.nvim"
+    "camgraff/telescope-tmux.nvim",
+    "johmsalas/text-case.nvim",
   },
   config = function()
     local telescope = require "telescope"
@@ -17,6 +18,7 @@ return {
 
     telescope.load_extension "file_browser"
     telescope.load_extension "fzy_native"
+    telescope.load_extension "textcase"
 
     local builtin = require "telescope.builtin"
 
@@ -54,7 +56,11 @@ return {
       vim.keymap.set("n", keys, func, { desc = desc })
     end
 
-    --------------------------------------------------------------------------------
+    local vmap = function(keys, func, desc)
+      vim.keymap.set("v", keys, func, { desc = desc })
+    end
+
+    ----------------------------------------------------------------------------
     -- Files and buffers
 
     nmap("<Leader><Space>", multi_buffers, "[ ] Find open buffers")
@@ -94,19 +100,25 @@ return {
     nmap("<Leader>fs", builtin.treesitter, "[F]ind Treesitter [S]ymbols")
     nmap("<Leader>fj", "<CMD>Telescope tmux sessions<CR>", "Find Tmux Session")
 
-    --------------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
     -- Help and info
 
     nmap("<Leader>fk", builtin.keymaps, "[F]ind [K]eymaps")
     nmap("<Leader>fh", builtin.help_tags, "[F]ind [H]help")
     nmap("<Leader>fc", builtin.commands, "[F]ind [C]ommands")
 
-    --------------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
     -- Git
 
     nmap("<Leader>fgs", builtin.git_status, "[F]ind [G]it [S]tatus")
     nmap("<Leader>fgc", builtin.git_commits, "[F]ind [G]it [C]ommits")
     nmap("<Leader>fgtb", builtin.git_bcommits, "[F]ind [G]it [B]uffer commits")
+
+    ----------------------------------------------------------------------------
+    -- Case Change
+
+    nmap("<Leader>ga", "<CMD>TextCaseOpenTelescope<CR>", "Change case")
+    vmap("<Leader>ga", "<CMD>TextCaseOpenTelescope<CR>", "Change case")
 
   end
 }
