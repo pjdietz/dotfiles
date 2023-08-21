@@ -3,6 +3,7 @@ setopt NO_CASE_GLOB
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
+export EDITOR=nvim
 export FCEDIT=nvim
 export KEYTIMEOUT=1
 export MANPAGER="nvim +Man!"
