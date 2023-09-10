@@ -30,8 +30,11 @@ map <enter> shell
 # show the result of execution of previous commands
 map ` !true
 
-# mkdir command. See wiki if you want it to select created dir
-map a :push %mkdi
+cmd cp ${{
+    printf "File name: "
+    read ans
+    cp $fx $ans
+}}
 
 cmd mkdir ${{
     printf "Directory name: "
