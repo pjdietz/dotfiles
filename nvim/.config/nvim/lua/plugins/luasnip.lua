@@ -47,6 +47,7 @@ return {
     local s = ls.snippet
     local i = ls.insert_node
     local f = ls.function_node
+    local t = ls.text_node
     local fmt = require("luasnip.extras.fmt").fmt
 
     snippet_collection.clear_snippets "php"
@@ -68,6 +69,17 @@ return {
             i(0)
           }
         )
+      ),
+      s("<?",
+        fmt([[
+          <?php
+
+          declare(strict_types=1);
+
+          namespace {}
+        ]], {
+            i(0)
+        })
       )
     })
   end
