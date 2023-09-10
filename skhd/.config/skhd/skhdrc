@@ -69,6 +69,8 @@ ctrl + cmd - r : yabai -m space --rotate 270
 ctrl + cmd - b : yabai -m space --balance
 
 ctrl + cmd + shift - p : yabai -m space --padding abs:100:100:400:400
+ctrl + cmd - i : yabai -m space --padding abs:100:100:800:800
+ctrl + cmd - o : yabai -m space --padding abs:100:100:400:400
 ctrl + cmd - p : yabai -m space --padding abs:20:20:20:20
 
 ###

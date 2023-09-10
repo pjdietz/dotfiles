@@ -7,7 +7,7 @@ map("n", "Y", "y$")
 map("n", "<Leader>|", "<C-w>v")
 map("n", "<Leader>-", "<C-w>s")
 -- Open a tmux vertical split if this is the only pane.
-map("n", "<Leader>j", "<CMD>TmuxAutoPane<CR>")
+map("n", "<Leader><C-j>", "<CMD>TmuxAutoPane<CR>")
 
 -- Buffers
 map("n", "<C-n>", "<CMD>bn<CR>")
@@ -16,6 +16,9 @@ map("n", "<Leader>bd", "<CMD>bd<CR>")
 map("n", "<Leader>by", "gg\"*yG", { desc = "[B]uffer [Y]ank to clipboard" })
 map("n", "<Leader>WW", "<CMD>bp|bd #<CR>")
 map("n", "<Leader>WA", "<CMD>Neotree close<CR><CMD>bufdo bwipeout<CR>")
+map("n", "<Leader>n", "<CMD>bn<CR>", { desc = "[B]uffer [N]ext" })
+map("n", "<Leader>p", "<CMD>bp<CR>", { desc = "[B]uffer [P]revious" })
+map("n", "<Leader>j", "<CMD>e#<CR>", { desc = "Alternate file" })
 
 -- Keep cursor in place while navigating, joining.
 map("n", "n", "nzzzv")
