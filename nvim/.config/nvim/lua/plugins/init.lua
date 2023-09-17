@@ -72,6 +72,7 @@ return {
   { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
   "stevearc/dressing.nvim",
   "tpope/vim-commentary",
+  "tpope/vim-dotenv",
   "tpope/vim-fugitive",
   "tpope/vim-obsession",
   {
