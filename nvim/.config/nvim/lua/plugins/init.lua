@@ -62,6 +62,13 @@ return {
   { "johmsalas/text-case.nvim", config = function() require("textcase").setup {} end },
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
   "liuchengxu/vim-which-key",
+  {
+    "mbbill/undotree",
+    keys = {
+      { "<F3>", "<CMD>UndotreeToggle<CR>", { desc = "[U]ndo Tree" } },
+      { "<Leader>u", "<CMD>UndotreeToggle<CR>", { desc = "[U]ndo Tree" } }
+    }
+  },
   { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
   "stevearc/dressing.nvim",
   "tpope/vim-commentary",
