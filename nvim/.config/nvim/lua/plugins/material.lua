@@ -1,6 +1,7 @@
 return {
 
   "marko-cerovac/material.nvim",
+  enabled = false,
   config = function()
 
     local material = require "material"
