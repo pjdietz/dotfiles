@@ -85,3 +85,7 @@ ctrl + cmd - n : yabai -m display --focus next && yabai -m window --focus first 
 ###
 
 ctrl + cmd - return : open -n -a Alacritty
+
+cmd - h [
+    "Alacritty" : skhd -k ""
+]
