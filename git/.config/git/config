@@ -61,6 +61,7 @@
     cleanup-remote-list = "!git branch -r --merged | grep -E -v '(master|main|develop|dev)' | sed 's/origin\\///' "
     cleanup-remote =      "!git branch -r --merged | grep -E -v '(master|main|develop|dev)' | sed 's/origin\\///' | xargs -n 1 git push --delete origin"
     # Log views
-    graph = "!git log --oneline --graph --color --all --decorate"
+    graph =   "!git log --oneline --graph --color --all --decorate"
+    oneline = "!git log --pretty=format:\"%Cred%h %Cblue%as %Cgreen%an %Creset%s\""
     # Viewing Diffs
     dv = "! args=$@; shift $#; nvim -c \"DiffviewOpen $args\""
