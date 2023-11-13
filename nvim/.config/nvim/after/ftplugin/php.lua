@@ -1,4 +1,4 @@
--- Use // for line comments in PHP.
+-- Use // for line comments.
 vim.opt_local.commentstring = '// %s'
 
 local group = vim.api.nvim_create_augroup("USER-PHP", { clear = true })
