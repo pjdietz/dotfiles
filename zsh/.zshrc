@@ -128,6 +128,11 @@ set_vi_mode()
   bindkey -M menuselect 'j' vi-down-line-or-history
   bindkey -v '^?' backward-delete-char
 
+  # Open current line in an editor.
+  autoload -Uz edit-command-line
+  zle -N edit-command-line
+  bindkey -M vicmd 'E' edit-command-line
+
   # Change cursor shape for different vi modes.
   function zle-keymap-select {
     if [[ ${KEYMAP} == vicmd ]] ||
