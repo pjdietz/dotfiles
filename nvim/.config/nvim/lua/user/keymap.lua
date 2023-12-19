@@ -13,7 +13,6 @@ map("n", "<Leader><C-j>", "<CMD>TmuxAutoPane<CR>")
 map("n", "<C-n>", "<CMD>bn<CR>")
 map("n", "<C-p>", "<CMD>bp<CR>")
 map("n", "<Leader>bd", "<CMD>bd<CR>")
-map("n", "<Leader>by", "gg\"*yG", { desc = "[B]uffer [Y]ank to clipboard" })
 map("n", "<Leader>WW", "<CMD>bp|bd #<CR>")
 map("n", "<Leader>WA", "<CMD>Neotree close<CR><CMD>bufdo bwipeout<CR>")
 map("n", "<Leader>n", "<CMD>bn<CR>", { desc = "[B]uffer [N]ext" })
@@ -28,6 +27,7 @@ map("n", "J", "mzJ`z")
 -- Yank to clipboard
 map({ "n", "v" }, "<Leader>y", '"+y')
 map("n", "<Leader>Y", '"+Y', { remap = true })
+map("n", "<Leader>yb", "gg\"*yG", { desc = "[Y]ank [B]uffer to clipboard" })
 
 -- Toggle invisibles
 map("n", "<Leader>i", "<CMD>set list!<CR>")
