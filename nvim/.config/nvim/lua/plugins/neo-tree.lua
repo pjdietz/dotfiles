@@ -9,6 +9,7 @@ return {
   cmd = "Neotree",
   keys = {
     { "<Leader>\\", "<CMD>Neotree reveal<CR>" },
+    { "<F1>", "<CMD>Neotree toggle<CR>" },
     { "<F2>", "<CMD>Neotree toggle<CR>" },
     { "<Leader>nt", "<CMD>Neotree toggle<CR>", { desc = "[N]eotree [T]oggle" } },
     { "<Leader>gs", "<CMD>Neotree git_status<CR>", { desc = "[G]it [S]tatus" } },
