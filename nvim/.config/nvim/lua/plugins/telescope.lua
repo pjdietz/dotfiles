@@ -11,9 +11,9 @@ return {
     local telescope = require "telescope"
 
     telescope.setup {
-      -- defaults = {
-      --   winblend = 10
-      -- }
+      defaults = {
+        path_display={"smart"}
+      }
     }
 
     telescope.load_extension "file_browser"
