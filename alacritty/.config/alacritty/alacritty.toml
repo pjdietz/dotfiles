@@ -1,0 +1,50 @@
+# Config options
+# https://alacritty.org/config-alacritty.html
+
+import = ["/Users/pjdietz/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+
+[bell]
+duration = 0
+
+[colors]
+transparent_background_colors = true
+
+[font]
+size = 20.0
+
+[font.glyph_offset]
+x = 0
+y = 10
+
+[font.normal]
+family = "DroidSansMono Nerd Font"
+style = "Book"
+
+[font.offset]
+x = 0
+y = 20
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[105;5u"
+key = "I"
+mods = "Control"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = true
+opacity = 1
+blur = false
+
+[window.padding]
+x = 20
+y = 10
