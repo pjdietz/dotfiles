@@ -14,6 +14,9 @@ return {
     vim.api.nvim_set_hl(0, "@user.dollar", { link = "UserDollar" })
 
     configs.setup({
+      auto_install = true,
+      ignore_install = {},
+      modules = {},
       ensure_installed = "all",
       sync_install = false,
       highlight = {
