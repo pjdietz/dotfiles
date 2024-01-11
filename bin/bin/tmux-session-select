@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+# Don't show these sessions in the fzf selection list.
+declare -a EXCLUDE=(popup)
+
+# List all running tmux sessions.
+local sessions=($(tmux ls -F "#{session_name}"))
+
+# Filter them to exclude sessions we don't want in the list.
+local filtered=()
+for session in $sessions; do
+  if (( ! $EXCLUDE[(Ie)${session}] )); then
+    filtered+=("$session")
+  fi
+done
+
+# Prompt for a session with fzf.
+local selected=$(printf "%s\n" ${filtered[@]} | fzf)
+
+# Select the session.
+if [[ -n "${selected}" ]]; then
+  tmux switch-client -t "${selected}"
+fi

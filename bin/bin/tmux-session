@@ -77,7 +77,7 @@ attach_to_sesion()
   fi
 
   if ! tmux has-session -t "${name}" 2> /dev/null; then
-      tmux new-session -ds "${name}"  -c ${directory}
+      tmux new-session -ds "${name}" -c ${directory}
   fi
 
   tmux switch-client -t "${name}"
