@@ -18,7 +18,7 @@ api.nvim_create_autocmd("FileType", {
 
 -- Disable diagnostics for .env files.
 api.nvim_create_autocmd("BufEnter", {
-    pattern = { ".env", "*.env" },
+    pattern = { ".env", "*.env", ".env.*" },
     group = group,
     callback = function (args)
       vim.diagnostic.disable(args.buf)

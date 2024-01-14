@@ -54,6 +54,16 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- Lookup Treesitter highlight groups under cursor
 map("n", "<Leader>th", "<CMD>TSHighlightCapturesUnderCursor<CR>")
 
+-- Toggle Netrw
+local function toggle_netrw()
+  if vim.api.nvim_buf_get_option(0, "filetype") == "netrw" then
+    vim.api.nvim_exec(":Rexplore", false)
+  else
+    vim.api.nvim_exec(":Explore", false)
+  end
+end
+vim.keymap.set("n", "<Leader>e", toggle_netrw)
+
 -- Toggle rulers
 local function toggle_column_guides()
   local default = { 80, 100 }
