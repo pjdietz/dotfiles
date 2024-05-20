@@ -17,4 +17,10 @@ require("user.options")
 require("user.keymap")
 
 -- Load plugins sepcs with Lazy from ./lua/plugins
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+    change_detection = {
+      -- automatically check for config file changes and reload the ui
+      enabled = false,
+      notify = false, -- get a notification when changes are found
+    },
+})

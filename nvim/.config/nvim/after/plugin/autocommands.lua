@@ -33,3 +33,20 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
        vim.bo.filetype = "gotexttmpl"
     end
 })
+
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "*.html.tmpl",
+    group = group,
+    callback = function ()
+       vim.bo.filetype = "gohtmltmpl"
+    end
+})
+
+-- Use markdown as ft instead of vimwiki
+api.nvim_create_autocmd("FileType", {
+  pattern = { "vimwiki" },
+  group = group,
+  callback = function ()
+     vim.bo.filetype = "markdown"
+  end
+})

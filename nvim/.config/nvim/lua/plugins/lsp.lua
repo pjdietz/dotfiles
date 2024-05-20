@@ -168,6 +168,16 @@ return {
       capabilities = capabilities,
     }
 
+    -- Go Templ
+    lspconfig.templ.setup {
+      -- cmd = { "templ" },
+      filetypes = { "templ" },
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
+
+    vim.filetype.add({ extension = { templ = "templ" } })
+
     -- Lua
     -- brew install lua-language-server
     lspconfig.lua_ls.setup({
