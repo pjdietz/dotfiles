@@ -1,31 +1,31 @@
 [core]
-	editor = nvim
-	precomposeunicode = true
+    editor = nvim
+    precomposeunicode = true
 [color]
-	branch = auto
-	diff = auto
-	status = auto
-	ui = auto
+    branch = auto
+    diff = auto
+    status = auto
+    ui = auto
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+    added = yellow
+    changed = green
+    untracked = cyan
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [fetch]
     prune = true
 [pull]
-	ff = only
+    ff = only
 
 [diff]
     tool = nvimdiff
@@ -41,18 +41,21 @@
 [mergetool "fugitive"]
     cmd = "nvim -f -c \"Gvdiffsplit!\" \"$MERGED\""
 
+[rerere]
+    enabled = true
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 
 [user]
-	email = pjdietz@gmail.com
-	name = PJ Dietz
+    email = pjdietz@gmail.com
+    name = PJ Dietz
 
 [url "git@bitbucket.org:"]
-	insteadOf = https://bitbucket.org/
+    insteadOf = https://bitbucket.org/
 
 [alias]
     # Pruning fully merged branches
@@ -60,6 +63,7 @@
     cleanup =             "!git branch --merged | grep -E -v '(master|main|develop|dev)' | xargs -n 1 git branch -d"
     cleanup-remote-list = "!git branch -r --merged | grep -E -v '(master|main|develop|dev)' | sed 's/origin\\///' "
     cleanup-remote =      "!git branch -r --merged | grep -E -v '(master|main|develop|dev)' | sed 's/origin\\///' | xargs -n 1 git push --delete origin"
+    fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
     # Log views
     graph =   "!git log --oneline --graph --color --all --decorate"
     oneline = "!git log --pretty=format:\"%Cred%h %Cblue%as %Cgreen%an %Creset%s\""
