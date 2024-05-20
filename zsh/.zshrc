@@ -8,21 +8,29 @@ export FCEDIT=nvim
 export KEYTIMEOUT=1
 export MANPAGER="nvim +Man!"
 export XDG_CONFIG_HOME="${HOME}/.config"
-
 export DOTNET_ROOT="${HOME}/dotnet"
 export PYTHONUSERBASE="${HOME}/.local"
 
+if command -v fd &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='fd --type f'
+  export FZF_CTRL_T_COMMAND='fd --type f'
+fi
+
 # Array of directories to add to the path in order.
 # Any directories that do not exist will not be added.
-declare -ar PATH_DIRS=(
+declare -a PATH_DIRS=(
   "${HOME}/bin"
   "${HOME}/.local/bin"
   "/usr/local/bin"
   "${HOME}/.cargo/bin"
   "${HOME}/.krew/bin"
   "${HOME}/dotnet"
-  $(command -v go && go env GOPATH/bin)
 )
+
+if command -v go &> /dev/null; then
+  export GOPATH=$(go env GOPATH)
+  PATH_DIRS+=("${GOPATH}/bin")
+fi
 
 main()
 {
@@ -100,6 +108,11 @@ set_autocomplete()
   zmodload zsh/complist
   compinit
   _comp_options+=(globdots)
+
+  # fzf
+  if command -v fzf &> /dev/null; then
+    eval "$(fzf --zsh)"
+  fi
 
   # Zoxdie autocompletion
   if command -v zoxide &> /dev/null; then
@@ -180,13 +193,23 @@ set_aliases()
   alias gl='git log'
   alias glo='git oneline'
   alias gs='git status'
-  alias ls='ls --color=auto'
+  alias ll='ls -l'
+  alias ls='eza'
   alias k='kubectl'
   alias wk='watch kubectl'
-  alias phpstorm='open . -a phpstorm'
+  alias tree='eza -T'
   alias vim='nvim'
   alias tms='tmux-session'
   alias tmw='tmux-window'
+}
+
+gdf() {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf -m --ansi --preview $preview
+}
+
+gaf() {
+  git add $@ $(gdf)
 }
 
 db() {

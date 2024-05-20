@@ -11,3 +11,5 @@ pomo() {
 display notification "${icon}" with title "${title}" subtitle "${subtitle}" sound name "${sound}"
 EOF
 }
+
+alias azcertupdate='echo "y" | az ssh cert --file ~/.ssh/aad/id_rsa-aadcert.pub'
