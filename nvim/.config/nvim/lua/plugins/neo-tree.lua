@@ -10,7 +10,7 @@ return {
   keys = {
     { "<Leader>\\", "<CMD>Neotree reveal<CR>" },
     { "<F1>", "<CMD>Neotree toggle<CR>" },
-    { "<F2>", "<CMD>Neotree toggle<CR>" },
+    { "<F2>", "<CMD>Neotree toggle position=current<CR>" },
     { "<Leader>nt", "<CMD>Neotree toggle<CR>", { desc = "[N]eotree [T]oggle" } },
     { "<Leader>gs", "<CMD>Neotree git_status<CR>", { desc = "[G]it [S]tatus" } },
   },
@@ -153,6 +153,17 @@ return {
             ["gg"] = "git_commit_and_push",
           }
         }
+      },
+      event_handlers = {
+        {
+          event = "file_opened",
+          handler = function(_)
+            -- auto close
+            -- vimc.cmd("Neotree close")
+            -- OR
+            require("neo-tree.command").execute({ action = "close" })
+          end
+        },
       }
     }
 
