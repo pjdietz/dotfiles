@@ -1,12 +1,12 @@
 let mapleader=" "
 
 """ Plugins -------------------------------------------------------------------
-" set surround
+set surround
 set commentary
 
-" set showmode
-" set incsearch
-" set hlsearch
+set showmode
+set incsearch
+set hlsearch
 
 """ Key Maps ------------------------------------------------------------------
 
@@ -28,6 +28,8 @@ map <Leader><Esc> <Action>(HideAllWindows)
 map <Leader><Space> <Action>(GotoFile)
 map <Leader>fi <Action>(FindInPath)
 map <Leader>ft <Action>(RiderUnitTestQuickListPopupAction)
+
+map gr <Action>(FindUsages)
 
 map <Leader>r :source ~/.ideavimrc<cr>
 
