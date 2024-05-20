@@ -1,6 +1,6 @@
 return {
   "folke/twilight.nvim",
-  enabled = false,
+  enabled = true,
   opts = {
     dimming = {
       alpha = 0.50, -- amount of dimming

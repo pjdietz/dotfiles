@@ -8,7 +8,13 @@ return {
   opts = {
     window = {
       backdrop = 0.90,
-      width = 100
+      width = 100,
+      options = {
+        signcolumn = "no",
+        number = false,
+        relativenumber = false,
+        cursorcolumn = false
+      }
     },
     plugins = {
       -- tmux = { enabled = true }, -- disables the tmux statusline
