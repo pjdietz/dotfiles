@@ -28,6 +28,8 @@ return {
           return string.gsub(str, "%s*[- ]%s*", "_")
         end
 
+        if client == nil then return end
+
         if client.name == 'omnisharp' then
           local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
           for i, v in ipairs(tokenModifiers) do
@@ -78,10 +80,10 @@ return {
     end
 
     local signs = {
-      Error = " ",
-      Warn = " ",
-      Hint = " ",
-      Info = " "
+      Error = " ",
+      Warn = " ",
+      Hint = " ",
+      Info = " "
     }
 
     for type, icon in pairs(signs) do

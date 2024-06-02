@@ -48,7 +48,7 @@ local options = {
   -- Presentation
   colorcolumn = { 80, 100 },
   laststatus = 3,
-  cmdheight = 1,
+  cmdheight = 0,
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   pumheight = 10,                          -- pop up menu height
   showtabline = 0,                         -- never show tabs

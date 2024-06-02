@@ -89,7 +89,7 @@ set_prompt()
   # Set the prompt
   PROMPT='%F{blue}%1~%f'
   PROMPT=${PROMPT}'${vcs_info_msg_0_}'
-  PROMPT=${PROMPT}' %F{blue}%f '
+  PROMPT=${PROMPT}' %F{blue}󰁕%f '
 
   # If kube-ps1 is installed, add it to the prompt.
   KUBE_PS1_PATH='/usr/local/opt/kube-ps1/share/kube-ps1.sh'

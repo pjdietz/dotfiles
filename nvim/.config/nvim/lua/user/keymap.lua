@@ -56,10 +56,10 @@ map("n", "<Leader>th", "<CMD>TSHighlightCapturesUnderCursor<CR>")
 
 -- Toggle Netrw
 local function toggle_netrw()
-  if vim.api.nvim_buf_get_option(0, "filetype") == "netrw" then
-    vim.api.nvim_exec(":Rexplore", false)
+  if vim.api.nvim_get_option_vaule(0, "filetype") == "netrw" then
+    vim.api.nvim_exec2(":Rexplore", {})
   else
-    vim.api.nvim_exec(":Explore", false)
+    vim.api.nvim_exec2(":Explore", {})
   end
 end
 vim.keymap.set("n", "<Leader>e", toggle_netrw)

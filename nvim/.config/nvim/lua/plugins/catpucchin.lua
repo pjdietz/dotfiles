@@ -6,9 +6,9 @@ return {
     catppuccin.setup {
       flavour = "mocha",
       transparent_background = true,
-      -- integrations = {
-      --   ufo = false
-      -- }
+      integrations = {
+        lsp_trouble = true
+      }
     }
     vim.cmd.colorscheme "catppuccin"
   end

@@ -17,8 +17,12 @@ x = 0
 y = 10
 
 [font.normal]
-family = "DroidSansMono Nerd Font"
-style = "Book"
+family = "DroidSansM Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "DroidSansM Nerd Font Mono"
+style = "Bold"
 
 [font.offset]
 x = 0
