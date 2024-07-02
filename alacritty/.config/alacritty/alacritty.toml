@@ -43,6 +43,11 @@ chars = "\u001B[105;5u"
 key = "I"
 mods = "Control"
 
+[[keyboard.bindings]]
+action = "None"
+key = "W"
+mods = "Command"
+
 [window]
 decorations = "buttonless"
 dynamic_padding = true
