@@ -27,6 +27,7 @@ return {
     telescope.load_extension "file_browser"
     telescope.load_extension "fzy_native"
     telescope.load_extension "textcase"
+    telescope.load_extension "ui-select"
 
     local builtin = require "telescope.builtin"
 
@@ -71,16 +72,16 @@ return {
     ----------------------------------------------------------------------------
     -- Files and buffers
 
-    nmap("<Leader><Leader>", multi_buffers, "Find open buffers")
+    nmap("<Leader>fo", multi_buffers, "[F]ind [0]pen buffers")
 
-    nmap("<Leader>ff", function()
+    nmap("<Leader><Leader>", function()
       builtin.find_files({
         -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
         find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
       })
-    end, "[F]ind [F]iles")
+    end, "Find files")
 
-    nmap("<Leader>FF", function()
+    nmap("<Leader>ff", function()
       builtin.find_files({
         hidden = true,
         no_ignore = true

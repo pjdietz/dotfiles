@@ -97,7 +97,6 @@ return {
         }
       },
 
-
       lua_ls = {
         settings = {
           Lua = {
@@ -124,6 +123,15 @@ return {
           },
         },
       }, -- lua_ls
+
+      tsserver = {
+        filetypes = { "javascript", "typescript" },
+        init_options = {
+          preferences = {
+            disableSuggestions = true,
+          },
+        },
+      }, -- tsserver
 
     } -- servers
 
