@@ -1,43 +1,14 @@
 return {
-
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function () require("colorizer").setup(
-      {},
-      { names = false }
-    )
-    end
-  },
-
   {
     "kylechui/nvim-surround",
     config = function () require("nvim-surround").setup() end
   },
-
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("todo-comments").setup {}
     end
-  },
-
-  -- Send text to another pane
-  {
-    "jpalardy/vim-slime",
-    init = function ()
-      vim.g.slime_target = "tmux"
-      vim.g.slime_paste_file = os.tmpname()
-      vim.g.slime_default_config = {
-        socket_name = "default",
-        target_pane = ":.2"
-      }
-      vim.g.slime_cell_delimiter = "###"
-    end,
-    keys = {
-      { "<Leader>s", "<Plug>SlimeSendCell", desc = "Send text in cell to another pane" },
-      { "<Leader>s", "<Plug>SlimeRegionSend", mode="v", desc = "Send text in range to another pane" }
-    },
   },
 
   -- Languages
@@ -61,7 +32,6 @@ return {
   "christoomey/vim-tmux-navigator",
   { "johmsalas/text-case.nvim", config = function() require("textcase").setup {} end },
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
-  "liuchengxu/vim-which-key",
   {
     "mbbill/undotree",
     keys = {
@@ -71,16 +41,8 @@ return {
   },
   { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
   "stevearc/dressing.nvim",
-  "tpope/vim-commentary",
   "tpope/vim-dotenv",
   "tpope/vim-fugitive",
   "tpope/vim-obsession",
-  {
-    "tpope/vim-projectionist",
-    keys = {
-      { "<Leader>aa", "<CMD>A<CR>", { desc = "Switch to alternate file" } },
-      { "<Leader>av", "<CMD>AV<CR>", { desc = "Switch to alternate file (split)" } },
-    },
-  },
   "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 }

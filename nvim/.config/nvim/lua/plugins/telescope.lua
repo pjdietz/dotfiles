@@ -1,10 +1,13 @@
 return {
   "nvim-telescope/telescope.nvim",
+  branch = "0.1.x",
+  event = "VimEnter",
   dependencies = {
     "nvim-lua/plenary.nvim" ,
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-fzy-native.nvim",
-    "camgraff/telescope-tmux.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
+    "nvim-tree/nvim-web-devicons",
     "johmsalas/text-case.nvim",
   },
   config = function()
@@ -12,13 +15,19 @@ return {
 
     telescope.setup {
       defaults = {
-        path_display={"smart"}
-      }
+        path_display = { "smart" }
+      },
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown(),
+        },
+      },
     }
 
     telescope.load_extension "file_browser"
     telescope.load_extension "fzy_native"
     telescope.load_extension "textcase"
+    telescope.load_extension "ui-select"
 
     local builtin = require "telescope.builtin"
 
@@ -63,19 +72,9 @@ return {
     ----------------------------------------------------------------------------
     -- Files and buffers
 
-    nmap("<Leader>fo", multi_buffers, "[F]ind [O]pen buffers")
+    nmap("<Leader>fo", multi_buffers, "[F]ind [0]pen buffers")
 
-    nmap("<leader>/", function()
-      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        previewer = false,
-      })
-    end, "[/] Fuzzy search in current buffer")
-
-    nmap("<Leader>fr", builtin.resume, "[F]ind [R]esume (open previous Telescope)")
-    nmap("<Leader>fi", builtin.live_grep, "[F]ind [I]nside files (live grep)")
-    nmap("<Leader>fd", builtin.diagnostics, "[F]ind [D]iagnostics")
-
-    nmap("<Leader><Space>", function()
+    nmap("<Leader><Leader>", function()
       builtin.find_files({
         -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
         find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
@@ -88,6 +87,16 @@ return {
         no_ignore = true
       })
     end, "[F]ind [F]iles (include ignored)")
+
+    nmap("<leader>/", function()
+      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        previewer = false,
+      })
+    end, "[/] Fuzzy search in current buffer")
+
+    nmap("<Leader>fr", builtin.resume, "[F]ind [R]esume (open previous Telescope)")
+    nmap("<Leader>fi", builtin.live_grep, "[F]ind [I]nside files (live grep)")
+    nmap("<Leader>fd", builtin.diagnostics, "[F]ind [D]iagnostics")
 
     nmap("<Leader>fq", function()
       builtin.quickfix({
@@ -122,5 +131,3 @@ return {
 
   end
 }
-
-
