@@ -49,6 +49,54 @@ return {
     local servers = {
 
       gopls = {},
+      omnisharp = {},
+
+      -- PHP
+      intelephense = {
+        CMD = { "intelephense", "--stdio" },
+        flags = {
+          debounce_text_changes = 150,
+        },
+        settings = {
+          -- https://github.com/bmewburn/intelephense-docs/blob/master/installation.md#configuration-options
+          intelephense = {
+            diagnostics = {
+              -- Prophecy causes a lot of false positives.
+              undefinedMethods = false
+            },
+            formatting = true,
+            -- https://github.com/JetBrains/phpstorm-stubs
+            stubs = {
+              "Core",
+              "Reflection",
+              "SPL",
+              "bcmath",
+              "crypto",
+              "curl",
+              "date",
+              "ds",
+              "fmp",
+              "filter",
+              "hash",
+              "json",
+              "ldap",
+              "memcached",
+              "openssl",
+              "opentelemetry",
+              "pcntl",
+              "pcre",
+              "pdo",
+              "redis",
+              "regex",
+              "session",
+              "superglobals",
+              "standard",
+              "zlib"
+            }
+          }
+        }
+      },
+
 
       lua_ls = {
         settings = {
