@@ -4,14 +4,14 @@ return {
   cmd = "Trouble",
   keys = {
     {
-      "<Leader>ss",
+      "<Leader>ts",
       "<CMD>Trouble symbols toggle focus=false<CR>",
-      desc = "[S]how [S]ymbols"
+      desc = "[T]oggle [S]ymbols"
     },
     {
-      "<Leader>sd",
+      "<Leader>td",
       "<CMD>Trouble diagnostics toggle<CR>",
-      desc = "[S]how [D]iagnostics"
+      desc = "[T]oggle [D]iagnostics"
     }
   }
 }

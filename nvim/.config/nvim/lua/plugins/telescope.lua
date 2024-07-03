@@ -104,10 +104,9 @@ return {
       })
     end, "[F]ind in [Q]uickfix")
 
-    nmap("<Leader>ft", "<CMD>TodoTelescope keywords=TODO,FIX<CR>", "[F]ind [T]ODO and [F]IX")
+    nmap("<Leader>ft", "<CMD>TodoTelescope keywords=TODO,FIX<CR>", "[F]ind [T]ODO and FIX")
     nmap("<Leader>fb", "<CMD>Telescope file_browser<CR>", "[F]ile [B]rowser")
-    nmap("<Leader>fs", builtin.treesitter, "[F]ind Treesitter [S]ymbols")
-    nmap("<Leader>fj", "<CMD>Telescope tmux sessions<CR>", "Find Tmux Session")
+    nmap("<Leader>fst", builtin.treesitter, "[F]ind [S]ymbols in [T]reesitter")
 
     ----------------------------------------------------------------------------
     -- Help and info
@@ -121,13 +120,13 @@ return {
 
     nmap("<Leader>fgs", builtin.git_status, "[F]ind [G]it [S]tatus")
     nmap("<Leader>fgc", builtin.git_commits, "[F]ind [G]it [C]ommits")
-    nmap("<Leader>fgtb", builtin.git_bcommits, "[F]ind [G]it [B]uffer commits")
+    nmap("<Leader>fgb", builtin.git_bcommits, "[F]ind [G]it [B]uffer commits")
 
     ----------------------------------------------------------------------------
     -- Case Change
 
-    nmap("<Leader>ga", "<CMD>TextCaseOpenTelescope<CR>", "Change case")
-    vmap("<Leader>ga", "<CMD>TextCaseOpenTelescope<CR>", "Change case")
+    nmap("<Leader>cc", "<CMD>TextCaseOpenTelescope<CR>", "[C]hange [C]ase")
+    vmap("<Leader>cc", "<CMD>TextCaseOpenTelescope<CR>", "[C]hange [C]ase")
 
   end
 }

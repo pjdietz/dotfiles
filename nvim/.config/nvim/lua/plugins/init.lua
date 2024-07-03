@@ -10,7 +10,25 @@ return {
       require("todo-comments").setup {}
     end
   },
-
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    config = function ()
+      require("which-key").setup()
+      require("which-key").register({
+        ['<Leader>f'] = { name = "[F]ind", _ = "which_key_ignore" },
+        ['<Leader>fg'] = { name = "[F]ind [G]it", _ = "which_key_ignore" },
+        ['<Leader>fs'] = { name = "[F]ind [S]ymbols", _ = "which_key_ignore" },
+        ['<Leader>g'] = { name = "[G]it", _ = "which_key_ignore" },
+        ['<Leader>h'] = { name = "[H]unk", _ = "which_key_ignore" },
+        ['<Leader>t'] = { name = "[T]oggle", _ = "which_key_ignore" },
+      })
+    end
+  },
   -- Languages
   "othree/html5.vim",
   "nelsyeung/twig.vim",
@@ -35,8 +53,8 @@ return {
   {
     "mbbill/undotree",
     keys = {
-      { "<F3>", "<CMD>UndotreeToggle<CR>", { desc = "[U]ndo Tree" } },
-      { "<Leader>u", "<CMD>UndotreeToggle<CR>", { desc = "[U]ndo Tree" } }
+      { "<F3>", "<CMD>UndotreeToggle<CR>", desc = "[U]ndo Tree" },
+      { "<Leader>u", "<CMD>UndotreeToggle<CR>", desc = "[U]ndo Tree" }
     }
   },
   { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },

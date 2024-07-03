@@ -11,7 +11,7 @@ return {
       virtual_lines = false
     })
 
-    vim.keymap.set("", "<Leader>l", lsp_lines.toggle, { desc = "Toggle [L]SP Lines" })
+    vim.keymap.set("", "<Leader>tl", lsp_lines.toggle, { desc = "[T]oggle [L]SP Lines" })
 
   end
 }

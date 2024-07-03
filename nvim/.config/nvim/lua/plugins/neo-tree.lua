@@ -8,11 +8,11 @@ return {
   },
   cmd = "Neotree",
   keys = {
-    { "<Leader>\\", "<CMD>Neotree reveal<CR>" },
-    { "<F1>", "<CMD>Neotree toggle<CR>" },
-    { "<F2>", "<CMD>Neotree toggle position=current<CR>" },
-    { "<Leader>nt", "<CMD>Neotree toggle<CR>", { desc = "[N]eotree [T]oggle" } },
-    { "<Leader>gs", "<CMD>Neotree git_status<CR>", { desc = "[G]it [S]tatus" } },
+    { "<Leader>\\", "<CMD>Neotree reveal<CR>", desc = "Toggle Neo-tree" },
+    { "<F1>", "<CMD>Neotree toggle<CR>", desc = "Toggle Neo-tree" },
+    { "<F2>", "<CMD>Neotree toggle position=current<CR>", desc = "Toggle Neo-tree buffer" },
+    { "<Leader>tn", "<CMD>Neotree toggle<CR>", desc = "[T]oggle [N]eo-tree" },
+    { "<Leader>gs", "<CMD>Neotree git_status<CR>", desc = "Neo-tree [G]it [S]tatus" },
   },
 
   config = function ()

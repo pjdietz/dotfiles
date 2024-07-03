@@ -5,6 +5,6 @@ return {
   ft = { "markdown" },
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
   keys = {
-    { "<Leader>mp", "<Plug>MarkdownPreviewToggle<CR>", { desc = "[M]arkdown [P]review" } }
+    { "<Leader>mp", "<Plug>MarkdownPreviewToggle<CR>", desc = "[M]arkdown [P]review" }
   }
 }
