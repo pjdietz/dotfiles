@@ -12,9 +12,9 @@ map("n", "<Leader><C-j>", "<CMD>TmuxAutoPane<CR>", { desc = "Open Tmux split bel
 -- Buffers
 map("n", "<C-n>", "<CMD>bn<CR>", { desc = "[N]ext buffer" })
 map("n", "<C-p>", "<CMD>bp<CR>", { desc = "[P]revious buffer" })
-map("n", "<Leader>bd", "<CMD>bd<CR>", { desc = "[B]uffer [D]elete" })
-map("n", "<Leader>WW", "<CMD>bp|bd #<CR>")
-map("n", "<Leader>WA", "<CMD>Neotree close<CR><CMD>bufdo bwipeout<CR>", { desc = "[W]ipe [A]ll buffers" })
+map("n", "<Leader>bd", "<CMD>bp|bd #<CR>", { desc = "[B]uffer [D]elete" })
+map("n", "<Leader>bo", "<CMD>%bd|e#<CR>", { desc = "[B]uffer [O]nly" })
+map("n", "<Leader>ba", "<CMD>Neotree close<CR><CMD>bufdo bwipeout<CR>", { desc = "[Buffer] wipe [A]ll" })
 map("n", "<Leader>j", "<CMD>e#<CR>", { desc = "Alternate file" })
 
 -- Keep cursor in place while navigating, joining.
