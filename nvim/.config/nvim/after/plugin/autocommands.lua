@@ -50,3 +50,11 @@ api.nvim_create_autocmd("FileType", {
      vim.bo.filetype = "markdown"
   end
 })
+
+-- Close "No Name" buffers
+api.nvim_create_autocmd("BufEnter", {
+    group = group,
+    callback = function ()
+      require("user.buffers").delete_noname_buffers()
+    end
+})
