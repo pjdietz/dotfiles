@@ -6,13 +6,11 @@ map("n", "Y", "y$", { desc = "[Y]ank to end of line" })
 -- Splits
 map("n", "<Leader>|", "<C-w>v", { desc = "Vertical split" })
 map("n", "<Leader>-", "<C-w>s", { desc = "Horizontal split" })
--- Open a tmux vertical split if this is the only pane.
-map("n", "<Leader><C-j>", "<CMD>TmuxAutoPane<CR>", { desc = "Open Tmux split below" })
 
 -- Buffers
 map("n", "<C-n>", "<CMD>bn<CR>", { desc = "[N]ext buffer" })
 map("n", "<C-p>", "<CMD>bp<CR>", { desc = "[P]revious buffer" })
-map("n", "<Leader>bd", "<CMD>bp|bd #<CR>", { desc = "[B]uffer [D]elete" })
+map("n", "<Leader>bd", "<CMD>bd<CR>", { desc = "[B]uffer [D]elete" })
 map("n", "<Leader>bo", "<CMD>%bd|e#<CR>", { desc = "[B]uffer [O]nly" })
 map("n", "<Leader>ba", "<CMD>Neotree close<CR><CMD>bufdo bwipeout<CR>", { desc = "[B]uffer wipe [A]ll" })
 map("n", "<Leader>j", "<CMD>e#<CR>", { desc = "Alternate file" })
