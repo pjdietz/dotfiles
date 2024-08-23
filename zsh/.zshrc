@@ -182,11 +182,13 @@ set_aliases()
 
   alias d='docker'
   alias dc='docker compose'
+  alias dcl='docker compose logs -f'
   alias dcr='docker compose run --rm'
   alias dce='docker compose exec'
   alias flush-dns='sudo killall -HUP mDNSResponder'
   alias gitgraph='git graph'
   alias ga='git add'
+  alias gad='git add .'
   alias gap='git add -p'
   alias gc='git commit'
   alias gg='git graph'

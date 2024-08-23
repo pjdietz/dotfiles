@@ -78,7 +78,7 @@ return {
               "curl",
               "date",
               "ds",
-              "fmp",
+              "fpm",
               "filter",
               "hash",
               "json",
