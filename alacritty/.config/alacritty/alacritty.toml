@@ -17,11 +17,16 @@ x = 0
 y = 10
 
 [font.normal]
-family = "DroidSansM Nerd Font Mono"
+# family = "DroidSansM Nerd Font Mono"
+family = "Hack Nerd Font Mono"
+# family = "LiterationMono Nerd Font"
+# family = "NotoSansM Nerd Font"
+# family = "JetBrainsMono Nerd Font"
+# family = "DejaVuSansM Nerd Font Mono"
+# family = "UbuntuSansMono Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
-family = "DroidSansM Nerd Font Mono"
 style = "Bold"
 
 [font.offset]
