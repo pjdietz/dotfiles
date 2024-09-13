@@ -20,7 +20,7 @@ return {
 
         -- See `:help K` for why this keymap
         map("K", vim.lsp.buf.hover, "Hover Documentation")
-        map("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+        -- map("<C-K>", vim.lsp.buf.signature_help, "Signature Documentation")
 
         map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
