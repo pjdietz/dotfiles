@@ -19,13 +19,13 @@ return {
     end,
     config = function ()
       require("which-key").setup()
-      require("which-key").register({
-        ['<Leader>f'] = { name = "[F]ind", _ = "which_key_ignore" },
-        ['<Leader>fg'] = { name = "[F]ind [G]it", _ = "which_key_ignore" },
-        ['<Leader>fs'] = { name = "[F]ind [S]ymbols", _ = "which_key_ignore" },
-        ['<Leader>g'] = { name = "[G]it", _ = "which_key_ignore" },
-        ['<Leader>h'] = { name = "[H]unk", _ = "which_key_ignore" },
-        ['<Leader>t'] = { name = "[T]oggle", _ = "which_key_ignore" },
+      require("which-key").add({
+        { "<Leader>f", group = "[F]ind" },
+        { "<Leader>fg", group = "[F]ind [G]it" },
+        { "<Leader>fs", group = "[F]ind [S]ymbols" },
+        { "<Leader>g", group = "[G]it" },
+        { "<Leader>h", group = "[H]unk" },
+        { "<Leader>t", group = "[T]oggle" },
       })
     end
   },

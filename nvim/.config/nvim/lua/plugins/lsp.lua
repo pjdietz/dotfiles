@@ -127,7 +127,7 @@ return {
         },
       }, -- lua_ls
 
-      tsserver = {
+      ts_ls = {
         filetypes = { "javascript", "typescript" },
         init_options = {
           preferences = {
