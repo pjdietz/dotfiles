@@ -11,6 +11,7 @@ return {
     { "<Leader>\\", "<CMD>Neotree reveal<CR>", desc = "Toggle Neo-tree" },
     { "<F1>", "<CMD>Neotree toggle<CR>", desc = "Toggle Neo-tree" },
     { "<F2>", "<CMD>Neotree toggle position=current<CR>", desc = "Toggle Neo-tree buffer" },
+    { "<Leader>tt", "<CMD>Neotree toggle position=current<CR>", desc = "Toggle Neo-[t]ree buffer" },
     { "<Leader>tn", "<CMD>Neotree toggle<CR>", desc = "[T]oggle [N]eo-tree" },
     { "<Leader>gs", "<CMD>Neotree git_status<CR>", desc = "Neo-tree [G]it [S]tatus" },
   },

@@ -6,8 +6,10 @@ return {
     require("render-markdown").setup({
       heading = {
         position = "inline",
-        icons = { "󰉫", "󰉬", "󰉭", "󰉮", "󰉯", "󰉰" },
-        signs = { "󰌕" },
+        -- icons = { "󰉫", "󰉬", "󰉭", "󰉮", "󰉯", "󰉰" },
+        icons = { "█" },
+        -- signs = { "󰌕" },
+        signs = { "" },
       },
       bullet = {
         icons = { "", "", "", "" },
