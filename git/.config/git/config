@@ -41,6 +41,8 @@
 [mergetool "fugitive"]
     cmd = "nvim -f -c \"Gvdiffsplit!\" \"$MERGED\""
 
+[rebase]
+    autosquash = true
 [rerere]
     enabled = true
 
