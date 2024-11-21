@@ -1,7 +1,3 @@
-# Config options
-# https://alacritty.org/config-alacritty.html
-
-import = ["/Users/pjdietz/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
 
 [bell]
 duration = 0
@@ -54,7 +50,8 @@ key = "W"
 mods = "Command"
 
 [window]
-decorations = "buttonless"
+# decorations = "None"
+decorations = "Buttonless"
 dynamic_padding = true
 opacity = 1
 blur = false
@@ -62,3 +59,9 @@ blur = false
 [window.padding]
 x = 20
 y = 10
+
+[general]
+# Config options
+# https://alacritty.org/config-alacritty.html
+
+import = ["/Users/pjdietz/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
