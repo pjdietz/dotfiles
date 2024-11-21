@@ -70,9 +70,15 @@ attach_to_sesion()
   local directory=$(realpath $1)
   local name=$(basename "${directory}" | tr . _)
   if ! tmux has-session -t "=${name}" 2> /dev/null; then
+    # Create a new session.
     tmux new-session -d -s "${name}" -c "${directory}"
+    # Start nvim; create a second window.
+    tmux send-keys -t "=${name}:1" 'nvim' Enter
+    tmux new-window -t "=${name}"
   fi
-  tmux switch-client -t "=${name}"
+
+  # Switch to window 1 of the session.
+  tmux switch-client -t "=${name}:1"
 }
 
 main $@
