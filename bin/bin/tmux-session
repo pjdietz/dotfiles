@@ -74,7 +74,7 @@ attach_to_sesion()
     tmux new-session -d -s "${name}" -c "${directory}"
     # Start nvim; create a second window.
     tmux send-keys -t "=${name}:1" 'nvim' Enter
-    tmux new-window -t "=${name}"
+    tmux new-window -t "=${name}" -c "${directory}"
   fi
 
   # Switch to window 1 of the session.
