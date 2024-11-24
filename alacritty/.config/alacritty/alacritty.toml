@@ -5,13 +5,6 @@ duration = 0
 [colors]
 transparent_background_colors = true
 
-[font]
-size = 20.0
-
-[font.glyph_offset]
-x = 0
-y = 10
-
 [font.normal]
 # family = "DroidSansM Nerd Font Mono"
 family = "Hack Nerd Font Mono"
@@ -24,6 +17,14 @@ style = "Regular"
 
 [font.bold]
 style = "Bold"
+
+[font]
+size = 20.0
+builtin_box_drawing = true
+
+[font.glyph_offset]
+x = 0
+y = 10
 
 [font.offset]
 x = 0
