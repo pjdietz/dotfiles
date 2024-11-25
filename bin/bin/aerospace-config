@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+cd ~/.config/aerospace || exit
+
+config="${1}.toml"
+
+if [[ ! -f "${config}" ]]; then
+  exit
+fi
+
+cat main.toml "${config}" > aerospace.toml
+aerospace reload-config
