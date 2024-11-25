@@ -35,6 +35,12 @@ ctrl-cmd-d = 'layout horizontal vertical'
 ctrl-cmd-f = 'fullscreen'
 ctrl-cmd-shift-f = 'fullscreen --no-outer-gaps'
 
+alt-a = 'layout tiling floating'
+alt-s = 'layout tiles accordion'
+alt-d = 'layout horizontal vertical'
+alt-f = 'fullscreen'
+alt-shift-f = 'fullscreen --no-outer-gaps'
+
 # Focus workspaces
 ctrl-cmd-h = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace prev'
 ctrl-cmd-j = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace prev'
