@@ -1,5 +1,12 @@
 accordion-padding = 60
 
+after-startup-command = ['exec-and-forget sketchybar']
+
+exec-on-workspace-change = [
+    '/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+
 [exec]
 inherit-env-vars = true
 [exec.env-vars]
@@ -26,7 +33,7 @@ ctrl-alt-k = ['join-with up', 'mode main']
 ctrl-alt-l = ['join-with right', 'mode main']
 
 # Toggle
-alt-space = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
+# alt-space = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
 
 # Layout adjustments
 ctrl-cmd-a = 'layout tiling floating'
@@ -66,6 +73,9 @@ alt-cmd-i = ['move-node-to-workspace 3', 'workspace 3']
 alt-cmd-o = ['move-node-to-workspace 4', 'workspace 4']
 alt-cmd-p = ['move-node-to-workspace 5', 'workspace 5']
 
+alt-space = 'mode workspace'
+ctrl-cmd-space = 'mode workspace'
+
 alt-r = 'mode resize'
 ctrl-cmd-g = 'mode resize'
 
@@ -77,4 +87,48 @@ b = ['balance-sizes', 'mode main']
 i = ['exec-and-forget aerospace-config zen', 'mode main']
 o = ['exec-and-forget aerospace-config comfy', 'mode main']
 p = ['exec-and-forget aerospace-config full', 'mode main']
+esc = ['reload-config', 'mode main']
+
+[mode.workspace.binding]
+space = [
+    'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth',
+    'mode main'
+]
+m = [
+    'move-workspace-to-monitor --wrap-around next',
+    'mode main'
+]
+n = [
+    'move-node-to-monitor --focus-follows-window --wrap-around next',
+    'mode main'
+]
+
+1 = ['workspace 1', 'mode main']
+2 = ['workspace 2', 'mode main']
+3 = ['workspace 3', 'mode main']
+4 = ['workspace 4', 'mode main']
+5 = ['workspace 5', 'mode main']
+6 = ['workspace 6', 'mode main']
+7 = ['workspace 7', 'mode main']
+8 = ['workspace 8', 'mode main']
+9 = ['workspace 9', 'mode main']
+0 = ['workspace 10', 'mode main']
+shift-1 = ['move-node-to-workspace 1']
+shift-2 = ['move-node-to-workspace 2']
+shift-3 = ['move-node-to-workspace 3']
+shift-4 = ['move-node-to-workspace 4']
+shift-5 = ['move-node-to-workspace 5']
+shift-6 = ['move-node-to-workspace 6']
+shift-7 = ['move-node-to-workspace 7']
+shift-8 = ['move-node-to-workspace 8']
+shift-9 = ['move-node-to-workspace 9']
+shift-0 = ['move-node-to-workspace 10']
+h = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace prev'
+j = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace prev'
+k = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace next'
+l = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace next'
+shift-h = 'move-node-to-workspace prev'
+shift-j = 'move-node-to-workspace prev'
+shift-k = 'move-node-to-workspace next'
+shift-l = 'move-node-to-workspace next'
 esc = ['reload-config', 'mode main']
