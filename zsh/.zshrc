@@ -183,6 +183,7 @@ set_aliases()
   alias d='docker'
   alias dc='docker compose'
   alias dcl='docker compose logs -f'
+  alias dclt='docker compose logs -f --timestamps'
   alias dcr='docker compose run --rm'
   alias dce='docker compose exec'
   alias flush-dns='sudo killall -HUP mDNSResponder'
@@ -198,11 +199,14 @@ set_aliases()
   alias ll='ls -l'
   alias ls='eza'
   alias k='kubectl'
+  alias kd='kubectl describe'
+  alias kg='kubectl get'
+  alias kpf='kubectl port-forward'
   alias wk='watch kubectl'
-  alias tree='eza -T'
-  alias vim='nvim'
   alias tms='tmux-session'
   alias tmw='tmux-window'
+  alias tree='eza -T'
+  alias vim='nvim'
 }
 
 gdf() {
