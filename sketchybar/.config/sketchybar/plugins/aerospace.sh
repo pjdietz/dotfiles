@@ -1,17 +1,35 @@
 #!/usr/bin/env bash
 
-FOCUSED_WORKSPACE="${FOCUSED_WORKSPACE:-$(aerospace list-workspaces --focused)}"
+label=
+drawing=off
+background_drawing=off
 
-WINDOWS=$(aerospace list-windows --workspace "$1")
+# mapfile -t apps < <(aerospace list-windows --workspace "$1" --format '%{app-name}')
+apps=$(aerospace list-windows --workspace "$1" --format '%{app-name}' | sort -u)
+if [ -n "${apps}" ]; then
 
-if [ -n "${WINDOWS}" ]; then
-  sketchybar --set "${NAME}" drawing=on
-else
-  sketchybar --set "${NAME}" drawing=off
+  echo "$1 --- ${apps}" >> ~/log.txt
+
+  drawing=on
+
+  focused="${FOCUSED_WORKSPACE:-$(aerospace list-workspaces --focused)}"
+  if [ "$1" = "${focused}" ]; then
+    background_drawing=on
+  fi
+
+  label=
+  IFS=$'\n'
+  for app in ${apps}; do
+    icon=$("${CONFIG_DIR}/plugins/app_icon.sh" "${app}")
+    echo "$1 ${icon} ${app}" >> ~/log.txt
+    label="${label}${icon} "
+  done
+
 fi
 
-if [ "$1" = "${FOCUSED_WORKSPACE}" ]; then
-    sketchybar --set "${NAME}" background.drawing=on
-else
-    sketchybar --set "${NAME}" background.drawing=off
-fi
+sketchybar --set "${NAME}" \
+  drawing="${drawing}" \
+  background.drawing="${background_drawing}" \
+  label="${label}"
+
+exit
