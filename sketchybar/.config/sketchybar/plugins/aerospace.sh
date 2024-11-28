@@ -2,21 +2,21 @@
 
 label=
 drawing=off
-background_drawing=off
+background_color=0x0fffffff
 
-# mapfile -t apps < <(aerospace list-windows --workspace "$1" --format '%{app-name}')
 apps=$(aerospace list-windows --workspace "$1" --format '%{app-name}' | sort -u)
 if [ -n "${apps}" ]; then
 
-  echo "$1 --- ${apps}" >> ~/log.txt
-
+  # Draw whenever the workspace has at least one app.
   drawing=on
 
+  # Hightlight the focused workspace.
   focused="${FOCUSED_WORKSPACE:-$(aerospace list-workspaces --focused)}"
   if [ "$1" = "${focused}" ]; then
-    background_drawing=on
+    background_color=0x33ffffff
   fi
 
+  # Show app icons.
   label=
   IFS=$'\n'
   for app in ${apps}; do
@@ -29,7 +29,5 @@ fi
 
 sketchybar --set "${NAME}" \
   drawing="${drawing}" \
-  background.drawing="${background_drawing}" \
-  label="${label}"
-
-exit
+  label="${label}" \
+  background.color="${background_color}"
