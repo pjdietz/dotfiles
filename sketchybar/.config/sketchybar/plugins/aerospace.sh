@@ -18,10 +18,10 @@ if [ -n "${apps}" ]; then
 
   # Show app icons.
   label=
+  label_drawing=on
   IFS=$'\n'
   for app in ${apps}; do
     icon=$("${CONFIG_DIR}/plugins/app_icon.sh" "${app}")
-    echo "$1 ${icon} ${app}" >> ~/log.txt
     label="${label}${icon} "
   done
 
@@ -30,4 +30,5 @@ fi
 sketchybar --set "${NAME}" \
   drawing="${drawing}" \
   label="${label}" \
+  label.drawing="${label_drawing}" \
   background.color="${background_color}"
