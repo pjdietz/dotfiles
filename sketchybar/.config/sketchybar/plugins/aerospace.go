@@ -20,7 +20,7 @@ const (
 	icon_firefox  = ""
 	icon_finder   = "󰀶"
 	icon_teams    = "󰊻"
-	icon_terminal = ""
+	icon_terminal = "󰞷"
 	icon_todo     = ""
 	icon_vpn      = "󰒄"
 )
@@ -93,6 +93,13 @@ func initialize() {
 				"icon="+w,
 				"drawing=true",
 				"background.height=30",
+				"background.corner_radius=8",
+				"icon.font=Hack Nerd Font Mono:Bold:14.0",
+				"icon.padding_left=10",
+				"icon.padding_right=10",
+				"label.font=Hack Nerd Font Mono:Bold:22.0",
+				"label.padding_left=0",
+				"label.padding_right=10",
 				"click_script=aerospace workspace "+w+"",
 				"script="+binary+" update")
 
@@ -145,11 +152,17 @@ func (w WorkspaceState) Args() []string {
 	}
 
 	if w.focused {
-		a = append(a, "background.color=0x66ffffff")
+		a = append(a, "background.color=0x44ffffff")
+		a = append(a, "icon.color=0xffffffff")
+		a = append(a, "label.color=0xffffffff")
 	} else if w.visible {
-		a = append(a, "background.color=0x33ffffff")
+		a = append(a, "background.color=0x22ffffff")
+		a = append(a, "icon.color=0xffffffff")
+		a = append(a, "label.color=0xffffffff")
 	} else {
 		a = append(a, "background.color=0x00000000")
+		a = append(a, "icon.color=0xffcccccc")
+		a = append(a, "label.color=0xffcccccc")
 	}
 
 	return a
@@ -278,7 +291,7 @@ func getApps() map[int]map[string]string {
 		apps := appsByWorkspace[workspace]
 		icon := appIcon(app)
 		if !strings.Contains(apps, icon) {
-			apps += icon
+			apps += icon + " "
 		}
 		appsByWorkspace[workspace] = apps
 	}

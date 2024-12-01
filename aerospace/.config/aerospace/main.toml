@@ -86,10 +86,12 @@ space = [
 ]
 m = [
     'move-workspace-to-monitor --wrap-around next',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
     'mode main'
 ]
 n = [
     'move-node-to-monitor --focus-follows-window --wrap-around next',
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
     'mode main'
 ]
 
