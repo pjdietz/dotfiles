@@ -1,0 +1,7 @@
+[gaps]
+inner.horizontal = 10
+inner.vertical =   10
+outer.top =        [{ monitor.main = 40 }, { monitor."built-in" = 5 }, 0]
+outer.right =      [{ monitor.main = 5 }, { monitor."built-in" = 5 }, 0]
+outer.bottom =     [{ monitor.main = 5 }, { monitor."built-in" = 5 }, 0]
+outer.left =       [{ monitor.main = 5 }, { monitor."built-in" = 5 }, 0]
