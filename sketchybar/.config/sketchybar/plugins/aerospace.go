@@ -23,6 +23,7 @@ const (
 	icon_terminal = "󰞷"
 	icon_todo     = ""
 	icon_vpn      = "󰒄"
+	icon_z        = "󰰸"
 )
 
 var icons = map[string]string{
@@ -31,9 +32,11 @@ var icons = map[string]string{
 	"DataGrip":          icon_database,
 	"Finder":            icon_finder,
 	"Firefox":           icon_firefox,
+	"Ghostty":           icon_terminal,
 	"Microsoft Outlook": icon_calendar,
 	"Microsoft Teams":   icon_teams,
 	"Todoist":           icon_todo,
+	"zoom.us":           icon_z,
 }
 
 func main() {
