@@ -192,6 +192,8 @@ set_aliases()
   alias gad='git add .'
   alias gap='git add -p'
   alias gc='git commit'
+  alias gca='git commit --amend'
+  alias gcan="git commit --amend --no-edit"
   alias gg='git graph'
   alias gl='git log'
   alias glo='git oneline'
