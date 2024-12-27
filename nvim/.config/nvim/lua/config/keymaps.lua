@@ -59,6 +59,8 @@ vim.keymap.set("n", "<Leader>tc", toggle_column_guides, { desc = "[T]oggle [C]ol
 map("n", "<Leader>gh", "<CMD>diffget //2<CR>", { desc = "[G]it merge take left" })
 map("n", "<Leader>gl", "<CMD>diffget //3<CR>", { desc = "[G]it merge take right" })
 
+map("n", "<Leader>gb", "<CMD>lua Snacks.gitbrowse()<CR>", { desc = "[G]it [B]rowse repo" })
+
 vim.keymap.set("n", "<leader>gd", function()
   if next(require("diffview.lib").views) == nil then
     vim.cmd("DiffviewOpen")
