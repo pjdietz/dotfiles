@@ -34,21 +34,12 @@ ctrl-alt-j = ['join-with down', 'mode main']
 ctrl-alt-k = ['join-with up', 'mode main']
 ctrl-alt-l = ['join-with right', 'mode main']
 
-# Toggle
-# alt-space = 'exec-and-forget aerospace focus-back-and-forth || aerospace workspace-back-and-forth'
-
 # Layout adjustments
 ctrl-cmd-a = 'layout tiling floating'
 ctrl-cmd-s = 'layout tiles accordion'
 ctrl-cmd-d = 'layout horizontal vertical'
 ctrl-cmd-f = 'fullscreen'
 ctrl-cmd-shift-f = 'fullscreen --no-outer-gaps'
-
-alt-a = 'layout tiling floating'
-alt-s = 'layout tiles accordion'
-alt-d = 'layout horizontal vertical'
-alt-f = 'fullscreen'
-alt-shift-f = 'fullscreen --no-outer-gaps'
 
 # Focus workspaces
 ctrl-cmd-h = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace prev'
@@ -63,11 +54,9 @@ ctrl-alt-cmd-k = 'focus-monitor right'
 ctrl-alt-cmd-l = 'focus-monitor right'
 ctrl-alt-cmd-space = 'move-workspace-to-monitor --wrap-around next'
 
+# Modes
 alt-space = 'mode workspace'
-ctrl-cmd-space = 'mode workspace'
-
 alt-r = 'mode resize'
-ctrl-cmd-g = 'mode resize'
 
 [mode.resize.binding]
 j = 'resize smart -50'
