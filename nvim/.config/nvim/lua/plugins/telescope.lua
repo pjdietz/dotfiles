@@ -28,6 +28,7 @@ return {
     telescope.load_extension "fzy_native"
     telescope.load_extension "textcase"
     telescope.load_extension "ui-select"
+    telescope.load_extension "noice"
 
     local builtin = require "telescope.builtin"
 
@@ -114,6 +115,7 @@ return {
     nmap("<Leader>fk", builtin.keymaps, "[F]ind [K]eymaps")
     nmap("<Leader>fh", builtin.help_tags, "[F]ind [H]help")
     nmap("<Leader>fc", builtin.commands, "[F]ind [C]ommands")
+    nmap("<Leader>fm", "<CMD>Telescope noice<CR>", "[F]ind [M]essages")
 
     ----------------------------------------------------------------------------
     -- Git

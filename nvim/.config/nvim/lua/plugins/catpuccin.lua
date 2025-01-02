@@ -2,12 +2,19 @@ return {
   "catppuccin/nvim",
   name = "catppuccin",
   config = function ()
-    local catppuccin = require "catppuccin"
-    catppuccin.setup {
+    require("catppuccin").setup {
       flavour = "mocha",
       transparent_background = true,
+      custom_highlights = function(colors)
+        return {
+          LightFloat = { bg = colors.surface0 },
+          WhichKeyNormal = { bg = colors.surface0 },
+          TelescopeBorder = { fg = colors.surface2 },
+          NoiceCmdlinePopupBorderCmdline = { fg = colors.surface2 },
+        }
+      end
     }
+
     vim.cmd.colorscheme "catppuccin"
-    vim.api.nvim_set_hl(0, "NoicePopup", { bg = "#313244" })
   end
 }

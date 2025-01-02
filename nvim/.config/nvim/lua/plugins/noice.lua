@@ -14,7 +14,7 @@ return {
         -- opts: any options passed to the view
         -- icon_hl_group: optional hl_group for the icon
         -- title: set to anything or empty string to hide
-        cmdline = { pattern = "^:", icon = ":", lang = "vim" },
+        cmdline = { pattern = "^:", icon = ":", lang = "vim", title = "" },
         search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
         search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
         filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
@@ -34,21 +34,6 @@ return {
       view_history = "messages", -- view for :messages
       view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
     },
-    views = {
-      cmdline_popup = {
-        border = {
-          style = "none",
-          padding = { 1, 2 },
-        },
-        filter_options = {},
-        win_options = {
-          winhighlight = {
-            Normal = "NoicePopup",
-            FloatBorder = "FloatBorder"
-          }
-        },
-      },
-    },
     routes = {
       {
         filter = {
@@ -57,6 +42,11 @@ return {
           find = "written",
         },
         opts = { skip = true },
+      },
+    },
+    lsp = {
+      progress = {
+        enabled = false
       },
     },
   },
