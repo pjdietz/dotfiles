@@ -43,6 +43,14 @@ return {
         },
         opts = { skip = true },
       },
+      {
+        filter = {
+          event = "msg_show",
+          kind = "",
+          find = "yanked",
+        },
+        opts = { skip = true },
+      },
     },
     lsp = {
       progress = {

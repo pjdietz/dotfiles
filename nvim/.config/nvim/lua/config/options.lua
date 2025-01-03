@@ -76,7 +76,7 @@ local options = {
   mouse = "a",                            -- allow the mouse to be used in neovim
 }
 
-vim.opt.shortmess:append "c"
+vim.opt.shortmess:append "cW"
 
 for k, v in pairs(options) do
   vim.opt[k] = v
