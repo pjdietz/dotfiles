@@ -8,35 +8,36 @@ return {
       return vim.fn.winwidth(0) > 80
     end
 
+    local mode = {
+      "mode",
+      fmt = function(str) return str:sub(1,1) end,
+      separator = { left = "", right = "" }
+    }
+
     local branch = {
       "branch",
       icons_enabled = true,
       icon = "",
     }
 
+    local filename = {
+      "filename",
+      file_status = false,
+    }
+
     local diff = {
       "diff",
       colored = false,
       symbols = { added = "+", modified = "~", removed = "-" },
-      cond = hide_in_width
+      cond = hide_in_width,
+      padding = 0,
     }
 
     local filetype = {
       "filetype",
       icons_enabled = true,
       colored = false,
-    }
-
-    local filetype_icon = {
-      "filetype",
-      icons_enabled = true,
-      icon_only = true,
-      colored = false,
-    }
-
-    local filename = {
-      "filename",
-      padding = 0
+      padding = 0,
     }
 
     local diagnostics = {
@@ -61,25 +62,24 @@ return {
     lualine.setup({
       options = {
         icons_enabled = true,
-        -- theme = "material",
         theme = "catppuccin",
         component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        section_separators = { left = '', right = '' },
         always_divide_middle = true,
       },
       sections = {
-        lualine_a = { { "mode", fmt = function(str) return str:sub(1,1) end } },
-        lualine_b = { branch },
-        lualine_c = { filetype_icon, filename, diff },
-        lualine_x = { filetype, diagnostics, location },
+        lualine_a = { mode },
+        lualine_b = { filename },
+        lualine_c = { branch, diff },
+        lualine_x = { diagnostics, "location", filetype },
         lualine_y = {},
         lualine_z = {}
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
+        lualine_c = {},
+        lualine_x = {},
         lualine_y = {},
         lualine_z = {}
       },
