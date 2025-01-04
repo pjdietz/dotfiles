@@ -1,79 +1,58 @@
 return {
-
-  "hrsh7th/nvim-cmp",
+  "saghen/blink.cmp",
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
+    { "L3MON4D3/LuaSnip", version = "v2.*" },
+    "rafamadriz/friendly-snippets",
   },
-  config = function ()
+  version = "*",
 
-    local cmp = require("cmp")
-    if not cmp then
-      return
-    end
+  ---@module "blink.cmp"
+  ---@type blink.cmp.Config
+  opts = {
+    keymap = {
+      preset = "default",
+      ["<C-Space>"] = { "show", "fallback" },
+      ["<CR>"] = { "select_and_accept", "fallback" },
 
-    local lspkind = require("lspkind")
-    lspkind.init()
+      cmdline = {
+        ["<CR>"] = {}
+      }
+    },
 
-    local luasnip = require("luasnip")
+    appearance = {
+      -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+      -- Useful for when your theme doesn't support blink.cmp
+      -- Will be removed in a future release
+      use_nvim_cmp_as_default = true,
+      -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- Adjusts spacing to ensure icons are aligned
+      nerd_font_variant = "mono"
+    },
 
-    cmp.setup({
-      snippet = {
-        expand = function (args)
-          luasnip.lsp_expand(args.body)
+    snippets = {
+      expand = function(snippet) require("luasnip").lsp_expand(snippet) end,
+      active = function(filter)
+        if filter and filter.direction then
+          return require("luasnip").jumpable(filter.direction)
         end
-      },
-      mapping = {
-        ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item()),
-        ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item()),
-        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<C-e>"] = cmp.mapping({
-          i = cmp.mapping.abort(),
-          c = cmp.mapping.close(),
-        }),
-        -- Accept currently selected item.
-        -- Set `select` to `false` to only confirm explicitly selected items.
-        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-      },
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        -- { name = "buffer", keyword_length = 5 },
-      }),
-      formatting = {
-        format = lspkind.cmp_format {
-          mode = "symbol_text",
-          maxwidth = 50,
-          menu = {
-            buffer = "[buf]",
-            nvim_lsp = "[LSP]",
-          }
-        }
-      },
-      experimental = {
-        native_menu = false,
-        ghost_text = true
-      }
-    })
+        return require("luasnip").in_snippet()
+      end,
+      jump = function(direction) require("luasnip").jump(direction) end,
+    },
 
-    cmp.setup.filetype({ 'markdown', 'vimwiki' }, {
-      completion = {
-        autocomplete = false
-      },
-      sources = {
-        { name = "path" },
-        { name = "buffer" }
-      }
-    })
+    -- Default list of enabled providers defined so that you can extend it
+    -- elsewhere in your config, without redefining it, due to `opts_extend`
+    sources = {
+      default = { "lsp", "path", "snippets", "buffer" },
+    },
 
-  end
+    completion = {
+      menu = { border = "single" },
+      documentation = { window = { border = "single" } },
+    },
+
+    signature = { window = { border = "single" } },
+
+  },
+  opts_extend = { "sources.default" }
 }
-
