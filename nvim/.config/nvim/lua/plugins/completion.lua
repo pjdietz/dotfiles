@@ -13,10 +13,6 @@ return {
       preset = "default",
       ["<C-Space>"] = { "show", "fallback" },
       ["<CR>"] = { "select_and_accept", "fallback" },
-
-      cmdline = {
-        ["<CR>"] = {}
-      }
     },
 
     appearance = {
@@ -47,11 +43,24 @@ return {
     },
 
     completion = {
-      menu = { border = "single" },
-      documentation = { window = { border = "single" } },
+      menu = {
+        border = "single",
+        auto_show = function(ctx)
+          return ctx.mode ~= "cmdline"
+            and vim.bo.filetype ~= "markdown"
+        end,
+      },
+      documentation = {
+        treesitter_highlighting = true,
+        window = {
+          border = "single",
+          winblend = 0,
+          winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
+        }
+      },
     },
 
-    signature = { window = { border = "single" } },
+    signature = { window = { border = "solid" } },
 
   },
   opts_extend = { "sources.default" }
