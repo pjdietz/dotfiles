@@ -17,6 +17,7 @@ const (
 	icon_app      = "󰣆"
 	icon_calendar = ""
 	icon_database = ""
+	icon_discord  = ""
 	icon_firefox  = ""
 	icon_finder   = "󰀶"
 	icon_teams    = "󰊻"
@@ -30,6 +31,7 @@ var icons = map[string]string{
 	"Alacritty":         icon_terminal,
 	"Azure VPN Client":  icon_vpn,
 	"DataGrip":          icon_database,
+	"Discord":           icon_discord,
 	"Finder":            icon_finder,
 	"Firefox":           icon_firefox,
 	"Ghostty":           icon_terminal,
