@@ -7,7 +7,7 @@ return {
       heading = {
         position = "inline",
         -- icons = { "󰉫", "󰉬", "󰉭", "󰉮", "󰉯", "󰉰" },
-        icons = { "█" },
+        icons = { "█ " },
         -- signs = { "󰌕" },
         signs = { "" },
       },

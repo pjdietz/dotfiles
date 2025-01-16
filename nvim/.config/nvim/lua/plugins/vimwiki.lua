@@ -4,6 +4,11 @@ local function open_journal()
   vim.cmd("normal G")
 end
 
+local function open_projects()
+  local entry = os.date("~/vimwiki/projects/index.md")
+  vim.cmd.edit(entry)
+end
+
 local function open_scratch()
   local entry = os.date("~/vimwiki/scratch/index.md")
   vim.cmd.edit(entry)
@@ -14,6 +19,7 @@ return {
   keys = {
     { "<Leader>ww", "<Plug>VimwikiIndex", desc = "Open Vim[W]iki" },
     { "<Leader>wj", open_journal, desc = "Open Vim[W]iki [J]ournal" },
+    { "<Leader>wp", open_projects, desc = "Open Vim[W]iki [P]rojects" },
     { "<Leader>ws", open_scratch, desc = "Open Vim[W]iki [S]cratch" },
     { "<Leader>x", "<Plug>VimwikiToggleListItem", desc = "Toggle List Item" },
   },
