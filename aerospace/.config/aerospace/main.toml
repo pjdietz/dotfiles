@@ -62,6 +62,7 @@ alt-r = 'mode resize'
 j = 'resize smart -50'
 k = 'resize smart +50'
 b = ['balance-sizes', 'mode main']
+f = ['flatten-workspace-tree', 'mode main']
 # Adjust gaps
 i = ['exec-and-forget aerospace-config zen', 'mode main']
 o = ['exec-and-forget aerospace-config comfy', 'mode main']
