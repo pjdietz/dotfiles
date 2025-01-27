@@ -12,7 +12,7 @@ return {
     keymap = {
       preset = "default",
       ["<C-Space>"] = { "show", "fallback" },
-      ["<CR>"] = { "select_and_accept", "fallback" },
+      -- ["<CR>"] = { "select_and_accept", "fallback" },
     },
 
     appearance = {
@@ -35,11 +35,37 @@ return {
       end,
       jump = function(direction) require("luasnip").jump(direction) end,
     },
-
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = function(ctx)
+        local success, node = pcall(vim.treesitter.get_node)
+        if vim.bo.filetype == "markdown" then
+          return { "buffer", "path" }
+        elseif success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
+          return { "buffer" }
+        else
+          return { "lsp", "path", "snippets", "buffer" }
+        end
+      end,
+      -- default = { "lsp", "path", "snippets", "buffer" },
+      min_keyword_length = 0,
+      providers = {
+        lsp = {
+          score_offset = 4,
+        },
+        snippets = {
+          score_offset = 3,
+        },
+        path = {
+          min_keyword_length = 5,
+          score_offset = 2,
+        },
+        buffer = {
+          min_keyword_length = 5,
+          score_offset = 1,
+        },
+      }
     },
 
     completion = {
@@ -49,6 +75,14 @@ return {
           return ctx.mode ~= "cmdline"
             and vim.bo.filetype ~= "markdown"
         end,
+        draw = {
+          columns = {
+            { "kind_icon", gap = 1 },
+            { "label", "label_description", gap = 1 },
+            { "kind" },
+            { "source_name" }
+          },
+        },
       },
       documentation = {
         treesitter_highlighting = true,

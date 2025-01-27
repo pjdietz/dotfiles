@@ -29,6 +29,12 @@ return {
       })
     end
   },
+  {
+    "karb94/neoscroll.nvim",
+    opts = {
+      duration_multiplier = 0.67
+    },
+  },
   -- Languages
   "othree/html5.vim",
   "nelsyeung/twig.vim",
