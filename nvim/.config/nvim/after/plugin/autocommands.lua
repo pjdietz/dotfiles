@@ -52,7 +52,7 @@ api.nvim_create_autocmd("FileType", {
 })
 
 -- Close "No Name" buffers
-api.nvim_create_autocmd("BufEnter", {
+api.nvim_create_autocmd("BufDelete", {
     group = group,
     callback = function ()
       require("user.buffers").delete_noname_buffers()

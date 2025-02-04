@@ -43,6 +43,9 @@ main()
   # Source platform-specific zshrc
   readonly platform_zshrc="${HOME}/.zshrc-$(uname)"
   if [[ -f "${platform_zshrc}" ]]; then source "${platform_zshrc}"; fi
+  # Source git ignored zshrc
+  readonly secret_zshrc="${HOME}/.zshrc-secret"
+  if [[ -f "${secret_zshrc}" ]]; then source "${secret_zshrc}"; fi
 }
 
 set_path()

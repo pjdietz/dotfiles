@@ -11,8 +11,46 @@ return {
   opts = {
     keymap = {
       preset = "default",
-      ["<C-Space>"] = { "show", "fallback" },
-      -- ["<CR>"] = { "select_and_accept", "fallback" },
+      ["<C-Space>"] = {
+        function()
+          require("copilot.suggestion").next()
+          require("blink.cmp")["hide"]()
+          return true
+        end
+      },
+      ["<C-n>"] = {
+        function ()
+          local cop = require("copilot.suggestion")
+          if cop.is_visible() then
+            cop.next()
+            return true
+          end
+        end,
+        "select_next",
+        "fallback",
+      },
+      ["<C-p>"] = {
+        function ()
+          local cop = require("copilot.suggestion")
+          if cop.is_visible() then
+            cop.prev()
+            return true
+          end
+        end,
+        "select_prev",
+        "fallback",
+      },
+      ["<C-y>"] = {
+        function ()
+          local cop = require("copilot.suggestion")
+          if cop.is_visible() then
+            cop.accept()
+            return true
+          end
+        end,
+        "select_and_accept",
+        "fallback",
+      }
     },
 
     appearance = {
