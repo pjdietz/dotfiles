@@ -24,39 +24,64 @@ return {
     end,
   },
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = true,
-    version = false, -- set this to "*" if you want to always pull the latest change, false to update on release
+    "olimorris/codecompanion.nvim",
     config = function ()
-      require("avante_lib").load()
-      require("avante").setup({
-         provider = "claude",
-         claude = {
-          endpoint = "https://api.anthropic.com",
-          model = "claude-3-5-sonnet-20241022",
-          temperature = 0,
-          max_tokens = 4096,
+
+      require("codecompanion").setup({
+        strategies = {
+          chat = {
+            adapter = "copilot",
+            slash_commands = {
+              ["file"] = {
+                -- Location to the slash command in CodeCompanion
+                callback = "strategies.chat.slash_commands.file",
+                description = "Select a file using Telescope",
+                opts = {
+                  provider = "telescope",
+                  contains_code = true,
+                },
+              },
+            },
+          },
+          inline = {
+            adapter = "copilot"
+          }
         },
       })
+
+      -- Alias CC for CodeCompanion
+      vim.api.nvim_create_user_command("CC", function(opts)
+        vim.cmd("CodeCompanion " .. opts.args)
+      end, { nargs = "*" })
+
+      -- Disable colorcolumn for the CodeCompanion chat window.
+      local function find_window_for_buffer(buffer_id)
+        local windows = vim.api.nvim_list_wins()
+        for _, win_id in ipairs(windows) do
+          if vim.api.nvim_win_get_buf(win_id) == buffer_id then
+            return win_id
+          end
+        end
+        return nil -- Return nil if no window is found for the buffer
+      end
+      local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
+      vim.api.nvim_create_autocmd({ "User" }, {
+        pattern = "CodeCompanionChatOpened",
+        group = group,
+        callback = function(request)
+          local win = find_window_for_buffer(request.buf)
+          vim.api.nvim_set_option_value("colorcolumn", "", { win = win })
+        end,
+      })
+
     end,
-    build = "make",
     dependencies = {
-      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      -- "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
+      "nvim-treesitter/nvim-treesitter",
     },
+    keys = {
+      { "<Leader>ch", "<CMD>CodeCompanionChat Toggle<CR>", desc = "Code Companion [CH]at" }
+    },
+    cmd = { "CodeCompanion", "CC" }
   }
 }
