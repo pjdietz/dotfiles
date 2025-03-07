@@ -80,7 +80,8 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     keys = {
-      { "<Leader>ch", "<CMD>CodeCompanionChat Toggle<CR>", desc = "Code Companion [CH]at" }
+      { "<Leader>cc", "<CMD>CodeCompanionChat Toggle<CR>", desc = "[C]ode Companion [C]hat" },
+      { "<Leader>ci", "<CMD>CodeCompanion<CR>", desc = "[C]ode Companion [I]nline" }
     },
     cmd = { "CodeCompanion", "CC" }
   }

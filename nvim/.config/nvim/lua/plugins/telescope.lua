@@ -127,8 +127,7 @@ return {
     ----------------------------------------------------------------------------
     -- Case Change
 
-    nmap("<Leader>cc", "<CMD>TextCaseOpenTelescope<CR>", "[C]hange [C]ase")
-    vmap("<Leader>cc", "<CMD>TextCaseOpenTelescope<CR>", "[C]hange [C]ase")
+    nmap("<Leader>ch", "<CMD>TextCaseOpenTelescope<CR>", "[CH]ange Case")
 
   end
 }
