@@ -20,6 +20,7 @@ const (
 	icon_discord  = ""
 	icon_firefox  = ""
 	icon_finder   = "󰀶"
+	icon_k8s      = "󱃾"
 	icon_teams    = "󰊻"
 	icon_terminal = "󰞷"
 	icon_todo     = ""
@@ -29,6 +30,7 @@ const (
 
 var icons = map[string]string{
 	"Alacritty":         icon_terminal,
+	"Aptakube":          icon_k8s,
 	"Azure VPN Client":  icon_vpn,
 	"DataGrip":          icon_database,
 	"Discord":           icon_discord,
