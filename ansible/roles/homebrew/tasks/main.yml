@@ -13,6 +13,14 @@
   homebrew:
     update_homebrew: yes
 
+- name: Add custom Homebrew taps
+  homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - FelixKratz/formulae #borders
+    - nikitabobko/tap     #aerospace
+
 - name: Install Homebrew packages
   homebrew:
     name: "{{ item }}"
@@ -25,6 +33,7 @@
     name:
       - bat
       - eza
+      - fd
       - fzf
       - ripgrep
       - tmux
@@ -40,4 +49,12 @@
     name:
       - go
       - node
+    state: present
+
+- name: Install GUI Applications
+  package:
+    name:
+      - aerospace
+      - borders
+      - sketchybar
     state: present
