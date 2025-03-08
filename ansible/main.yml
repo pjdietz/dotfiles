@@ -1,0 +1,7 @@
+---
+- name: Setup Mac applications using Homebrew
+  hosts: localhost
+  connection: local
+  roles:
+    - homebrew
+
