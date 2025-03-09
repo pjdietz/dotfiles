@@ -74,16 +74,16 @@ func initialize() {
 
 	// Add a bracket for monitor.
 	for i, m := range state.monitors {
+
+		// Position the monitors on either side of the notch.
+		position := "q"
+		if i > 0 {
+			position = "e"
+		}
+
 		args := []string{}
 		bracket := fmt.Sprintf("monitor.%d", m)
 		regex := fmt.Sprintf("/space\\.%d\\..*/", m)
-		spacer := fmt.Sprintf("spacer.%s", bracket)
-
-		// Add spacer between monitors.
-		if i > 0 {
-			args = append(args, "--add", "item", spacer, "center",
-				"--set", spacer, "width=20")
-		}
 
 		// Add a bracket.
 		args = append(args, "--add", "bracket", bracket, regex, "--set", bracket)
@@ -91,11 +91,15 @@ func initialize() {
 		args = []string{}
 
 		// Add an item for each workspace.
+		if position == "q" {
+			// When drawing on the left, add them in reverse order.
+			slices.Reverse(state.workspaces)
+		}
 		for j, w := range state.workspaces {
 			item := fmt.Sprintf("space.%d.%s", m, w)
 			workstate := state.WorkspaceState(m, w)
 
-			args = append(args, "--add", "item", item, "center",
+			args = append(args, "--add", "item", item, position,
 				"--set", item,
 				"icon="+w,
 				"drawing=true",
