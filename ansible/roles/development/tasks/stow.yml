@@ -1,0 +1,23 @@
+---
+- name: Ensure GNU Stow is installed
+  package:
+    name: stow
+    state: present
+
+- name: Run stow for each package
+  command:
+    cmd: "stow {{ item }}"
+  loop:
+    - aerospace
+    - bin
+    - borders
+    - ghostty
+    - git
+    - k9s
+    - nvim
+    - sketchybar
+    - tmux
+    - yazi
+    - zsh
+  args:
+    chdir: "{{ stow_dir }}"

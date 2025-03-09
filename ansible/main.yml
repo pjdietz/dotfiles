@@ -1,7 +1,9 @@
 ---
-- name: Setup Mac applications using Homebrew
+- name: Setup Mac
   hosts: localhost
   connection: local
   roles:
-    - homebrew
+    - development
+  vars:
+    stow_dir: "~/dotfiles"
 
