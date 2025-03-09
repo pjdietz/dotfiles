@@ -51,10 +51,39 @@
       - node
     state: present
 
+- name: Install Azure and Kubernetes Utilities
+  package:
+    name:
+      - azure-cli
+      - krew
+      - kube-ps1
+    state: present
+
+# Update PATH to include Krew plugins (for the current Ansible run)
+- name: Set Krew PATH for Ansible
+  set_fact:
+    krew_path: "{{ ansible_env.HOME }}/.krew/bin"
+
+# Install Krew plugins
+- name: Install Krew plugins
+  shell: "PATH={{ ansible_env.PATH }}:{{ krew_path }} kubectl krew install {{ item }}"
+  register: krew_plugin_install
+  changed_when: "'Plugin installed successfully' in krew_plugin_install.stdout"
+  failed_when:
+    - krew_plugin_install.rc != 0
+    - "'already installed' not in krew_plugin_install.stderr"
+  loop:
+    - ctx
+    - neat
+    - ns
+    - resource-capacity
+    - stern
+
 - name: Install GUI Applications
   package:
     name:
       - aerospace
       - borders
+      - raycast
       - sketchybar
     state: present

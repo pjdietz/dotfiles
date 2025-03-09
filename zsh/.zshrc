@@ -95,7 +95,7 @@ set_prompt()
   PROMPT=${PROMPT}' %F{blue}󰁕%f '
 
   # If kube-ps1 is installed, add it to the prompt.
-  KUBE_PS1_PATH='/usr/local/opt/kube-ps1/share/kube-ps1.sh'
+  KUBE_PS1_PATH='/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh'
   if [[ -f "${KUBE_PS1_PATH}" ]]; then
     source "${KUBE_PS1_PATH}"
     RPROMPT='$(kube_ps1)'$RPROMPT
