@@ -103,6 +103,13 @@ return {
           -- min_keyword_length = 5,
           score_offset = 1,
         },
+        cmdline = {
+          min_keyword_length = function(ctx)
+            -- when typing a command, only show when the keyword is 3 characters or longer
+            if ctx.mode == "cmdline" and string.find(ctx.line, " ") == nil then return 3 end
+            return 0
+          end
+        }
       }
     },
 
@@ -126,33 +133,16 @@ return {
         window = {
           border = "single",
           winblend = 0,
-          winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
+          winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc",
         }
       },
     },
 
     cmdline = {
       enabled = true,
-      keymap = nil, -- Inherits from top level `keymap` config when not set
-      sources = function()
-        local type = vim.fn.getcmdtype()
-        -- Search forward and backward
-        if type == '/' or type == '?' then return { 'buffer' } end
-        -- Commands
-        if type == ':' or type == '@' then return { 'cmdline' } end
-        return {}
-      end,
+      keymap = { preset = "cmdline" },
       completion = {
-        trigger = {
-          show_on_blocked_trigger_characters = {},
-          show_on_x_blocked_trigger_characters = nil, -- Inherits from top level `completion.trigger.show_on_blocked_trigger_characters` config when not set
-        },
-        menu = {
-          auto_show = nil, -- Inherits from top level `completion.menu.auto_show` config when not set
-          draw = {
-            columns = { { 'label', 'label_description', gap = 1 } },
-          },
-        }
+        ghost_text = { enabled = true }
       }
     },
 
