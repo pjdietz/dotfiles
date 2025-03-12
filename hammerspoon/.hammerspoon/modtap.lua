@@ -75,11 +75,14 @@ local function logEvent(keyCode, eventType, flags)
 end
 
 local function start()
-  -- TODO: Define in config
-  local mt = M.newModTap({
+
+  local modTaps = {}
+  modTaps[keycodes.map.z] = M.newModTap({
     keyCode = keycodes.map.z,
     modCode = keycodes.map.ctrl,
   })
+
+
 
   M.keyEventHandler = eventtap.new({keyDown, keyUp}, function (event)
     local keyCode = event:getKeyCode()
@@ -87,8 +90,9 @@ local function start()
     local flags = event:getFlags()
     logEvent(keyCode, eventType, flags)
 
-    if keyCode == mt.keyCode then
+    local mt = modTaps[keyCode]
 
+    if mt ~= nil then
       -- When the event match a mod-tap key, press or release it.
       if eventType == keyDown then
         mt:press()
@@ -96,23 +100,33 @@ local function start()
         mt:release()
       end
       return true
+    end
 
-    elseif mt.held then
+    local heldModifiers = {}
+    for _, k in pairs(modTaps) do
+      if k.held then
+        table.insert(heldModifiers, k.modCode)
+      end
+    end
 
+    if next(heldModifiers) ~= nil then
       -- When any mod-taps are held, intercept and resend the event.
       if eventType == keyDown then
         M.keyEventHandler:stop()
-        hs.eventtap.event.newKeyEvent(mt.modCode, true):post()
+        for _, modifier in ipairs(heldModifiers) do
+          hs.eventtap.event.newKeyEvent(modifier, true):post()
+        end
         hs.eventtap.event.newKeyEvent(keyCode, true):post()
         M.keyEventHandler:start()
       else
         M.keyEventHandler:stop()
         hs.eventtap.event.newKeyEvent(keyCode, false):post()
-        hs.eventtap.event.newKeyEvent(mt.modCode, false):post()
+        for _, modifier in ipairs(heldModifiers) do
+          hs.eventtap.event.newKeyEvent(modifier, true):post()
+        end
         M.keyEventHandler:start()
       end
       return true
-
     end
 
     return false
@@ -124,7 +138,7 @@ end
 
 function M.init(config)
   config = config or {}
-  M.log = hs.logger.new('modtap.log', 'info')
+  M.log = hs.logger.new('modtap.log', 'debug')
   start()
 end
 
