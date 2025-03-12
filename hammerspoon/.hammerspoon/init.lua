@@ -1,7 +1,10 @@
 hs.loadSpoon("EmmyLua")
 
-local keyboard = require("keyboard")
-keyboard.setup()
+-- local keyboard = require("keyboard")
+-- keyboard.setup()
+
+local modtap = require("modtap")
+modtap.init()
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Y", function()
   hs.eventtap.event.newKeyEvent(hs.keycodes.map.ctrl, true):post()
