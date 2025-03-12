@@ -39,8 +39,10 @@
       - tmux
       - tree
       - stow
+      - watch
       - wget
       - xh
+      - yazi
       - zoxide
     state: present
 
