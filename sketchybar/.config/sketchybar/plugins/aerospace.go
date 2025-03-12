@@ -91,10 +91,8 @@ func initialize() {
 		args = []string{}
 
 		// Add an item for each workspace.
-		if position == "q" {
-			// When drawing on the left, add them in reverse order.
-			slices.Reverse(state.workspaces)
-		}
+		// Reverse workspaces: Items in q and e draw from right to left.
+		slices.Reverse(state.workspaces)
 		for j, w := range state.workspaces {
 			item := fmt.Sprintf("space.%d.%s", m, w)
 			workstate := state.WorkspaceState(m, w)
