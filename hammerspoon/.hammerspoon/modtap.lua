@@ -81,8 +81,10 @@ local function start()
     keyCode = keycodes.map.z,
     modCode = keycodes.map.ctrl,
   })
-
-
+  modTaps[keycodes.map.x] = M.newModTap({
+    keyCode = keycodes.map.x,
+    modCode = keycodes.map.alt,
+  })
 
   M.keyEventHandler = eventtap.new({keyDown, keyUp}, function (event)
     local keyCode = event:getKeyCode()
