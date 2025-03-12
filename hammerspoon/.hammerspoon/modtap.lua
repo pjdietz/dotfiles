@@ -6,12 +6,10 @@ local keycodes = require("hs.keycodes")
 local keyDown = eventtap.event.types.keyDown
 local keyUp = eventtap.event.types.keyUp
 
-
 local ModTap = {
   keyCode = nil,
   modCode = nil,
-  threshold = 0.2,
-  downTime = 0,
+  threshold = 0.1,
   down = false,
   held = false,
 }
@@ -21,7 +19,6 @@ function M.newModTap(config)
   local m = {}
   m.keyCode = config.keyCode
   m.modCode = config.modCode
-  m.downTime = 0
   m.down = false
   m.held = false
   m.downTime = 0
@@ -30,36 +27,29 @@ function M.newModTap(config)
 end
 
 function ModTap:press()
-  M.log.d("ModTap:press()")
+  -- Do nothing when already pressed.
   if self.down then
-    M.log.d("ModTap is already down")
     return
   end
-  M.log.i("ModTap pressed")
   self.down = true
+  -- After the threshold, the key is in the "held" state.
   self.timer = hs.timer.doAfter(self.threshold, function ()
-    M.log.i("ModTap sending key events for mod down")
     self.held = true
-    -- hs.eventtap.event.newKeyEvent(self.modCode, true):post()
   end)
 end
 
 function ModTap:release()
-  M.log.d("ModTap:release()")
+  -- Do nothing when already up.
   if not self.down then
-    M.log.d("ModTap is already up")
     return
   end
-  M.log.i("ModTap released")
 
+  -- When released before the modifier threshold, send a tap.
   if not self.held then
-    M.log.i("ModTap sending key events for tap")
     M.keyEventHandler:stop()
     hs.eventtap.event.newKeyEvent({}, self.keyCode, true):post()
     hs.eventtap.event.newKeyEvent({}, self.keyCode, false):post()
     M.keyEventHandler:start()
-  else
-    M.log.i("ModTap sending key events for mod up")
   end
 
   self.down = false
@@ -81,12 +71,10 @@ local function logEvent(keyCode, eventType, flags)
     f = f .. k
   end
   f = f .. "}"
-  M.log.i("Key event: " .. key, et, f)
+  M.log.d("Key event: " .. key, et, f)
 end
 
 local function start()
-  M.log.d("start")
-
   -- TODO: Define in config
   local mt = M.newModTap({
     keyCode = keycodes.map.z,
@@ -100,31 +88,31 @@ local function start()
     logEvent(keyCode, eventType, flags)
 
     if keyCode == mt.keyCode then
+
+      -- When the event match a mod-tap key, press or release it.
       if eventType == keyDown then
-        M.log.d("DOWN for mod tap key")
         mt:press()
-        return true
       else
-        M.log.d("UP for mod tap key")
         mt:release()
-        return true
       end
+      return true
 
     elseif mt.held then
+
+      -- When any mod-taps are held, intercept and resend the event.
       if eventType == keyDown then
-        M.log.i("Add the modTap modifier [down]")
         M.keyEventHandler:stop()
         hs.eventtap.event.newKeyEvent(mt.modCode, true):post()
         hs.eventtap.event.newKeyEvent(keyCode, true):post()
         M.keyEventHandler:start()
       else
-        M.log.i("Add the modTap modifier [up]")
         M.keyEventHandler:stop()
         hs.eventtap.event.newKeyEvent(keyCode, false):post()
         hs.eventtap.event.newKeyEvent(mt.modCode, false):post()
         M.keyEventHandler:start()
       end
       return true
+
     end
 
     return false
@@ -132,6 +120,7 @@ local function start()
 
   M.keyEventHandler:start()
 end
+
 
 function M.init(config)
   config = config or {}
