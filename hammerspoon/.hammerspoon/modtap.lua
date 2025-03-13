@@ -13,25 +13,20 @@ local logEvent
 
 -- ModTap ----------------------------------------------------------------------
 
-local ModTap = {
-  keyCode = nil,
-  modCode = nil,
-  threshold = 0.1,
-  down = false,
-  held = false,
-}
+local ModTap = {}
 ModTap.__index = ModTap
 
 function ModTap.new(config)
-  local m = {}
-  m.keyCode = config.keyCode
-  m.modCode = config.modCode
-  m.down = false
-  m.held = false
-  m.downTime = 0
-  m.parent = nil
-  setmetatable(m, ModTap)
-  return m
+  local m = {
+    keyCode = config.keyCode,
+    modCode = config.modCode,
+    threshold = config.threshold or 0.1,
+    down = false,
+    held = false,
+    timer = nil,
+    parent = nil,
+  }
+  return setmetatable(m, ModTap)
 end
 
 function ModTap:press()
