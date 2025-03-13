@@ -6,6 +6,8 @@ local keycodes = require("hs.keycodes")
 local keyDown = eventtap.event.types.keyDown
 local keyUp = eventtap.event.types.keyUp
 
+-- ModTap ----------------------------------------------------------------------
+
 local ModTap = {
   keyCode = nil,
   modCode = nil,
@@ -15,7 +17,7 @@ local ModTap = {
 }
 ModTap.__index = ModTap
 
-function M.newModTap(config)
+function ModTap.new(config)
   local m = {}
   m.keyCode = config.keyCode
   m.modCode = config.modCode
@@ -60,6 +62,43 @@ function ModTap:release()
   end
 end
 
+-- ModTapSet -------------------------------------------------------------------
+
+local ModTapSet = {}
+ModTapSet.__index = ModTapSet
+
+function ModTapSet.new()
+  local m = {
+    modTaps = {}
+  }
+  return setmetatable(m, ModTapSet)
+end
+
+function ModTapSet.__index(self, key)
+  local method = rawget(ModTapSet, key)
+  if method then
+    return method
+  end
+  return self.modTaps[key]
+end
+
+-- @param mt (ModTap)
+function ModTapSet:add(mt)
+  self.modTaps[mt.keyCode] = mt
+end
+
+function ModTapSet:held()
+  local heldModifiers = {}
+  for _, k in pairs(self.modTaps) do
+    if k.held then
+      table.insert(heldModifiers, k.modCode)
+    end
+  end
+  return heldModifiers
+end
+
+--------------------------------------------------------------------------------
+
 local function logEvent(keyCode, eventType, flags)
   local key = hs.keycodes.map[keyCode]
   local et = " [keyDown]"
@@ -76,15 +115,15 @@ end
 
 local function start()
 
-  local modTaps = {}
-  modTaps[keycodes.map.z] = M.newModTap({
+  local modTaps = ModTapSet.new()
+  modTaps:add(ModTap.new({
     keyCode = keycodes.map.z,
-    modCode = keycodes.map.ctrl,
-  })
-  modTaps[keycodes.map.x] = M.newModTap({
+   modCode = keycodes.map.ctrl,
+  }))
+  modTaps:add(ModTap.new({
     keyCode = keycodes.map.x,
     modCode = keycodes.map.alt,
-  })
+  }))
 
   M.keyEventHandler = eventtap.new({keyDown, keyUp}, function (event)
     local keyCode = event:getKeyCode()
@@ -104,15 +143,9 @@ local function start()
       return true
     end
 
-    local heldModifiers = {}
-    for _, k in pairs(modTaps) do
-      if k.held then
-        table.insert(heldModifiers, k.modCode)
-      end
-    end
-
+    -- When any mod-taps are held, intercept and resend the event.
+    local heldModifiers = modTaps:held()
     if next(heldModifiers) ~= nil then
-      -- When any mod-taps are held, intercept and resend the event.
       if eventType == keyDown then
         M.keyEventHandler:stop()
         for _, modifier in ipairs(heldModifiers) do
