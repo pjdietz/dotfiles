@@ -217,23 +217,21 @@ function logEvent(keyCode, eventType, flags)
   M.log.d("Key event: " .. key, et, f)
 end
 
-local function start()
-  local modTaps = ModTapSet.new()
-  modTaps:add(ModTap.new({
-    keyCode = keycodes.map.z,
-   modCode = keycodes.map.ctrl,
-  }))
-  modTaps:add(ModTap.new({
-    keyCode = keycodes.map.x,
-    modCode = keycodes.map.alt,
-  }))
-  modTaps:start()
-end
-
 function M.init(config)
   config = config or {}
+
+  local modTaps = ModTapSet.new()
+  for k, v in pairs(config.keys) do
+    modTaps:add(ModTap.new({
+      keyCode = keycodes.map[k],
+      modCode = keycodes.map[v.hold]
+    }))
+  end
+
+  modTaps:start()
+
+  M.modTaps = modTaps
   M.log = hs.logger.new('modtap.log', 'debug')
-  start()
 end
 
 return M

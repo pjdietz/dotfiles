@@ -1,10 +1,13 @@
 hs.loadSpoon("EmmyLua")
 
--- local keyboard = require("keyboard")
--- keyboard.setup()
-
 local modtap = require("modtap")
-modtap.init()
+modtap.init({
+  keys = {
+    z = { hold = "ctrl" },
+    x = { hold = "alt" },
+    c = { hold = "cmd" },
+  }
+})
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()
