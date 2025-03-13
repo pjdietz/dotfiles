@@ -2,6 +2,7 @@ hs.loadSpoon("EmmyLua")
 
 local modtap = require("modtap")
 modtap.init({
+  threshold = 0.1,
   keys = {
     ["z"] = { hold = { "ctrl" } },
     ["x"] = { hold = { "alt" } },
@@ -10,6 +11,7 @@ modtap.init({
     ["."] = { hold = { "alt" } },
     ["/"] = { hold = { "ctrl" } },
     ["escape"] = { hold = { "ctrl", "cmd" } },
+    ["tab"] = { hold = { "ctrl", "alt", "cmd" } },
   }
 })
 

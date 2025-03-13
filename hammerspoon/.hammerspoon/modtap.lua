@@ -6,11 +6,11 @@ local keycodes = require("hs.keycodes")
 local keyDown = eventtap.event.types.keyDown
 local keyUp = eventtap.event.types.keyUp
 
-local keysToKeyCodes
+local flagsToKeyCodes
 local flagsToKeys
-local keyCodesFromFlags
-local mergeAndMakeUnique
+local keysToKeyCodes
 local logEvent
+local mergeAndMakeUnique
 
 -- ModTap ----------------------------------------------------------------------
 
@@ -161,7 +161,7 @@ function ModTapSet:start()
     -- When any mod-taps are held, intercept and resend.
     if next(self:held()) ~= nil then
       -- Convert flags to a table of modifier key codes.
-      local modifiers = keyCodesFromFlags(flags)
+      local modifiers = flagsToKeyCodes(flags)
       if eventType == keyDown then
         self:sendKeyDown(keyCode, modifiers)
       else
@@ -213,7 +213,7 @@ function keysToKeyCodes(flags)
   return keyCodes
 end
 
-function keyCodesFromFlags(flags)
+function flagsToKeyCodes(flags)
   return keysToKeyCodes(flagsToKeys(flags))
 end
 
@@ -236,11 +236,14 @@ end
 function M.init(config)
   config = config or {}
 
+  local threshold = config.threshold or 0.1
+
   local modTaps = ModTapSet.new()
-  for k, v in pairs(config.keys) do
+  for key, keyOpts in pairs(config.keys) do
     modTaps:add(ModTap.new({
-      keyCode = keycodes.map[k],
-      modifiers = keysToKeyCodes(v.hold)
+      keyCode = keycodes.map[key],
+      modifiers = keysToKeyCodes(keyOpts.hold),
+      threshold = keyOpts.threshold or threshold
     }))
   end
 
