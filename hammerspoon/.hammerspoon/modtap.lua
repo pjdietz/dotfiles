@@ -6,34 +6,7 @@ local keycodes = require("hs.keycodes")
 local keyDown = eventtap.event.types.keyDown
 local keyUp = eventtap.event.types.keyUp
 
-local function mergeAndMakeUnique(tbl1, tbl2)
-    local result = {}
-    local seen = {}
-    for _, value in ipairs(tbl1) do
-        if not seen[value] then
-            table.insert(result, value)
-            seen[value] = true
-        end
-    end
-    for _, value in ipairs(tbl2) do
-        if not seen[value] then
-            table.insert(result, value)
-            seen[value] = true
-        end
-    end
-    return result
-end
-
-local function keyCodesFromFlags(flags)
-  local modifiers = {}
-  for k, _ in pairs(flags) do
-    local modCode = keycodes.map[k]
-    if modCode then
-      table.insert(modifiers, modCode)
-    end
-  end
-  return modifiers
-end
+local mergeAndMakeUnique
 
 -- ModTap ----------------------------------------------------------------------
 
@@ -81,10 +54,6 @@ function ModTap:release()
     if self.parent then
       self.parent:sendTap(self.keyCode)
     end
-    -- M.keyEventHandler:stop()
-    -- hs.eventtap.event.newKeyEvent({}, self.keyCode, true):post()
-    -- hs.eventtap.event.newKeyEvent({}, self.keyCode, false):post()
-    -- M.keyEventHandler:start()
   end
 
   self.down = false
@@ -163,6 +132,35 @@ function ModTapSet:sendTap(keyCode)
 end
 
 --------------------------------------------------------------------------------
+
+function mergeAndMakeUnique(tbl1, tbl2)
+  local result = {}
+  local seen = {}
+  for _, value in ipairs(tbl1) do
+    if not seen[value] then
+      table.insert(result, value)
+      seen[value] = true
+    end
+  end
+  for _, value in ipairs(tbl2) do
+    if not seen[value] then
+      table.insert(result, value)
+      seen[value] = true
+    end
+  end
+  return result
+end
+
+local function keyCodesFromFlags(flags)
+  local modifiers = {}
+  for k, _ in pairs(flags) do
+    local modCode = keycodes.map[k]
+    if modCode then
+      table.insert(modifiers, modCode)
+    end
+  end
+  return modifiers
+end
 
 local function logEvent(keyCode, eventType, flags)
   local key = hs.keycodes.map[keyCode]
