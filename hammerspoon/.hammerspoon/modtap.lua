@@ -6,7 +6,8 @@ local keycodes = require("hs.keycodes")
 local keyDown = eventtap.event.types.keyDown
 local keyUp = eventtap.event.types.keyUp
 
-local keysFromFlags
+local keysToKeyCodes
+local flagsToKeys
 local keyCodesFromFlags
 local mergeAndMakeUnique
 local logEvent
@@ -19,7 +20,7 @@ ModTap.__index = ModTap
 function ModTap.new(config)
   local m = {
     keyCode = config.keyCode,
-    modCode = config.modCode,
+    modifiers = config.modifiers,
     threshold = config.threshold or 0.1,
     down = false,
     held = false,
@@ -94,7 +95,9 @@ function ModTapSet:held()
   local heldModifiers = {}
   for _, k in pairs(self.modTaps) do
     if k.held then
-      table.insert(heldModifiers, k.modCode)
+      for _, m in ipairs(k.modifiers) do
+        table.insert(heldModifiers, m)
+      end
     end
   end
   return heldModifiers
@@ -145,7 +148,7 @@ function ModTapSet:start()
     -- When the event matches a mod-tap key, press or release it.
     local mt = self.modTaps[keyCode]
     if mt ~= nil then
-      local modifiers = keysFromFlags(flags)
+      local modifiers = flagsToKeys(flags)
       if eventType == keyDown then
         mt:press()
       else
@@ -174,7 +177,7 @@ function ModTapSet:start()
   self.handler:start()
 end
 
---------------------------------------------------------------------------------
+-- Utility ---------------------------------------------------------------------
 
 function mergeAndMakeUnique(tbl1, tbl2)
   local result = {}
@@ -194,7 +197,7 @@ function mergeAndMakeUnique(tbl1, tbl2)
   return result
 end
 
-function keysFromFlags(flags)
+function flagsToKeys(flags)
   local modifiers = {}
   for k, _ in pairs(flags) do
     table.insert(modifiers, k)
@@ -202,15 +205,16 @@ function keysFromFlags(flags)
   return modifiers
 end
 
-function keyCodesFromFlags(flags)
-  local modifiers = {}
-  for k, _ in pairs(flags) do
-    local modCode = keycodes.map[k]
-    if modCode then
-      table.insert(modifiers, modCode)
-    end
+function keysToKeyCodes(flags)
+  local keyCodes = {}
+  for _, k in ipairs(flags) do
+    table.insert(keyCodes, k)
   end
-  return modifiers
+  return keyCodes
+end
+
+function keyCodesFromFlags(flags)
+  return keysToKeyCodes(flagsToKeys(flags))
 end
 
 function logEvent(keyCode, eventType, flags)
@@ -227,6 +231,8 @@ function logEvent(keyCode, eventType, flags)
   M.log.d("Key event: " .. key, et, f)
 end
 
+-- Module ----------------------------------------------------------------------
+
 function M.init(config)
   config = config or {}
 
@@ -234,7 +240,7 @@ function M.init(config)
   for k, v in pairs(config.keys) do
     modTaps:add(ModTap.new({
       keyCode = keycodes.map[k],
-      modCode = keycodes.map[v.hold]
+      modifiers = keysToKeyCodes(v.hold)
     }))
   end
 
