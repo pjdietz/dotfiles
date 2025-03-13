@@ -6,6 +6,35 @@ local keycodes = require("hs.keycodes")
 local keyDown = eventtap.event.types.keyDown
 local keyUp = eventtap.event.types.keyUp
 
+local function mergeAndMakeUnique(tbl1, tbl2)
+    local result = {}
+    local seen = {}
+    for _, value in ipairs(tbl1) do
+        if not seen[value] then
+            table.insert(result, value)
+            seen[value] = true
+        end
+    end
+    for _, value in ipairs(tbl2) do
+        if not seen[value] then
+            table.insert(result, value)
+            seen[value] = true
+        end
+    end
+    return result
+end
+
+local function keyCodesFromFlags(flags)
+  local modifiers = {}
+  for k, _ in pairs(flags) do
+    local modCode = keycodes.map[k]
+    if modCode then
+      table.insert(modifiers, modCode)
+    end
+  end
+  return modifiers
+end
+
 -- ModTap ----------------------------------------------------------------------
 
 local ModTap = {
@@ -24,6 +53,7 @@ function ModTap.new(config)
   m.down = false
   m.held = false
   m.downTime = 0
+  m.parent = nil
   setmetatable(m, ModTap)
   return m
 end
@@ -48,10 +78,13 @@ function ModTap:release()
 
   -- When released before the modifier threshold, send a tap.
   if not self.held then
-    M.keyEventHandler:stop()
-    hs.eventtap.event.newKeyEvent({}, self.keyCode, true):post()
-    hs.eventtap.event.newKeyEvent({}, self.keyCode, false):post()
-    M.keyEventHandler:start()
+    if self.parent then
+      self.parent:sendTap(self.keyCode)
+    end
+    -- M.keyEventHandler:stop()
+    -- hs.eventtap.event.newKeyEvent({}, self.keyCode, true):post()
+    -- hs.eventtap.event.newKeyEvent({}, self.keyCode, false):post()
+    -- M.keyEventHandler:start()
   end
 
   self.down = false
@@ -85,6 +118,7 @@ end
 -- @param mt (ModTap)
 function ModTapSet:add(mt)
   self.modTaps[mt.keyCode] = mt
+  mt.parent = self
 end
 
 function ModTapSet:held()
@@ -95,6 +129,37 @@ function ModTapSet:held()
     end
   end
   return heldModifiers
+end
+
+function ModTapSet:sendKeyDown(keyCode, modifiers)
+  modifiers = modifiers or {}
+  modifiers = mergeAndMakeUnique(modifiers, self:held())
+
+  M.keyEventHandler:stop()
+  for _, modifier in ipairs(modifiers) do
+    hs.eventtap.event.newKeyEvent(modifier, true):post()
+  end
+  hs.eventtap.event.newKeyEvent(keyCode, true):post()
+  M.keyEventHandler:start()
+end
+
+function ModTapSet:sendKeyUp(keyCode, modifiers)
+  modifiers = modifiers or {}
+  modifiers = mergeAndMakeUnique(modifiers, self:held())
+
+  M.keyEventHandler:stop()
+  hs.eventtap.event.newKeyEvent(keyCode, false):post()
+  for _, modifier in ipairs(modifiers) do
+    hs.eventtap.event.newKeyEvent(modifier, false):post()
+  end
+  M.keyEventHandler:start()
+end
+
+function ModTapSet:sendTap(keyCode)
+  M.keyEventHandler:stop()
+  hs.eventtap.event.newKeyEvent({}, keyCode, true):post()
+  hs.eventtap.event.newKeyEvent({}, keyCode, false):post()
+  M.keyEventHandler:start()
 end
 
 --------------------------------------------------------------------------------
@@ -131,45 +196,37 @@ local function start()
     local flags = event:getFlags()
     logEvent(keyCode, eventType, flags)
 
+    -- When the event match a mod-tap key, press or release it.
     local mt = modTaps[keyCode]
-
     if mt ~= nil then
-      -- When the event match a mod-tap key, press or release it.
       if eventType == keyDown then
         mt:press()
       else
         mt:release()
       end
+      -- Delete the event.
       return true
     end
 
     -- When any mod-taps are held, intercept and resend the event.
-    local heldModifiers = modTaps:held()
-    if next(heldModifiers) ~= nil then
+    if next(modTaps:held()) ~= nil then
+      -- Convert flags to a table of modifier key codes.
+      local modifiers = keyCodesFromFlags(flags)
       if eventType == keyDown then
-        M.keyEventHandler:stop()
-        for _, modifier in ipairs(heldModifiers) do
-          hs.eventtap.event.newKeyEvent(modifier, true):post()
-        end
-        hs.eventtap.event.newKeyEvent(keyCode, true):post()
-        M.keyEventHandler:start()
+        modTaps:sendKeyDown(keyCode, modifiers)
       else
-        M.keyEventHandler:stop()
-        hs.eventtap.event.newKeyEvent(keyCode, false):post()
-        for _, modifier in ipairs(heldModifiers) do
-          hs.eventtap.event.newKeyEvent(modifier, true):post()
-        end
-        M.keyEventHandler:start()
+        modTaps:sendKeyUp(keyCode, modifiers)
       end
+      -- Delete the event.
       return true
     end
 
+    -- Allow all other key events to propagate normally.
     return false
   end)
 
   M.keyEventHandler:start()
 end
-
 
 function M.init(config)
   config = config or {}

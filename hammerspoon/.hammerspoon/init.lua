@@ -6,13 +6,8 @@ hs.loadSpoon("EmmyLua")
 local modtap = require("modtap")
 modtap.init()
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Y", function()
-  hs.eventtap.event.newKeyEvent(hs.keycodes.map.ctrl, true):post()
-  hs.eventtap.event.newKeyEvent(hs.keycodes.map.space, true):post()
-  hs.eventtap.event.newKeyEvent(hs.keycodes.map.space, false):post()
-  hs.eventtap.event.newKeyEvent(hs.keycodes.map.ctrl, false):post()
-  hs.eventtap.event.newKeyEvent("2", true):post()
-  hs.eventtap.event.newKeyEvent("2", false):post()
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
+  hs.reload()
 end)
 
 -- Notification when the configuration is loaded
