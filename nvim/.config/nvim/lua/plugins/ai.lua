@@ -74,8 +74,11 @@ return {
         end,
       })
 
+      require("plugins.ai.fidget"):init()
+
     end,
     dependencies = {
+      "j-hui/fidget.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
