@@ -19,6 +19,7 @@
     state: present
   loop:
     - FelixKratz/formulae #borders
+    - go-task/tap
     - nikitabobko/tap     #aerospace
 
 - name: Install Homebrew packages
@@ -35,6 +36,7 @@
       - eza
       - fd
       - fzf
+      - go-task
       - ripgrep
       - tmux
       - tree
