@@ -1,4 +1,5 @@
 hs.loadSpoon("EmmyLua")
+hs.loadSpoon("FnMate")
 
 local modtap = require("modtap")
 modtap.init({
