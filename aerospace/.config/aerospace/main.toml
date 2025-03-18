@@ -2,6 +2,8 @@ accordion-padding = 60
 
 after-startup-command = ['exec-and-forget sketchybar']
 
+automatically-unhide-macos-hidden-apps = true
+
 exec-on-workspace-change = [
     '/bin/bash', '-c',
     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'

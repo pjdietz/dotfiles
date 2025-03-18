@@ -2,6 +2,16 @@
 
 VPN=AZURE_VLAN_001
 
+# Update the sketchybar item.
+draw()
+{
+  sketchybar --set "${NAME}" \
+    icon="${ICON}" \
+    icon.font.size="30" \
+    label="VPN"
+}
+
+# Toggle the VPN; set the icon to show the progress indicator.
 click()
 {
   status=$(networksetup -showpppoestatus "${VPN}")
@@ -11,23 +21,24 @@ click()
     networksetup -connectpppoeservice "${VPN}"
   fi
   ICON=󰦖
-  sketchybar --set "${NAME}" icon="${ICON}" label=""
+  draw
 }
 
+# Update the icon based on the VPN status.
 status()
 {
   status=$(networksetup -showpppoestatus "${VPN}")
   case "${status}" in
-    "connected") ICON=󰱓
+    "connected") ICON=
       ;;
-    "disconnected") ICON=󰅛
+    "disconnected") ICON=
       ;;
-    "connecting") ICON=󰦖
+    "connecting"|"disconnecting") ICON=󰦖
       ;;
-    *) ICON=󰛵
+    *) ICON=󰀨
       ;;
   esac
-  sketchybar --set "${NAME}" icon="${ICON}" label=""
+  draw
 }
 
 if [ "$1" = "click" ]; then

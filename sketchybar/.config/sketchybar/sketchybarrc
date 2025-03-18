@@ -36,7 +36,7 @@ default=(
 sketchybar --default "${default[@]}"
 
 sketchybar --add item apple left \
-           --set apple icon= label.drawing=off \
+           --set apple icon= label.drawing=off click_script="sketchybar --reload" \
            --add item front_app left \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched
@@ -65,7 +65,7 @@ sketchybar --add item clock right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change \
            --add item vpn right \
-           --set vpn update_freq=10 icon=󰀑 \
+           --set vpn update_freq=10 icon=󰀑 label=VPN \
              script="${PLUGIN_DIR}/vpn.sh status" \
              click_script="${PLUGIN_DIR}/vpn.sh click"
 
