@@ -3,14 +3,14 @@ hs.loadSpoon("FnMate")
 
 local modtap = require("modtap")
 modtap.init({
-  threshold = 0.1,
+  threshold = 0.2,
   keys = {
     ["z"] = { hold = { "ctrl" } },
     ["x"] = { hold = { "alt" } },
-    ["c"] = { hold = { "cmd" } },
-    [","] = { hold = { "cmd" } },
-    ["."] = { hold = { "alt" } },
-    ["/"] = { hold = { "ctrl" } },
+    -- ["c"] = { hold = { "cmd" } },
+    -- [","] = { hold = { "cmd" } },
+    -- ["."] = { hold = { "alt" } },
+    -- ["/"] = { hold = { "ctrl" } },
     ["escape"] = { hold = { "ctrl", "cmd" } },
     ["tab"] = { hold = { "ctrl", "alt", "cmd" } },
   }
