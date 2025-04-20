@@ -21,6 +21,7 @@ const (
 	icon_firefox  = ""
 	icon_finder   = "󰀶"
 	icon_k8s      = "󱃾"
+	icon_rider    = ""
 	icon_teams    = "󰊻"
 	icon_terminal = "󰞷"
 	icon_todo     = ""
@@ -39,6 +40,7 @@ var icons = map[string]string{
 	"Ghostty":           icon_terminal,
 	"Microsoft Outlook": icon_calendar,
 	"Microsoft Teams":   icon_teams,
+	"JetBrains Rider":   icon_rider,
 	"Todoist":           icon_todo,
 	"zoom.us":           icon_z,
 }
