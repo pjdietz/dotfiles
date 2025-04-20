@@ -107,6 +107,7 @@ return {
 
     nmap("<Leader>ft", "<CMD>TodoTelescope keywords=TODO,FIX<CR>", "[F]ind [T]ODO and FIX")
     nmap("<Leader>fb", "<CMD>Telescope file_browser<CR>", "[F]ile [B]rowser")
+    nmap("<Leader>f'", builtin.marks, "[F]ind marks")
     nmap("<Leader>fst", builtin.treesitter, "[F]ind [S]ymbols in [T]reesitter")
 
     ----------------------------------------------------------------------------

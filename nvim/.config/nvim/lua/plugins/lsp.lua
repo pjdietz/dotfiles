@@ -49,8 +49,24 @@ return {
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     local servers = {
 
-      bashls = {},
-      gopls = {},
+      bashls = {
+        settings = {
+            bashls = {
+              diagnostic = {
+                excludeGlobs = { ".env" },
+              },
+            },
+          },
+      },
+
+      gopls = {
+        settings = {
+          gopls = {
+            buildFlags = { "-tags=integration" },
+          }
+        }
+      },
+
       omnisharp = {},
 
       -- PHP
