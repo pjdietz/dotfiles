@@ -30,7 +30,7 @@ return {
       require("codecompanion").setup({
         strategies = {
           chat = {
-            adapter = "copilot",
+            adapter = "gemini",
             slash_commands = {
               ["file"] = {
                 -- Location to the slash command in CodeCompanion
@@ -44,7 +44,7 @@ return {
             },
           },
           inline = {
-            adapter = "copilot"
+            adapter = "gemini"
           }
         },
       })
