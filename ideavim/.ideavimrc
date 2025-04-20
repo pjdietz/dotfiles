@@ -15,7 +15,7 @@ xnoremap J :move '>+1<CR>gv=gv
 xnoremap K :move '<-2<CR>gv=gv
 
 " Clear search hightlight
-" nnoremap <leader><esc> :noh<CR>
+nnoremap <leader><esc> :noh<CR>
 
 map <Leader>bd :bd<cr>
 map <C-n> <Action>(NextTab)
@@ -30,6 +30,7 @@ map <Leader>fi <Action>(FindInPath)
 map <Leader>ft <Action>(RiderUnitTestQuickListPopupAction)
 
 map gr <Action>(FindUsages)
+map gd <Action>(GotoDeclaration)
 
 map <Leader>r :source ~/.ideavimrc<cr>
 

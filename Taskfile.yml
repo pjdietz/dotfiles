@@ -1,0 +1,9 @@
+version: 3
+
+tasks:
+
+  ansible:
+    description: "Run the playbook to install and configure dotfiles"
+    dir: ./ansible
+    cmds:
+      - ansible-playbook main.yml
