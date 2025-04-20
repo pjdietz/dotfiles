@@ -17,15 +17,20 @@ return {
       "luadoc",
       "markdown",
       "php",
+      "sql",
       "vim",
       "vimdoc",
     },
     auto_install = true,
     highlight = {
       enable = true,
-      disable = { "dockerfile" }
+      disable = { "dockerfile" },
+      additional_vim_regex_highlighting = false,
     },
     indent = {
+      enable = true
+    },
+    injections = {
       enable = true
     },
     incremental_selection = {
