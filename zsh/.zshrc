@@ -24,7 +24,7 @@ declare -a PATH_DIRS=(
   "/usr/local/bin"
   "${HOME}/.cargo/bin"
   "${HOME}/.krew/bin"
-  "${HOME}/dotnet"
+  "${HOME}/.dotnet"
 )
 
 if command -v go &> /dev/null; then
