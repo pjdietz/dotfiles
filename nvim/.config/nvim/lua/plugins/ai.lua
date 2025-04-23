@@ -30,7 +30,11 @@ return {
       require("codecompanion").setup({
         display = {
           chat = {
-            show_settings = false
+            show_settings = false,
+            window = {
+              layout = "vertical",
+              position = "left",
+            }
           }
         },
         strategies = {
@@ -58,6 +62,13 @@ return {
       vim.api.nvim_create_user_command("CC", function(opts)
         vim.cmd("CodeCompanion " .. opts.args)
       end, { nargs = "*" })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "codecompanion",
+        callback = function()
+          vim.cmd("set filetype=markdown")
+        end,
+      })
 
       -- Disable colorcolumn for the CodeCompanion chat window.
       local function find_window_for_buffer(buffer_id)
@@ -150,6 +161,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     keys = {
+      { "<Leader>cn", "<CMD>CodeCompanionChat<CR>", desc = "[C]ode Companion [N]ew Chat" },
       { "<Leader>cc", "<CMD>CodeCompanionChat Toggle<CR>", desc = "[C]ode Companion [C]hat" },
       { "<Leader>ci", "<CMD>CodeCompanion<CR>", desc = "[C]ode Companion [I]nline" }
     },
