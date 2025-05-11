@@ -77,6 +77,9 @@ attach_to_sesion()
       # Git repo: Start nvim; create a second window.
       tmux send-keys -t "=${name}:1" 'nvim' Enter
       tmux new-window -t "=${name}" -c "${directory}"
+    elif [[ "${directory}" =~ "k8s" ]]; then
+      # k8s: Configure prompt
+      tmux send-keys -t "=${name}:1" "kubeon" Enter
     elif [[ "${directory}" =~ "vimwiki" ]]; then
       # Vimwiki: Open the wiki
       tmux send-keys -t "=${name}:1" "nvim" Enter
