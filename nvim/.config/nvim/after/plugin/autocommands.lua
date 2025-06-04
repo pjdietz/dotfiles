@@ -20,8 +20,8 @@ api.nvim_create_autocmd("FileType", {
 api.nvim_create_autocmd("BufEnter", {
     pattern = { ".env", "*.env", ".env.*" },
     group = group,
-    callback = function (args)
-      vim.diagnostic.disable(args.buf)
+    callback = function ()
+      vim.diagnostic.enable(false)
     end
 })
 

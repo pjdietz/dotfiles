@@ -38,120 +38,11 @@ return {
         map("<Leader>fsw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[F]ind [S]ymbols in [W]orkspact")
 
         -- Diagnostics
-        map("[d", vim.diagnostic.goto_next, "Next [D]iagnostic")
-        map("]d", vim.diagnostic.goto_prev, "Previous [D]iagnostic")
         map("<Leader>lf", vim.lsp.buf.format, "[L]SP [F]ormat")
         map("<Leader>q", vim.diagnostic.setloclist, "Diagnostics to locallist")
 
       end
     })
-
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
-    local servers = {
-
-      bashls = {
-        settings = {
-            bashls = {
-              diagnostic = {
-                excludeGlobs = { ".env" },
-              },
-            },
-          },
-      },
-
-      gopls = {
-        settings = {
-          gopls = {
-            buildFlags = { "-tags=integration" },
-          }
-        }
-      },
-
-      omnisharp = {},
-
-      -- PHP
-      intelephense = {
-        CMD = { "intelephense", "--stdio" },
-        flags = {
-          debounce_text_changes = 150,
-        },
-        settings = {
-          -- https://github.com/bmewburn/intelephense-docs/blob/master/installation.md#configuration-options
-          intelephense = {
-            diagnostics = {
-              -- Prophecy causes a lot of false positives.
-              undefinedMethods = false
-            },
-            formatting = true,
-            -- https://github.com/JetBrains/phpstorm-stubs
-            stubs = {
-              "Core",
-              "Reflection",
-              "SPL",
-              "bcmath",
-              "crypto",
-              "curl",
-              "date",
-              "ds",
-              "fpm",
-              "filter",
-              "hash",
-              "json",
-              "ldap",
-              "memcached",
-              "openssl",
-              "opentelemetry",
-              "pcntl",
-              "pcre",
-              "pdo",
-              "redis",
-              "regex",
-              "session",
-              "superglobals",
-              "standard",
-              "zlib"
-            }
-          }
-        }
-      },
-
-      lua_ls = {
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = "Replace",
-            },
-            format = {
-              enable = true,
-              defaultConfig = {
-                indent_style = "space",
-                indent_size = "2",
-              }
-            },
-            runtime = {
-              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-              version = "LuaJIT",
-            },
-            diagnostics = {
-              globals = { "vim" }
-            },
-            workspace = {
-              library = vim.api.nvim_get_runtime_file("", true)
-            },
-          },
-        },
-      }, -- lua_ls
-
-      ts_ls = {
-        filetypes = { "javascript", "typescript" },
-        init_options = {
-          preferences = {
-            disableSuggestions = true,
-          },
-        },
-      }, -- tsserver
-
-    } -- servers
 
     local signs = {
       Error = " ",
@@ -165,28 +56,126 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
 
-    require("mason").setup()
+    local lspconfig = require("lspconfig")
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-    -- You can add other tools here that you want Mason to install
-    -- for you, so that they are available from within Neovim.
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      "stylua", -- Used to format Lua code
-    })
-    require("mason-tool-installer").setup { ensure_installed = ensure_installed }
-
-    require("mason-lspconfig").setup {
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for tsserver)
-          server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-          require("lspconfig")[server_name].setup(server)
-        end,
+    -- bashls
+    lspconfig.bashls.setup({
+      capabilities = capabilities,
+      settings = {
+        bashls = {
+          diagnostic = {
+            excludeGlobs = { ".env" },
+          },
+        },
       },
-    }
+    }) -- bashls
+
+    -- gopls
+    lspconfig.gopls.setup({
+      capabilities = capabilities,
+      settings = {
+        gopls = {
+          buildFlags = { "-tags=integration" },
+        }
+      }
+    }) -- gopls
+
+    -- lua_ls
+    lspconfig.lua_ls.setup({
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          completion = {
+            callSnippet = "Replace",
+          },
+          format = {
+            enable = true,
+            defaultConfig = {
+              indent_style = "space",
+              indent_size = "2",
+            }
+          },
+          runtime = {
+            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+            version = "LuaJIT",
+          },
+          diagnostics = {
+            globals = { "vim" }
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file("", true)
+          },
+        },
+      },
+    }) -- lua_ls
+
+    -- omnisharp
+    lspconfig.omnisharp.setup({
+      capabilities = capabilities
+    }) -- omnisharp
+
+    -- intelephense
+    lspconfig.intelephense.setup({
+      capabilities = capabilities,
+      CMD = { "intelephense", "--stdio" },
+      flags = {
+        debounce_text_changes = 150,
+      },
+      settings = {
+        -- https://github.com/bmewburn/intelephense-docs/blob/master/installation.md#configuration-options
+        intelephense = {
+          diagnostics = {
+            -- Prophecy causes a lot of false positives.
+            undefinedMethods = false
+          },
+          formatting = true,
+          -- https://github.com/JetBrains/phpstorm-stubs
+          stubs = {
+            "Core",
+            "Reflection",
+            "SPL",
+            "bcmath",
+            "crypto",
+            "curl",
+            "date",
+            "ds",
+            "fpm",
+            "filter",
+            "hash",
+            "json",
+            "ldap",
+            "memcached",
+            "openssl",
+            "opentelemetry",
+            "pcntl",
+            "pcre",
+            "pdo",
+            "redis",
+            "regex",
+            "session",
+            "superglobals",
+            "standard",
+            "zlib"
+          }
+        }
+      }
+    }) -- intelephense
+
+    -- ts_ls
+    lspconfig.ts_ls.setup({
+      filetypes = { "javascript", "typescript" },
+      init_options = {
+        preferences = {
+          disableSuggestions = true,
+        },
+      },
+    }) -- ts_ls
+
+    require("mason").setup()
+    require("mason-lspconfig").setup({
+      ensure_installed = { "bashls", "gopls", "lua_ls", "intelephense", "ts_ls" },
+    })
 
   end,
 }
