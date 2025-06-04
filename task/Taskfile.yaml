@@ -3,6 +3,7 @@ version: 3
 tasks:
 
   jaeger:
+    desc: Start Jaeger locally and open the browser.
     cmds:
       - defer: open "http://localhost:16686"
       - |
@@ -12,3 +13,20 @@ tasks:
           -p 4317:4317 \
           -p 4318:4318 \
           jaegertracing/all-in-one:latest
+
+  pr:
+    desc: Open a pull request from the current repo.
+    dir: '{{.USER_WORKING_DIR}}'
+    vars:
+      REPO_URL:
+        sh: |
+          git config --get remote.origin.url \
+            | sed -E 's/\.git$//' \
+            | sed -E 's#git@bitbucket.org:#https://bitbucket.org/#' \
+            | sed -E 's#ssh://git@bitbucket.org/##'
+      SOURCE_BRANCH:
+        sh: git rev-parse --abbrev-ref HEAD
+      DEST_BRANCH: main
+      PR_URL: "{{.REPO_URL}}/pull-requests/new?source={{.SOURCE_BRANCH}}&desc={{.DEST_BRANCH}}"
+    cmds:
+      - open "{{.PR_URL}}"
