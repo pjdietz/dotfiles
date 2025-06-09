@@ -1,23 +1,17 @@
 return {
   {
     "https://github.com/neovim/nvim-lspconfig",
+    event = "VeryLazy",
     cmd = { "LspInfo", "LspStart", "LspStop", "LspRestart" },
   },
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    enabled = true,
+    event = "VeryLazy",
+    keys = {
+      { "<Leader>tl", function () require("lsp_lines").toggle() end, desc = "[T]oggle [L]SP Lines" }
+    },
     config = function ()
-      local lsp_lines = require("lsp_lines")
-
-      lsp_lines.setup()
-
-      vim.diagnostic.config({
-        virtual_text = false,
-        virtual_lines = false
-      })
-
-      vim.keymap.set("", "<Leader>tl", lsp_lines.toggle, { desc = "[T]oggle [L]SP Lines" })
-
-    end
+      require("lsp_lines").setup()
+    end,
   }
 }
