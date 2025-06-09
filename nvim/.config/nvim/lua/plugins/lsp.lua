@@ -1,10 +1,5 @@
 return {
   {
-    "https://github.com/neovim/nvim-lspconfig",
-    event = "VeryLazy",
-    cmd = { "LspInfo", "LspStart", "LspStop", "LspRestart" },
-  },
-  {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     event = "VeryLazy",
     keys = {
