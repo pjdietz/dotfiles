@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+
+# Find the name of the cronjob to start. If none is provided as an argument,
+# read the list of cronjobs and use FZF to prompt for a selection.
+if [ "$#" -eq 0 ]; then
+  CRONJOB=$(kubectl get cronjob \
+    -o custom-columns=NAME:.metadata.name \
+    --no-headers \
+    | fzf)
+else
+  CRONJOB=$1
+fi
+
+if [ -z "${CRONJOB}" ]; then
+  echo "No cronjob selected. Exiting."
+  exit 1
+fi
+
+# Add a timestamp to create a unique name.
+JOB="${CRONJOB}-$(date +%s)"
+
+kubectl create job \
+  --from="cronjob/${CRONJOB}" \
+  "${JOB}"
+
+kubectl get pods --selector=job-name="${JOB}" --watch
