@@ -15,4 +15,7 @@ vim.api.nvim_create_user_command(
   }
 )
 
-vim.keymap.set({ "n", "v" }, "<Leader>ct", convert.select, { desc = "[C]onvert [T]ext" })
+vim.keymap.set({ "n", "v" }, "<Leader>ct", ":Convert<CR>", {
+  desc = "[C]onvert [T]ext",
+  silent = true,
+})
