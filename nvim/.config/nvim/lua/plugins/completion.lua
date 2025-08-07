@@ -110,6 +110,9 @@ return {
             return 0
           end
         }
+      },
+      per_filetype = {
+        codecompanion = { "codecompanion" },
       }
     },
 

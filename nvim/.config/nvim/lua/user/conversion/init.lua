@@ -5,12 +5,18 @@ local action_state = require("telescope.actions.state")
 local conf         = require("telescope.config").values
 
 local M = {
-  base64 = require("user.conversion.base64")
+  base64 = require("user.conversion.base64"),
+  json = require("user.conversion.json"),
+  url = require("user.conversion.url")
 }
 
 local conversions = {
-  { "Base64 Encode", M.base64.encode },
   { "Base64 Decode", M.base64.decode },
+  { "Base64 Encode", M.base64.encode },
+  { "JSON Pretty Print", M.json.pretty },
+  { "JWT Decode", M.json.jwt_decode },
+  { "URL Decode", M.url.decode },
+  { "URL Encode", M.url.encode },
 }
 
 local function convert_buffer(convert_fn)

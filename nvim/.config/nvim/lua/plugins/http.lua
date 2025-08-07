@@ -16,4 +16,5 @@ return {
     -- your configuration comes here
     global_keymaps = true,
   },
+  debug = 4,
 }
