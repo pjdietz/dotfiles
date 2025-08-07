@@ -10,12 +10,21 @@ set hlsearch
 
 """ Key Maps ------------------------------------------------------------------
 
+" Yank into +register by default
+nmap <Leader>y "+y
+vmap <Leader>y "+y
+nmap <Leader>Y "+Y
+nmap <Leader>yy "+yy
+
 " Move lines up or down
 xnoremap J :move '>+1<CR>gv=gv
 xnoremap K :move '<-2<CR>gv=gv
 
 " Clear search hightlight
 nnoremap <leader><esc> :noh<CR>
+
+" Yank to end of line
+map Y y$
 
 map <Leader>bd :bd<cr>
 map <C-n> <Action>(NextTab)
@@ -32,7 +41,10 @@ map <Leader>ft <Action>(RiderUnitTestQuickListPopupAction)
 map gr <Action>(FindUsages)
 map gd <Action>(GotoDeclaration)
 
-map <Leader>r :source ~/.ideavimrc<cr>
+nnoremap <Leader>R :source ~/.ideavimrc<cr>
+
+" DataGrip
+map <Leader>r <Action>(Console.Jdbc.Execute)
 
 """ Options -------------------------------------------------------------------
 
