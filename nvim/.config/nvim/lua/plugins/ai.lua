@@ -32,8 +32,10 @@ return {
           chat = {
             show_settings = false,
             window = {
-              layout = "vertical",
-              position = "left",
+              -- layout = "vertical",
+              -- position = "left",
+              layout = "buffer",
+              position = nil,
             }
           }
         },
@@ -51,6 +53,13 @@ return {
                 },
               },
             },
+            -- variables = {
+            --   ["buffer"] = {
+            --     opts = {
+            --       default_params = 'pin'
+            --     },
+            --   }
+            -- }
           },
           inline = {
             adapter = "gemini"

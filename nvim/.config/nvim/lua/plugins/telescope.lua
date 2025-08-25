@@ -13,17 +13,6 @@ return {
   config = function()
     local telescope = require "telescope"
 
-    telescope.setup {
-      defaults = {
-        path_display = { "smart" }
-      },
-      extensions = {
-        ["ui-select"] = {
-          require("telescope.themes").get_dropdown(),
-        },
-      },
-    }
-
     telescope.load_extension "file_browser"
     telescope.load_extension "fzy_native"
     telescope.load_extension "textcase"
@@ -35,6 +24,28 @@ return {
     -- https://github.com/nvim-telescope/telescope.nvim/issues/621
     local action_state = require "telescope.actions.state"
     local actions = require "telescope.actions"
+
+    -- https://github.com/nvim-telescope/telescope.nvim/issues/1048#issuecomment-993956937
+    local function multiopen(prompt_bufnr)
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        local multi = picker:get_multi_selection()
+
+        if not vim.tbl_isempty(multi) then
+            actions.close(prompt_bufnr)
+            for _, j in pairs(multi) do
+                if j.path ~= nil then
+                    local path = vim.fn.fnameescape(j.path)
+                    if j.lnum ~= nil then
+                        vim.cmd(string.format("silent! edit +%d %s", j.lnum, path))
+                    else
+                        vim.cmd(string.format("silent! edit %s", path))
+                    end
+                end
+            end
+        else
+            actions.select_default(prompt_bufnr)
+        end
+    end
 
     -- Find open buffers and allow closing from picker using multiselect
     -- https://github.com/nvim-telescope/telescope.nvim/issues/621
@@ -69,6 +80,25 @@ return {
     local vmap = function(keys, func, desc)
       vim.keymap.set("v", keys, func, { desc = desc })
     end
+
+    telescope.setup {
+      defaults = {
+        path_display = { "smart" },
+        mappings = {
+            i = {
+                ["<CR>"] = multiopen,
+            },
+            n = {
+                ["<CR>"] = multiopen,
+            },
+        },
+      },
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown(),
+        },
+      },
+    }
 
     ----------------------------------------------------------------------------
     -- Files and buffers

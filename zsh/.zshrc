@@ -112,6 +112,11 @@ set_autocomplete()
   compinit
   _comp_options+=(globdots)
 
+  # direnv
+  if command -v direnv &> /dev/null; then
+    eval "$(direnv hook zsh)"
+  fi
+
   # fzf
   if command -v fzf &> /dev/null; then
     eval "$(fzf --zsh)"
