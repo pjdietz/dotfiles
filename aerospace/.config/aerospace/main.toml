@@ -44,10 +44,10 @@ ctrl-cmd-f = 'fullscreen'
 ctrl-cmd-shift-f = 'fullscreen --no-outer-gaps'
 
 # Focus workspaces
-ctrl-cmd-h = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace prev'
-ctrl-cmd-j = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace prev'
-ctrl-cmd-k = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace next'
-ctrl-cmd-l = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace next'
+# ctrl-cmd-h = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace prev'
+# ctrl-cmd-j = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace prev'
+# ctrl-cmd-k = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace next'
+# ctrl-cmd-l = 'exec-and-forget aerospace list-workspaces --monitor focused --empty no | aerospace workspace next'
 
 # Focus monitors
 ctrl-alt-cmd-h = 'focus-monitor left'
@@ -55,6 +55,32 @@ ctrl-alt-cmd-j = 'focus-monitor left'
 ctrl-alt-cmd-k = 'focus-monitor right'
 ctrl-alt-cmd-l = 'focus-monitor right'
 ctrl-alt-cmd-space = 'move-workspace-to-monitor --wrap-around next'
+
+# Move: ctrl-cmd hjkl
+ctrl-cmd-h = 'focus left'
+ctrl-cmd-j = 'focus down'
+ctrl-cmd-k = 'focus up'
+ctrl-cmd-l = 'focus right'
+
+ctrl-cmd-1 = ['workspace 1']
+ctrl-cmd-2 = ['workspace 2']
+ctrl-cmd-3 = ['workspace 3']
+ctrl-cmd-4 = ['workspace 4']
+ctrl-cmd-5 = ['workspace 5']
+ctrl-cmd-6 = ['workspace 6']
+ctrl-cmd-7 = ['workspace 7']
+ctrl-cmd-8 = ['workspace 8']
+ctrl-cmd-9 = ['workspace 9']
+
+ctrl-cmd-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+ctrl-cmd-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+ctrl-cmd-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+ctrl-cmd-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+ctrl-cmd-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+ctrl-cmd-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+ctrl-cmd-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+ctrl-cmd-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+ctrl-cmd-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 
 # Modes
 alt-space = 'mode workspace'
