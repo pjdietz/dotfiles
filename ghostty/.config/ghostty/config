@@ -2,7 +2,7 @@ font-family = Hack Nerd Font Mono
 font-size = 20
 adjust-cell-height = 18
 
-theme = catppuccin-mocha
+theme = catppuccin-mocha-custom
 
 window-decoration = true
 macos-titlebar-style = hidden
@@ -12,33 +12,7 @@ window-padding-balance = true
 
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 
+auto-update-channel = tip
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#custom-shader = shaders/cursor_smear.glsl
+#custom-shader = shaders/cursor_smear_fade.glsl
