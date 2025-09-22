@@ -62,7 +62,14 @@ return {
             -- }
           },
           inline = {
-            adapter = "gemini"
+            adapter = "gemini",
+            variables = {
+              ["buffer"] = {
+                opts = {
+                  default_params = 'pin'
+                },
+              }
+            }
           }
         },
       })
