@@ -1,5 +1,6 @@
 *~
 .DS_Store
+.envrc
 .idea
 .vscode
 .phpunit.result.cache
