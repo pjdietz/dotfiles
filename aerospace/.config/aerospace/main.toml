@@ -85,6 +85,7 @@ ctrl-cmd-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 # Modes
 alt-space = 'mode workspace'
 alt-r = 'mode resize'
+ctrl-cmd-r = 'mode resize'
 
 [mode.resize.binding]
 j = 'resize smart -100'
