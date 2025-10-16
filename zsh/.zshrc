@@ -218,6 +218,8 @@ set_aliases()
   alias tms='tmux-session'
   alias tmw='tmux-window'
   alias tree='eza -T'
+  alias tree2='eza -T -L 2 --git-ignore'
+  alias tree3='eza -T -L 3 --git-ignore'
   alias vim='nvim'
 }
 
