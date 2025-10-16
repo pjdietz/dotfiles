@@ -62,18 +62,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Extras
 
-local function restart_lsp(bufnr)
+local function restart_lsp(targets, bufnr)
     bufnr = bufnr or vim.api.nvim_get_current_buf()
-    local clients
-    if vim.lsp.get_clients then
-        clients = vim.lsp.get_clients({ bufnr = bufnr })
-    else
-        ---@diagnostic disable-next-line: deprecated
-        clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+
+    local want = {}
+    for _, n in ipairs(targets) do
+        want[n] = true
     end
 
     for _, client in ipairs(clients) do
-        vim.lsp.stop_client(client.id)
+        if want[client.name] then
+            vim.lsp.stop_client(client.id)
+        end
     end
 
     vim.defer_fn(function()
@@ -82,7 +83,7 @@ local function restart_lsp(bufnr)
 end
 
 vim.api.nvim_create_user_command('LspRestart', function()
-    restart_lsp()
+    restart_lsp({"intelephense"})
 end, {})
 
 local function lsp_status()
