@@ -36,6 +36,7 @@ return {
         "pcntl",
         "pcre",
         "pdo",
+        "random",
         "redis",
         "regex",
         "session",
