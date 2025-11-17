@@ -3,7 +3,14 @@ version: 3
 tasks:
 
   ansible:
-    description: "Run the playbook to install and configure dotfiles"
+    desc: "Run the playbook to install and configure dotfiles"
     dir: ./ansible
     cmds:
       - ansible-playbook main.yml
+
+  sketchybar-plugins:
+    desc: "Build plugins for Sketchybar"
+    dir: ~/.config/sketchybar/plugins
+    cmds:
+      - go build -o aerospace ./aerospace.go
+      - sketchybar --update
