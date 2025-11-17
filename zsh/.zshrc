@@ -201,6 +201,7 @@ set_aliases()
   alias gc='git commit'
   alias gca='git commit --amend'
   alias gcan="git commit --amend --no-edit"
+  alias gcda="git commit -m 'The story so far: In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.'"
   alias gg='git graph'
   alias gl='git log'
   alias glo='git oneline'
@@ -214,6 +215,7 @@ set_aliases()
   alias kg='kubectl get'
   alias kpf='kubectl port-forward'
   alias krc='kubectl resource-capacity'
+  alias oc='opencode'
   alias wk='watch kubectl'
   alias tms='tmux-session'
   alias tmw='tmux-window'
