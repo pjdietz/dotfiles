@@ -263,8 +263,8 @@ func getVisibleWorkspaces() []string {
 		log.Fatal(err)
 	}
 	workspaces := []string{}
-	lines := strings.Split(strings.TrimSpace(string(o)), "\n")
-	for _, line := range lines {
+	lines := strings.SplitSeq(strings.TrimSpace(string(o)), "\n")
+	for line := range lines {
 		if line != "" {
 			workspaces = append(workspaces, line)
 		}
@@ -275,7 +275,7 @@ func getVisibleWorkspaces() []string {
 // Return a map of monitor IDs to map of workspace names to app icons.
 func getApps() map[int]map[string]string {
 	cmd := exec.Command("aerospace", "list-windows", "--monitor", "all",
-		"--format", "%{monitor-id}:%{workspace}:%{app-name}")
+		"--format", "%{monitor-id}:%{workspace}:%{app-name}:%{window-title}")
 	o, err := cmd.Output()
 	if err != nil {
 		log.Fatalf("Error reading apps. %s", err)
@@ -288,10 +288,15 @@ func getApps() map[int]map[string]string {
 	workspacesByMontor := make(map[int]map[string]string)
 
 	for _, l := range lines {
-		tokens := strings.SplitN(l, ":", 3)
+		tokens := strings.SplitN(l, ":", 4)
 		monitor, _ := strconv.Atoi(tokens[0])
 		workspace := tokens[1]
 		app := tokens[2]
+		win := tokens[3]
+		// Skip adding icons for windows with no titles.
+		if win == "" {
+			continue
+		}
 
 		appsByWorkspace, ok := workspacesByMontor[monitor]
 		if !ok {
