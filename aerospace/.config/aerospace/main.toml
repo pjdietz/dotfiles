@@ -18,6 +18,16 @@ inherit-env-vars = true
 [exec.env-vars]
 PATH = '/usr/local/bin:${HOME}/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
+[[on-window-detected]]
+    if.app-id = "com.microsoft.teams2"
+    if.window-title-regex-substring = "^Microsoft Teams$"
+    run = "move-node-to-workspace 5"
+
+[[on-window-detected]]
+    if.app-id = "com.microsoft.teams2"
+    if.window-title-regex-substring = "^(?!Microsoft Teams)$"
+    run = "move-node-to-workspace 4"
+
 [mode.main.binding]
 
 # Focus: alt hjkl
