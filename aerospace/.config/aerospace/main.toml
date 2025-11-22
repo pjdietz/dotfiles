@@ -21,16 +21,6 @@ inherit-env-vars = true
 [exec.env-vars]
 PATH = '/usr/local/bin:${HOME}/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
-[[on-window-detected]]
-    if.app-id = "com.microsoft.teams2"
-    if.window-title-regex-substring = "^Microsoft Teams$"
-    run = "move-node-to-workspace 5"
-
-[[on-window-detected]]
-    if.app-id = "com.microsoft.teams2"
-    if.window-title-regex-substring = "^(?!Microsoft Teams)$"
-    run = "move-node-to-workspace 4"
-
 [mode.main.binding]
 
 # Focus: alt hjkl
@@ -105,6 +95,7 @@ tab = [
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
     'mode main'
 ]
+esc = ['reload-config', 'mode main']
 
 1 = ['workspace 1', 'mode main']
 2 = ['workspace 2', 'mode main']
@@ -178,4 +169,53 @@ shift-w = ['move-node-to-workspace W']
 shift-x = ['move-node-to-workspace X']
 shift-y = ['move-node-to-workspace Y']
 shift-z = ['move-node-to-workspace Z']
-esc = ['reload-config', 'mode main']
+
+# Find app-id: aerospace list-apps
+
+# J: Main
+[[on-window-detected]]
+    if.app-id = "com.mitchellh.ghostty"
+    run = "move-node-to-workspace J"
+
+[[on-window-detected]]
+    if.app-id = "org.mozilla.firefox"
+    run = "move-node-to-workspace J"
+
+# D: Datagrip
+[[on-window-detected]]
+    if.app-id = "com.jetbrains.datagrip"
+    run = "move-node-to-workspace D"
+
+# T: Todoist
+[[on-window-detected]]
+    if.app-id = "com.todoist.mac.Todoist "
+    run = "move-node-to-workspace D"
+
+# M: (Messaging) Teams default space
+[[on-window-detected]]
+    if.app-id = "com.microsoft.teams2"
+    if.during-aerospace-startup = true
+    run = "move-node-to-workspace M"
+
+# O: Outlook
+[[on-window-detected]]
+    if.app-id = "com.microsoft.Outlook"
+    if.during-aerospace-startup = true
+    run = "move-node-to-workspace O"
+
+# N: Teams spawned windows
+[[on-window-detected]]
+    if.app-id = "com.microsoft.teams2"
+    if.during-aerospace-startup = false
+    run = "move-node-to-workspace N"
+
+# N: Outlook spawned windows
+[[on-window-detected]]
+    if.app-id = "com.microsoft.Outlook"
+    if.during-aerospace-startup = false
+    run = "move-node-to-workspace N"
+
+[workspace-to-monitor-force-assignment]
+    T = ['built-in', 'main']
+    O = ['built-in', 'main']
+    M = ['built-in', 'main']
