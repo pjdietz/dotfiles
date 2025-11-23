@@ -1,6 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "catppuccin",
+  "keybinds": {
+    "messages_page_up": "ctrl+u",
+    "messages_page_down": "ctrl+d"
+  },
   "lsp": {
     "intelephense": {
       "command": ["intelephense", "--stdio"],
