@@ -97,98 +97,47 @@ tab = [
 ]
 esc = ['reload-config', 'mode main']
 
+j = ['workspace 1', 'mode main']
 1 = ['workspace 1', 'mode main']
 2 = ['workspace 2', 'mode main']
 3 = ['workspace 3', 'mode main']
 4 = ['workspace 4', 'mode main']
 5 = ['workspace 5', 'mode main']
-6 = ['workspace 6', 'mode main']
-7 = ['workspace 7', 'mode main']
-8 = ['workspace 8', 'mode main']
-9 = ['workspace 9', 'mode main']
-0 = ['workspace 10', 'mode main']
-a = ['workspace A', 'mode main']
-b = ['workspace B', 'mode main']
-c = ['workspace C', 'mode main']
 d = ['workspace D', 'mode main']
-e = ['workspace E', 'mode main']
-f = ['workspace F', 'mode main']
-g = ['workspace G', 'mode main']
-h = ['workspace H', 'mode main']
-i = ['workspace I', 'mode main']
-j = ['workspace J', 'mode main']
-k = ['workspace K', 'mode main']
-l = ['workspace L', 'mode main']
 m = ['workspace M', 'mode main']
 n = ['workspace N', 'mode main']
 o = ['workspace O', 'mode main']
-p = ['workspace P', 'mode main']
-q = ['workspace Q', 'mode main']
-r = ['workspace R', 'mode main']
-s = ['workspace S', 'mode main']
 t = ['workspace T', 'mode main']
-u = ['workspace U', 'mode main']
-v = ['workspace V', 'mode main']
-w = ['workspace W', 'mode main']
-x = ['workspace X', 'mode main']
-y = ['workspace Y', 'mode main']
-z = ['workspace Z', 'mode main']
-shift-1 = ['move-node-to-workspace 1']
-shift-2 = ['move-node-to-workspace 2']
-shift-3 = ['move-node-to-workspace 3']
-shift-4 = ['move-node-to-workspace 4']
-shift-5 = ['move-node-to-workspace 5']
-shift-6 = ['move-node-to-workspace 6']
-shift-7 = ['move-node-to-workspace 7']
-shift-8 = ['move-node-to-workspace 8']
-shift-9 = ['move-node-to-workspace 9']
-shift-0 = ['move-node-to-workspace 10']
-shift-a = ['move-node-to-workspace A']
-shift-b = ['move-node-to-workspace B']
-shift-c = ['move-node-to-workspace C']
-shift-d = ['move-node-to-workspace D']
-shift-e = ['move-node-to-workspace E']
-shift-f = ['move-node-to-workspace F']
-shift-g = ['move-node-to-workspace G']
-shift-h = ['move-node-to-workspace H']
-shift-i = ['move-node-to-workspace I']
-shift-j = ['move-node-to-workspace J']
-shift-k = ['move-node-to-workspace K']
-shift-l = ['move-node-to-workspace L']
-shift-m = ['move-node-to-workspace M']
-shift-n = ['move-node-to-workspace N']
-shift-o = ['move-node-to-workspace O']
-shift-p = ['move-node-to-workspace P']
-shift-q = ['move-node-to-workspace Q']
-shift-r = ['move-node-to-workspace R']
-shift-s = ['move-node-to-workspace S']
-shift-t = ['move-node-to-workspace T']
-shift-u = ['move-node-to-workspace U']
-shift-v = ['move-node-to-workspace V']
-shift-w = ['move-node-to-workspace W']
-shift-x = ['move-node-to-workspace X']
-shift-y = ['move-node-to-workspace Y']
-shift-z = ['move-node-to-workspace Z']
+shift-j = ['move-node-to-workspace 1', 'workspace 1', 'mode main']
+shift-1 = ['move-node-to-workspace 1', 'workspace 1', 'mode main']
+shift-2 = ['move-node-to-workspace 2', 'workspace 2', 'mode main']
+shift-3 = ['move-node-to-workspace 3', 'workspace 3', 'mode main']
+shift-4 = ['move-node-to-workspace 4', 'workspace 4', 'mode main']
+shift-d = ['move-node-to-workspace D', 'workspace D', 'mode main']
+shift-m = ['move-node-to-workspace M', 'workspace M', 'mode main']
+shift-n = ['move-node-to-workspace N', 'workspace N', 'mode main']
+shift-o = ['move-node-to-workspace O', 'workspace 1', 'mode main']
+shift-t = ['move-node-to-workspace T', 'workspace 1', 'mode main']
 
 # Find app-id: aerospace list-apps
 
-# J: Main
+# 1: Main
 [[on-window-detected]]
     if.app-id = "com.mitchellh.ghostty"
-    run = "move-node-to-workspace J"
+    run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
     if.app-id = "org.mozilla.firefox"
-    run = "move-node-to-workspace J"
+    run= "move-node-to-workspace 1"
+
+[[on-window-detected]]
+    if.app-id = "com.microsoft.Outlook"
+    if.app-name-regex-substring = "reminder"
+    run = "move-node-to-workspace 1"
 
 # D: Datagrip
 [[on-window-detected]]
     if.app-id = "com.jetbrains.datagrip"
-    run = "move-node-to-workspace D"
-
-# T: Todoist
-[[on-window-detected]]
-    if.app-id = "com.todoist.mac.Todoist "
     run = "move-node-to-workspace D"
 
 # M: (Messaging) Teams default space
@@ -200,22 +149,26 @@ shift-z = ['move-node-to-workspace Z']
 # O: Outlook
 [[on-window-detected]]
     if.app-id = "com.microsoft.Outlook"
-    if.during-aerospace-startup = true
-    run = "move-node-to-workspace O"
+    if.app-name-regex-substring = "reminder"
+    run = "move-node-to-workspace J"
 
-# N: Teams spawned windows
+# T: Todoist
 [[on-window-detected]]
-    if.app-id = "com.microsoft.teams2"
-    if.during-aerospace-startup = false
-    run = "move-node-to-workspace N"
+    if.app-id = "com.todoist.mac.Todoist"
+    run = "move-node-to-workspace T"
 
-# N: Outlook spawned windows
+# 5: Spawned Windows
 [[on-window-detected]]
     if.app-id = "com.microsoft.Outlook"
     if.during-aerospace-startup = false
-    run = "move-node-to-workspace N"
+    run = "move-node-to-workspace 5"
+
+[[on-window-detected]]
+    if.app-id = "com.microsoft.teams2"
+    if.during-aerospace-startup = false
+    run = "move-node-to-workspace 5"
 
 [workspace-to-monitor-force-assignment]
-    T = ['built-in', 'main']
-    O = ['built-in', 'main']
     M = ['built-in', 'main']
+    O = ['built-in', 'main']
+    T = ['built-in', 'main']
