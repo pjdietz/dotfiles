@@ -119,9 +119,11 @@ shift-n = ['move-node-to-workspace N', 'workspace N', 'mode main']
 shift-o = ['move-node-to-workspace O', 'workspace 1', 'mode main']
 shift-t = ['move-node-to-workspace T', 'workspace 1', 'mode main']
 
-# Find app-id: aerospace list-apps
+# Find app-id
+#   aerospace list-apps
+# window titles
+#   aerospace list-windows --monitor all --format "%{monitor-id}:%{workspace}:%{app-name}:%{window-title}"
 
-# 1: Main
 [[on-window-detected]]
     if.app-id = "com.mitchellh.ghostty"
     run = "move-node-to-workspace 1"
@@ -131,42 +133,39 @@ shift-t = ['move-node-to-workspace T', 'workspace 1', 'mode main']
     run= "move-node-to-workspace 1"
 
 [[on-window-detected]]
-    if.app-id = "com.microsoft.Outlook"
-    if.app-name-regex-substring = "reminder"
-    run = "move-node-to-workspace 1"
-
-# D: Datagrip
-[[on-window-detected]]
     if.app-id = "com.jetbrains.datagrip"
     run = "move-node-to-workspace D"
 
-# M: (Messaging) Teams default space
 [[on-window-detected]]
     if.app-id = "com.microsoft.teams2"
     if.during-aerospace-startup = true
     run = "move-node-to-workspace M"
 
-# O: Outlook
-[[on-window-detected]]
-    if.app-id = "com.microsoft.Outlook"
-    if.app-name-regex-substring = "reminder"
-    run = "move-node-to-workspace J"
-
-# T: Todoist
-[[on-window-detected]]
-    if.app-id = "com.todoist.mac.Todoist"
-    run = "move-node-to-workspace T"
-
-# 5: Spawned Windows
-[[on-window-detected]]
-    if.app-id = "com.microsoft.Outlook"
-    if.during-aerospace-startup = false
-    run = "move-node-to-workspace 5"
-
 [[on-window-detected]]
     if.app-id = "com.microsoft.teams2"
     if.during-aerospace-startup = false
     run = "move-node-to-workspace 5"
+
+[[on-window-detected]]
+    if.app-id = "com.microsoft.Outlook"
+    if.during-aerospace-startup = true
+    run = "move-node-to-workspace O"
+
+[[on-window-detected]]
+    if.app-id = "com.microsoft.Outlook"
+    if.window-title-regex-substring = ".*reminder.*"
+    if.during-aerospace-startup = false
+    run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+    if.app-id = "com.microsoft.Outlook"
+    if.window-title-regex-substring = "^((?!reminder).)*$"
+    if.during-aerospace-startup = false
+    run = "move-node-to-workspace 5"
+
+[[on-window-detected]]
+    if.app-id = "com.todoist.mac.Todoist"
+    run = "move-node-to-workspace T"
 
 [workspace-to-monitor-force-assignment]
     M = ['built-in', 'main']
