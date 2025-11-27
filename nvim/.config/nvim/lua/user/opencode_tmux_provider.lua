@@ -57,10 +57,8 @@ function M:start()
 end
 
 function M:stop()
-  local window_id = self:get_window_id()
-  if window_id then
-    vim.fn.system(string.format("tmux kill-window -t '%s'", window_id))
-  end
+  -- No-op: Never close the opencode window
+  -- Users should manually close the window if desired
 end
 
 function M:show()
