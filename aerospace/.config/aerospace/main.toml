@@ -95,7 +95,11 @@ tab = [
     'exec-and-forget sketchybar --trigger aerospace_workspace_change',
     'mode main'
 ]
-esc = ['reload-config', 'mode main']
+esc = ['mode main']
+r = [
+    '''exec-and-forget aerospace-config && osascript -e 'display notification "Aerospace config reloaded" with title "Aerospace"'''',
+    'mode main'
+]
 
 j = ['workspace 1', 'mode main']
 1 = ['workspace 1', 'mode main']

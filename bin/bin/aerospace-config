@@ -2,11 +2,34 @@
 
 cd ~/.config/aerospace || exit
 
-config="${1}.toml"
+if [[ -n "$1" ]]; then
+  config="${1}.toml"
 
-if [[ ! -f "${config}" ]]; then
-  exit
+  if [[ ! -f "${config}" ]]; then
+    exit 1
+  fi
+
+  {
+    echo "# Generated from: main.toml + ${config}"
+    cat main.toml "${config}"
+  } > aerospace.toml
+
+else
+  if [[ -f aerospace.toml ]]; then
+    config=$(head -1 aerospace.toml | sed 's/^# Generated from: main\.toml + //')
+
+    if [[ -z "$config" || ! -f "$config" ]]; then
+      echo "Could not determine current config from aerospace.toml" >&2
+      exit 1
+    fi
+  else
+    config="max.toml"
+  fi
+
+  {
+    echo "# Generated from: main.toml + ${config}"
+    cat main.toml "${config}"
+  } > aerospace.toml
 fi
 
-cat main.toml "${config}" > aerospace.toml
 aerospace reload-config
