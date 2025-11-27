@@ -34,13 +34,11 @@ return {
     config = function ()
       ---@type opencode.Opts
       vim.g.opencode_opts = {
-        provider = {
-          enabled = "tmux",
-          tmux = {}
-        }
+        provider = require("user.opencode_tmux_provider")
       }
       vim.o.autoread = true
       vim.keymap.set({ "n", "x" }, "<Leader>oc", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
+      vim.keymap.set({ "n", "t" }, "<Leader>os", function() require("opencode").show() end, { desc = "Show opencode window" })
     end,
   },
   {
