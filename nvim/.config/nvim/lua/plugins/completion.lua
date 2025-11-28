@@ -10,10 +10,15 @@ return {
   opts = {
     keymap = {
       preset = "default",
-      ["<C-Space>"] = {
+      ["<C-M-Space>"] = {
         function()
-          require("copilot.suggestion").next()
-          require("blink.cmp")["hide"]()
+          local cop = require("copilot.suggestion")
+          if cop.is_visible() then
+            cop.next()
+          else
+            cop.next() -- This will trigger the first suggestion
+            require("blink.cmp").hide()
+          end
           return true
         end
       },
@@ -71,9 +76,9 @@ return {
       default = function(ctx)
         local success, node = pcall(vim.treesitter.get_node)
         if vim.bo.filetype == "markdown" then
-          return { "buffer", "path" }
+          return { "buffer", "snippets", "path" }
         elseif success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
-          return { "buffer" }
+          return { "buffer", "snippets", "path" }
         else
           return { "lsp", "path", "snippets", "buffer" }
         end
@@ -107,6 +112,7 @@ return {
         codecompanion = { "codecompanion" },
       }
     },
+
 
     completion = {
       menu = {
