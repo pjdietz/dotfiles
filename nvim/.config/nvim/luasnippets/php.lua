@@ -101,11 +101,64 @@ local function infer_namespace()
   return best_match.base_namespace .. "\\" .. namespace_suffix
 end
 
+local function infer_class_name()
+  local path = vim.api.nvim_buf_get_name(0)
+  local file_name = path:match("([^/]+)%.php$")
+  if file_name then
+    return file_name
+  end
+  return "ClassName"
+end
+
 -- -------------------------------------------------------------------------
 -- Snippets
 -- -------------------------------------------------------------------------
 
 return {
+  s(
+    "newclass",
+    fmt(
+      [[
+<?php
+
+declare(strict_types=1);
+
+namespace {};
+
+class {}
+{{
+    {}
+}}
+]],
+      {
+        f(infer_namespace),
+        f(infer_class_name),
+        i(0),
+      }
+    )
+  ),
+  s(
+    "newinterface",
+    fmt(
+      [[
+<?php
+
+declare(strict_types=1);
+
+namespace {};
+
+interface {}
+{{
+    {}
+}}
+]],
+      {
+        f(infer_namespace),
+        f(infer_class_name),
+        i(0),
+      }
+    )
+  ),
   s(
     "classf",
     fmt(
@@ -116,42 +169,22 @@ class {}
 }}
 ]],
       {
-        f(function()
-          local path = vim.api.nvim_buf_get_name(0)
-          local file_name = path:match("([^/]+)%.php$")
-          if file_name then
-            return file_name
-          end
-          return "ClassName"
-        end),
+        f(infer_class_name),
         i(0),
       }
     )
   ),
   s(
-    "<?php",
+    "interfacef",
     fmt(
       [[
-<?php
-
-declare(strict_types=1);
-
-namespace {};
+interface {}
+{{
+    {}
+}}
 ]],
       {
-        f(infer_namespace),
-      }
-    )
-  ),
-  s(
-    "// -",
-    fmt(
-      [[
-// -------------------------------------------------------------------------
-
-{}
-]],
-      {
+        f(infer_class_name),
         i(0),
       }
     )
