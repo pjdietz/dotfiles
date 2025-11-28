@@ -2,9 +2,6 @@ return {
   "L3MON4D3/LuaSnip",
   version = "v2.*",
   enabled = true,
-  dependencies = {
-    "rafamadriz/friendly-snippets",
-  },
   config = function()
 
     local ls = require "luasnip"
@@ -33,65 +30,9 @@ return {
       end
     end)
 
-    -- vim.keymap.set("n", "<Leader><Leader>s", "<CMD>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
-    require("luasnip/loaders/from_vscode").lazy_load()
-
-    -- -----------------------------------------------------------------------------
-    -- Friendly Snippets
     ls.filetype_extend("php", { "php", "twig" })
 
-    -- -----------------------------------------------------------------------------
-    -- TODO Move to external file and require
-
-    local snippet_collection = require "luasnip.session.snippet_collection"
-
-    local s = ls.snippet
-    local i = ls.insert_node
-    local f = ls.function_node
-    local t = ls.text_node
-    local fmt = require("luasnip.extras.fmt").fmt
-
-    snippet_collection.clear_snippets "php"
-    ls.add_snippets("php", {
-      s("class",
-        fmt(
-          [[
-        class {}
-        {{
-            {}
-        }}
-      ]],
-          {
-            f(function()
-              local path = vim.api.nvim_buf_get_name(0)
-              local file_name = path:match("[^/]*.php$")
-              return file_name:sub(0, #file_name - 4)
-            end),
-            i(0)
-          }
-        )
-      ),
-      s("<?",
-        fmt([[
-          <?php
-
-          declare(strict_types=1);
-
-          namespace {}
-        ]], {
-            i(0)
-        })
-      ),
-      s("// -",
-        fmt([[
-          // -------------------------------------------------------------------------
-
-          {}
-        ]], {
-            i(0)
-        })
-      )
-    })
+    require("luasnip.loaders.from_lua").load({ paths = vim.fn.stdpath("config") .. "/luasnippets" })
   end
 
 }
