@@ -5,7 +5,7 @@ local f = ls.function_node
 local fmt = require("luasnip.extras.fmt").fmt
 
 return {
-  s("class",
+  s("classf",
     fmt(
       [[
 class {}

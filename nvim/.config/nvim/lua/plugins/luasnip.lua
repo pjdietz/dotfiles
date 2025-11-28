@@ -2,6 +2,9 @@ return {
   "L3MON4D3/LuaSnip",
   version = "v2.*",
   enabled = true,
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+  },
   config = function()
 
     local ls = require "luasnip"
@@ -33,6 +36,7 @@ return {
     ls.filetype_extend("php", { "php", "twig" })
 
     require("luasnip.loaders.from_lua").load({ paths = vim.fn.stdpath("config") .. "/luasnippets" })
+    require("luasnip.loaders.from_vscode").lazy_load()
   end
 
 }
