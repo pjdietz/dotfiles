@@ -76,7 +76,7 @@ return {
       default = function(ctx)
         local success, node = pcall(vim.treesitter.get_node)
         if vim.bo.filetype == "markdown" then
-          return { "buffer", "snippets", "path" }
+          return { "snippets", "buffer", "path" }
         elseif success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
           return { "buffer", "snippets", "path" }
         else
@@ -90,7 +90,12 @@ return {
           score_offset = 4,
         },
         snippets = {
-          score_offset = 3,
+          score_offset = function(ctx)
+            if vim.bo.filetype == "markdown" then
+              return 10  -- Highest priority in markdown
+            end
+            return 3  -- Normal priority elsewhere
+          end,
         },
         path = {
           -- min_keyword_length = 5,
