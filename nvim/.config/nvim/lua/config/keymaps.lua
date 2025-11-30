@@ -68,3 +68,5 @@ vim.keymap.set("n", "<leader>gd", function()
     vim.cmd("DiffviewClose")
   end
 end, { desc = "Toggle [G]it [D]iffview" })
+
+map({ "n", "v" }, "<Leader>ct", ":Convert<CR>", { desc = "[C]onvert [T]ext", silent = true })
