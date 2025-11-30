@@ -84,7 +84,11 @@ function M.generate_constructor()
   end
 
   local fields = extract_struct_fields(struct_node)
-  local func_name = "New" .. struct_name
+  
+  local first_char = struct_name:sub(1, 1)
+  local is_exported = first_char == first_char:upper()
+  local capitalized_name = first_char:upper() .. struct_name:sub(2)
+  local func_name = (is_exported and "New" or "new") .. capitalized_name
 
   local params = {}
   local field_assignments = {}
