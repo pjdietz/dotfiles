@@ -7,7 +7,7 @@ local f = ls.function_node
 -- -------------------------------------------------------------------------
 
 local function get_today()
-  return os.date("%A, %B %d")
+  return os.date("%A, %B ") .. tostring(tonumber(os.date("%d")))
 end
 
 -- -------------------------------------------------------------------------
