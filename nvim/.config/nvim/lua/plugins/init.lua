@@ -35,6 +35,17 @@ return {
       duration_multiplier = 0.67
     },
   },
+  {
+    "danymat/neogen",
+    config = function ()
+      require("neogen").setup({
+        snippet_engine = "luasnip"
+      })
+    end,
+    keys = {
+      { "<Leader>cb", function () require("neogen").generate() end, desc = "[C]reate Doc[B]lock" }
+    }
+  },
   -- Languages
   "othree/html5.vim",
   "nelsyeung/twig.vim",
