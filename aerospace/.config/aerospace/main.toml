@@ -134,7 +134,11 @@ shift-t = ['move-node-to-workspace T', 'workspace 1', 'mode main']
 
 [[on-window-detected]]
     if.app-id = "org.mozilla.firefox"
-    run= "move-node-to-workspace 1"
+    run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+    if.app-id = "com.postmanlabs.mac"
+    run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
     if.app-id = "com.jetbrains.datagrip"
