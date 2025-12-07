@@ -1,4 +1,5 @@
 *.backup
+*.spl
 aerospace.toml
 k9s/config.yml
 packer_compiled.lua
