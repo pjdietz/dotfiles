@@ -5,6 +5,7 @@ return {
   keys = {
     { "<Leader>z", "<CMD>ZenMode<CR>", { desc = "[Z]en mode" } }
   },
+  enabled = false,
   opts = {
     window = {
       backdrop = 0.90,
@@ -30,6 +31,8 @@ return {
     on_close = function()
       -- tmux.show_status()
       vim.o.cmdheight = 0
+      vim.o.number = true
+      vim.o.relativenumber = true
     end,
   }
 }
