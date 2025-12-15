@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 # Find the name of the cronjob to start. If none is provided as an argument,
 # read the list of cronjobs and use FZF to prompt for a selection.
 if [ "$#" -eq 0 ]; then
