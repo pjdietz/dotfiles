@@ -216,13 +216,14 @@ set_aliases()
   alias kpf='kubectl port-forward'
   alias krc='kubectl resource-capacity'
   alias oc='opencode'
-  alias wk='watch kubectl'
+  alias t='task'
   alias tms='tmux-session'
   alias tmw='tmux-window'
   alias tree='eza -T'
   alias tree2='eza -T -L 2 --git-ignore'
   alias tree3='eza -T -L 3 --git-ignore'
   alias vim='nvim'
+  alias wk='watch kubectl'
 }
 
 gdf() {
