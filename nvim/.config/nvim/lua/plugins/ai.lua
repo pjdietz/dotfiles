@@ -67,7 +67,10 @@ return {
         },
         strategies = {
           chat = {
-            adapter = "gemini",
+            adapter = {
+              name = "gemini",
+              model = "gemini-2.5-flash"
+            },
             slash_commands = {
               ["file"] = {
                 -- Location to the slash command in CodeCompanion
@@ -88,7 +91,10 @@ return {
             -- }
           },
           inline = {
-            adapter = "gemini",
+            adapter = {
+              name = "gemini",
+              model = "gemini-2.5-flash"
+            },
             variables = {
               ["buffer"] = {
                 opts = {
