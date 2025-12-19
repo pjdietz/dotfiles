@@ -12,10 +12,16 @@ local languages = {
   "luadoc",
   "markdown",
   "php",
+  "python",
   "sh",
   "sql",
   "vim",
   "vimdoc",
+  "yaml",
+}
+
+local disabled_languages = {
+  "dockerfile",
 }
 
 ---@module "lazy"
@@ -33,28 +39,35 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       group = vim.api.nvim_create_augroup("treesitter.setup", {}),
       callback = function (args)
-        local buf = args.buf
-        local filetype = args.match
+         local buf = args.buf
+         local filetype = args.match
 
-        -- you need some mechanism to avoid running on buffers that do not
-        -- correspond to a language (like oil.nvim buffers), this implementation
-        -- checks if a parser exists for the current language
-        local language = vim.treesitter.language.get_lang(filetype) or filetype
-        if not vim.treesitter.language.add(language) then
-          return
-        end
+         -- check if language is disabled
+         for _, disabled in ipairs(disabled_languages) do
+           if disabled == filetype then
+             return
+           end
+         end
 
-        -- replace `fold = { enable = true }`
-        vim.wo.foldmethod = "expr"
-        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+         -- you need some mechanism to avoid running on buffers that do not
+         -- correspond to a language (like oil.nvim buffers), this implementation
+         -- checks if a parser exists for the current language
+         local language = vim.treesitter.language.get_lang(filetype) or filetype
+         if not vim.treesitter.language.add(language) then
+           return
+         end
 
-        -- replicate `highlight = { enable = true }`
-        vim.treesitter.start(buf, language)
+         -- replace `fold = { enable = true }`
+         vim.wo.foldmethod = "expr"
+         vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
-        -- replicate `indent = { enable = true }`
-        vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+         -- replicate `highlight = { enable = true }`
+         vim.treesitter.start(buf, language)
 
-      end
+         -- replicate `indent = { enable = true }`
+         vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+       end
     })
 
   end
