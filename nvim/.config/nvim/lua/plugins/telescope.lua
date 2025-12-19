@@ -84,6 +84,9 @@ return {
     telescope.setup {
       defaults = {
         path_display = { "smart" },
+        preview = {
+          treesitter = false,
+        },
         mappings = {
             i = {
                 ["<CR>"] = multiopen,
