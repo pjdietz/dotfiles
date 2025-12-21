@@ -30,12 +30,6 @@ return {
     end
   },
   {
-    "karb94/neoscroll.nvim",
-    opts = {
-      duration_multiplier = 0.67
-    },
-  },
-  {
     "danymat/neogen",
     config = function ()
       require("neogen").setup({
