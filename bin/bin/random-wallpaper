@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Set your wallpaper directory
+WALLPAPER_DIR="$HOME/wallpaper"
+
+# Pick a random wallpaper
+RANDOM_WALLPAPER=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) | shuf -n 1)
+
+# Kill existing hyprpaper instance if running
+killall hyprpaper 2>/dev/null
+
+# Create hyprpaper config
+cat > ~/.config/hypr/hyprpaper.conf << EOF
+preload = $RANDOM_WALLPAPER
+wallpaper = ,$RANDOM_WALLPAPER
+splash = false
+EOF
+
+# Start hyprpaper
+hyprpaper &
