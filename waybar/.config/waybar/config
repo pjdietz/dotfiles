@@ -8,7 +8,8 @@
   "margin-right": 10,
   "height": 41,
   "modules-left": [
-    "custom/power"
+    "custom/power",
+    "hyprland/window"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -27,7 +28,7 @@
     "spacing": 2,
   },
   "custom/power": {
-    "format": "⏻",
+    "format": "󰣇",
     "tooltip": "Restart Waybar",
     "on-click": "~/.config/waybar/power-menu.sh"
   },
@@ -39,10 +40,11 @@
     "format": " | "
   },
   "hyprland/window": {
-    "format": "{}",
+    "format": "{class}",
     "max-length": 35,
     "rewrite": {
-      "": "Harsh"
+      "com.mitchellh.ghostty": "Ghostty",
+      "firefox": "Firefox"
     },
     "separate-outputs": true
   },
