@@ -12,21 +12,18 @@ return {
       preset = "default",
       ["<C-M-Space>"] = {
         function()
-          local cop = require("copilot.suggestion")
-          if cop.is_visible() then
-            cop.next()
-          else
-            cop.next() -- This will trigger the first suggestion
-            require("blink.cmp").hide()
+          local has_copilot, copilot = pcall(require, "copilot.suggestion")
+          if has_copilot then
+            copilot.next()
+            return true
           end
-          return true
         end
       },
       ["<C-n>"] = {
         function ()
-          local cop = require("copilot.suggestion")
-          if cop.is_visible() then
-            cop.next()
+          local has_copilot, copilot = pcall(require, "copilot.suggestion")
+          if has_copilot and copilot.is_visible() then
+            copilot.next()
             return true
           end
         end,
@@ -35,9 +32,9 @@ return {
       },
       ["<C-p>"] = {
         function ()
-          local cop = require("copilot.suggestion")
-          if cop.is_visible() then
-            cop.prev()
+          local has_copilot, copilot = pcall(require, "copilot.suggestion")
+          if has_copilot and copilot.is_visible() then
+            copilot.prev()
             return true
           end
         end,
@@ -46,9 +43,9 @@ return {
       },
       ["<C-y>"] = {
         function ()
-          local cop = require("copilot.suggestion")
-          if cop.is_visible() then
-            cop.accept()
+          local has_copilot, copilot = pcall(require, "copilot.suggestion")
+          if has_copilot and copilot.is_visible() then
+            copilot.accept()
             return true
           end
         end,
