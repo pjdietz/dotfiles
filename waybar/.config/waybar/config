@@ -15,8 +15,8 @@
     "hyprland/workspaces"
   ],
   "modules-right": [
-    "cpu",
-    "memory",
+    // "cpu",
+    // "memory",
     "tray",
     "pulseaudio",
     "separator",
