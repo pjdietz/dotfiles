@@ -9,7 +9,8 @@
   "height": 41,
   "modules-left": [
     "custom/power",
-    "hyprland/window"
+    "hyprland/window",
+    "hyprland/submap"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -47,6 +48,10 @@
       "firefox": "Firefox"
     },
     "separate-outputs": true
+  },
+  "hyprland/submap": {
+    "format": "Mode: <span style=\"italic\">{}</span>",
+    "tooltip": false
   },
   "hyprland/workspaces": {
     "format": "{icon}",
