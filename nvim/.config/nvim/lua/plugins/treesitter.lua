@@ -15,6 +15,7 @@ local languages = {
   "python",
   "sh",
   "sql",
+  "toml",
   "vim",
   "vimdoc",
   "yaml",
