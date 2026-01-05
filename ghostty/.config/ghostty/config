@@ -1,8 +1,12 @@
+# Reload config
+# ctrl+shift+, (Linux) or cmd+shift+, (macOS).
+
 font-family = Hack Nerd Font Mono
 font-size = 20
 adjust-cell-height = 18
 
 theme = catppuccin-mocha-custom
+background-opacity = 1
 
 window-decoration = true
 macos-titlebar-style = hidden
