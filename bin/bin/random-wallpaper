@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 
 # Set your wallpaper directory
-WALLPAPER_DIR="$HOME/wallpaper"
+WALLPAPER_DIR="${HOME}/wallpaper"
 
 # Pick a random wallpaper
-RANDOM_WALLPAPER=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) | shuf -n 1)
+WALLPAPER=$(find "${WALLPAPER_DIR}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) | shuf -n 1)
 
-# Kill existing hyprpaper instance if running
-killall hyprpaper 2>/dev/null
+# Ensure hyprpaper is actually running
+if ! pgrep -x "hyprpaper" > /dev/null; then
+    hyprpaper &
+    # Wait a moment for the socket to initialize
+    sleep 0.5
+fi
 
-# Create hyprpaper config
-cat > ~/.config/hypr/hyprpaper.conf << EOF
-preload = $RANDOM_WALLPAPER
-wallpaper = ,$RANDOM_WALLPAPER
-splash = false
-EOF
+# Wait for the hyprpaper IPC socket to exist
+# The instance signature is used to find the correct socket path
+while [ ! -e "$XDG_RUNTIME_DIR/hypr/$(echo $HYPRLAND_INSTANCE_SIGNATURE)/.hyprpaper.sock" ]; do
+    sleep 0.1
+done
 
-# Start hyprpaper
-hyprpaper &
+hyprctl hyprpaper wallpaper ,"${WALLPAPER}"
