@@ -61,16 +61,25 @@ ctrl-cmd-j = 'focus --ignore-floating --boundaries all-monitors-outer-frame down
 ctrl-cmd-k = 'focus --ignore-floating --boundaries all-monitors-outer-frame up'
 ctrl-cmd-l = 'focus --ignore-floating --boundaries all-monitors-outer-frame right'
 
+# --- Workspace ---
+
+# Workspaces
 ctrl-cmd-1 = ['workspace 1', 'mode main']
 ctrl-cmd-2 = ['workspace 2', 'mode main']
 ctrl-cmd-3 = ['workspace 3', 'mode main']
 ctrl-cmd-4 = ['workspace 4', 'mode main']
 ctrl-cmd-5 = ['workspace 5', 'mode main']
+ctrl-cmd-m = ['workspace M', 'mode main']
+ctrl-cmd-o = ['workspace O', 'mode main']
+ctrl-cmd-t = ['workspace T', 'mode main']
 ctrl-cmd-shift-1 = ['move-node-to-workspace 1', 'workspace 1', 'mode main']
 ctrl-cmd-shift-2 = ['move-node-to-workspace 2', 'workspace 2', 'mode main']
 ctrl-cmd-shift-3 = ['move-node-to-workspace 3', 'workspace 3', 'mode main']
 ctrl-cmd-shift-4 = ['move-node-to-workspace 4', 'workspace 4', 'mode main']
 ctrl-cmd-shift-5 = ['move-node-to-workspace 5', 'workspace 5', 'mode main']
+ctrl-cmd-shift-m = ['move-node-to-workspace M', 'workspace M', 'mode main']
+ctrl-cmd-shift-o = ['move-node-to-workspace O', 'workspace O', 'mode main']
+ctrl-cmd-shift-t = ['move-node-to-workspace T', 'workspace T', 'mode main']
 
 # Modes
 alt-space = 'mode workspace'
