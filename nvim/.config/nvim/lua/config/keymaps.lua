@@ -43,6 +43,13 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "<Leader>th", "<CMD>TSHighlightCapturesUnderCursor<CR>", { desc = "Show TS captures" })
 
 map("n", "<Leader>ti", "<CMD>set list!<CR>", { desc = "[T]oggle [I]nvisibles" })
+
+-- Toggle line numbers
+map("n", "<leader>tn", function()
+  vim.wo.number = not vim.wo.number
+  vim.wo.relativenumber = vim.wo.number
+end, { desc = "Toggle line [n]umbers" })
+
 -- Toggle rulers
 local function toggle_column_guides()
   local default = { 80, 100 }
