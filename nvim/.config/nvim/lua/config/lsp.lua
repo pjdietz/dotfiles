@@ -1,8 +1,10 @@
 vim.lsp.enable({
+  "basedpyright",
   "bashls",
   "gopls",
   "intelephense",
   "lua_ls",
+  "ruff",
   "ts_ls",
 })
 
