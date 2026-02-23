@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# watch-docker-stats
+# Show CPU and memory usage from a Docker container at regular intervals.
+# Usage: ./watch-docker-stats <container_name_or_id> [interval_seconds]
+# Example: ./watch-docker-stats my_container 0.2
+
+set -euo pipefail
+
+container="${1:?Container name or ID required}"
+interval="${2:-0.5}"
+
+if ! docker inspect "$container" >/dev/null 2>&1; then
+  echo "Container not found: $container" >&2
+  exit 1
+fi
+
+is_running() {
+  docker inspect -f '{{.State.Running}}' "$container" 2>/dev/null | grep -q true
+}
+
+while true; do
+  docker stats "${container}" --no-stream --format "CPU: {{.CPUPerc}}\tMEMORY: {{.MemUsage}}"
+  sleep 1
+done
+
+while is_running; do
+  docker stats "${container}" --no-stream --format "CPU: {{.CPUPerc}}\tMEMORY: {{.MemUsage}}"
+  sleep "$interval"
+done
