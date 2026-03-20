@@ -243,6 +243,18 @@ ksecret() {
   kubectl get secrets/$1 --template='{{ range $key, $value := .data }}{{ printf "%s: %s\n" $key ($value | base64decode) }}{{ end }}'
 }
 
+opencode() {
+  if [ -n "$TMUX" ]; then
+    tmux rename-window "opencode"
+    command opencode "$@"
+    local exit_code=$?
+    tmux set-window-option automatic-rename on
+    return $exit_code
+  else
+    command opencode "$@"
+  fi
+}
+
 y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
   yazi "$@" --cwd-file="$tmp"
