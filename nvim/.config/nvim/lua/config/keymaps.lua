@@ -62,6 +62,11 @@ local function toggle_column_guides()
 end
 vim.keymap.set("n", "<Leader>tc", toggle_column_guides, { desc = "[T]oggle [C]olumn guides" })
 
+-- Toggle line wrapping
+vim.keymap.set("n", "<leader>tw", function()
+  vim.wo.wrap = not vim.wo.wrap
+end, { desc = "Toggle line [w]rap" })
+
 -- Git and merge
 map("n", "<Leader>gh", "<CMD>diffget //2<CR>", { desc = "[G]it merge take left" })
 map("n", "<Leader>gl", "<CMD>diffget //3<CR>", { desc = "[G]it merge take right" })
