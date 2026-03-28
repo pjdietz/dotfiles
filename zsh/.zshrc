@@ -194,6 +194,7 @@ set_aliases()
   alias dclt='docker compose logs -f --timestamps'
   alias dcr='docker compose run --rm'
   alias dce='docker compose exec'
+  alias dropbox='dropbox-cli'
   alias flush-dns='sudo killall -HUP mDNSResponder'
   alias gitgraph='git graph'
   alias ga='git add'
