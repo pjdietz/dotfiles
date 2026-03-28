@@ -14,19 +14,8 @@ tasks:
           -p 4318:4318 \
           jaegertracing/all-in-one:1.75.0
 
-  pr:
-    desc: Open a pull request from the current repo.
-    dir: '{{.USER_WORKING_DIR}}'
-    vars:
-      REPO_URL:
-        sh: |
-          git config --get remote.origin.url \
-            | sed -E 's/\.git$//' \
-            | sed -E 's#git@bitbucket.org:#https://bitbucket.org/#' \
-            | sed -E 's#ssh://git@bitbucket.org/##'
-      SOURCE_BRANCH:
-        sh: git rev-parse --abbrev-ref HEAD
-      DEST_BRANCH: main
-      PR_URL: "{{.REPO_URL}}/pull-requests/new?source={{.SOURCE_BRANCH}}&desc={{.DEST_BRANCH}}"
+  nvim:clean:
+    desc: Remove generated file that can get out of sync after package upgrades.
     cmds:
-      - open "{{.PR_URL}}"
+      - rm ~/.local/share/nvim/lazy/nvim-treesitter/parser/*.so
+      - rm ~/.local/share/nvim/site/queries/*
