@@ -24,32 +24,6 @@ return {
     end,
   },
   {
-    "NickvanDyke/opencode.nvim",
-    dependencies = {
-      -- Recommended for `ask()` and `select()`.
-      -- Required for `snacks` provider.
-      ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
-      { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
-    },
-    config = function ()
-      ---@type opencode.Opts
-      vim.g.opencode_opts = {
-        provider = require("user.opencode_tmux_provider"),
-        events = {
-          enabled = true,
-          reload = true,
-          permissions = {
-            enabled = false,
-            idle_delay_ms = 1000,
-          },
-        },
-      }
-      vim.o.autoread = true
-      vim.keymap.set({ "n", "x" }, "<Leader>oc", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask [O]pen[C]ode" })
-      vim.keymap.set({ "n", "t" }, "<Leader>os", function() require("opencode").show() end, { desc = "[S]how [O]pencode" })
-    end,
-  },
-  {
     "olimorris/codecompanion.nvim",
     config = function ()
 

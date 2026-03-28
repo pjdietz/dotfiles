@@ -5,6 +5,11 @@ return {
     autocmds = {
       enableOnVimEnter = "safe"
     },
+    buffers = {
+      wo = {
+        fillchars = "eob: ",
+      },
+    },
     mappings = {
       enabled = true
     }
