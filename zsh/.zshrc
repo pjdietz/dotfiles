@@ -187,6 +187,7 @@ set_aliases()
     alias xh='https'
   fi
 
+  alias calc='"/Applications/LibreOffice.app/Contents/MacOS/soffice" --calc'
   alias d='docker'
   alias dc='docker compose'
   alias dcl='docker compose logs -f'
