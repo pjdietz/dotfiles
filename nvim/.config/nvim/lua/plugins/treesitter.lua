@@ -13,7 +13,6 @@ local languages = {
   "markdown",
   "php",
   "python",
-  "sh",
   "sql",
   "toml",
   "vim",
