@@ -109,6 +109,7 @@ set_autocomplete()
   autoload -U compinit
   zstyle ':completion:*' menu select
   zmodload zsh/complist
+  fpath=(~/.zsh/completions $fpath)
   compinit
   _comp_options+=(globdots)
 
