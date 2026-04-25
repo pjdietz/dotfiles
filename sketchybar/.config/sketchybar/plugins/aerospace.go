@@ -15,6 +15,8 @@ const (
 	sketchybar = "sketchybar"
 
 	icon_app      = "󰣆"
+	icon_bruno    = "󰩃"
+	icon_chrome   = ""
 	icon_calendar = ""
 	icon_database = ""
 	icon_discord  = ""
@@ -34,6 +36,8 @@ var icons = map[string]string{
 	"Alacritty":         icon_terminal,
 	"Aptakube":          icon_k8s,
 	"Azure VPN Client":  icon_vpn,
+	"Bruno":             icon_bruno,
+	"Google Chrome":     icon_chrome,
 	"DataGrip":          icon_database,
 	"Discord":           icon_discord,
 	"Finder":            icon_finder,
