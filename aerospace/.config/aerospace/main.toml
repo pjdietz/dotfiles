@@ -170,10 +170,6 @@ shift-t = ['move-node-to-workspace T', 'workspace 1', 'mode main']
     run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
-    if.app-id = "com.jetbrains.datagrip"
-    run = "move-node-to-workspace 2"
-
-[[on-window-detected]]
     if.app-id = "com.microsoft.teams2"
     if.during-aerospace-startup = true
     run = "move-node-to-workspace M"
