@@ -1,11 +1,19 @@
 #!/bin/bash
 
+# Catpuccin Mocha
+sapphire=0xff74c7ec
+green=0xffa6e3a1
+surface0=0xff313244
+
+active="gradient(top_left=${sapphire},bottom_right=${green})"
+inactive="${surface0}"
+
 options=(
 	style=round
 	width=5.0
 	hidpi=on
-	active_color=0xffe2e2e3
-	inactive_color=0xff414550
+	active_color="${active}"
+	inactive_color="${inactive}"
 )
 
 borders "${options[@]}"
