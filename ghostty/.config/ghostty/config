@@ -21,5 +21,7 @@ keybind = super+enter=unbind
 
 auto-update-channel = tip
 
+macos-option-as-alt = left
+
 #custom-shader = shaders/cursor_smear.glsl
 #custom-shader = shaders/cursor_smear_fade.glsl
