@@ -10,6 +10,7 @@ export MANPAGER="nvim +Man!"
 export XDG_CONFIG_HOME="${HOME}/.config"
 export DOTNET_ROOT="${HOME}/dotnet"
 export PYTHONUSERBASE="${HOME}/.local"
+export KUBE_PS1_SYMBOL_PADDING=true
 
 if command -v fd &> /dev/null; then
   export FZF_DEFAULT_COMMAND='fd --type f'
