@@ -2,6 +2,7 @@ local function open_journal()
   local entry = os.date("~/vimwiki/journal/%Y-%m.md")
   vim.cmd.edit(entry)
   vim.cmd("normal G")
+  vim.cmd("normal zz")
 end
 
 local function open_projects()
