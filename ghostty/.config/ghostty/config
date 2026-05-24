@@ -18,6 +18,7 @@ keybind = global:cmd+grave_accent=toggle_quick_terminal
 
 keybind = super+ctrl+f=unbind
 keybind = super+enter=unbind
+keybind = ctrl+enter=unbind
 
 auto-update-channel = tip
 
