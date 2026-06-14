@@ -1,6 +1,7 @@
 local languages = {
   "bash",
   "c_sharp",
+  "css",
   "diff",
   "git_config",
   "git_rebase",
@@ -8,6 +9,7 @@ local languages = {
   "gitignore",
   "go",
   "html",
+  "javascript",
   "lua",
   "luadoc",
   "markdown",
@@ -17,6 +19,7 @@ local languages = {
   "toml",
   "vim",
   "vimdoc",
+  "vue",
   "yaml",
 }
 
