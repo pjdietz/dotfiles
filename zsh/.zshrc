@@ -10,7 +10,7 @@ export MANPAGER="nvim +Man!"
 export XDG_CONFIG_HOME="${HOME}/.config"
 export DOTNET_ROOT="${HOME}/dotnet"
 export PYTHONUSERBASE="${HOME}/.local"
-export KUBE_PS1_SYMBOL_PADDING=true
+export KUBE_PS1_SYMBOL_PADDING=false
 
 if command -v fd &> /dev/null; then
   export FZF_DEFAULT_COMMAND='fd --type f'
@@ -211,6 +211,8 @@ set_aliases()
   alias glo='git oneline'
   alias gpu='git push -u origin HEAD'
   alias gs='git status'
+  alias h='hunk'
+  alias hd='hunk diff'
   alias ll='ls -l'
   alias ls='eza'
   alias k='kubectl'
@@ -230,6 +232,47 @@ set_aliases()
   alias wk='watch kubectl'
 }
 
+tmux_rename_run() {
+  local title="$1"
+  shift
+
+  if [ -z "$TMUX" ]; then
+    command "$@"
+    return
+  fi
+
+  local old_auto_rename
+  old_auto_rename="$(tmux show-window-options -v automatic-rename 2>/dev/null)"
+
+  tmux set-window-option automatic-rename off
+  tmux rename-window "$title"
+
+  command "$@"
+  local exit_code=$?
+
+  if [ -n "$old_auto_rename" ]; then
+    tmux set-window-option automatic-rename "$old_auto_rename"
+  else
+    tmux set-window-option automatic-rename on
+  fi
+
+  return $exit_code
+}
+
+tmux_wrap_command() {
+  local cmd="$1"
+  local title="${2:-$cmd}"
+
+  eval "
+    $cmd() {
+      tmux_rename_run ${(q)title} ${(q)cmd} \"\$@\"
+    }
+  "
+}
+
+tmux_wrap_command hunk
+tmux_wrap_command opencode
+
 gdf() {
   preview="git diff $@ --color=always -- {-1}"
   git diff $@ --name-only | fzf -m --ansi --preview $preview
@@ -245,18 +288,6 @@ db() {
 
 ksecret() {
   kubectl get secrets/$1 --template='{{ range $key, $value := .data }}{{ printf "%s: %s\n" $key ($value | base64decode) }}{{ end }}'
-}
-
-opencode() {
-  if [ -n "$TMUX" ]; then
-    tmux rename-window "opencode"
-    command opencode "$@"
-    local exit_code=$?
-    tmux set-window-option automatic-rename on
-    return $exit_code
-  else
-    command opencode "$@"
-  fi
 }
 
 y() {
