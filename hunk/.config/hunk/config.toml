@@ -3,6 +3,7 @@ theme = "custom"
 # transparent_background = true
 
 line_numbers = true
+menu_bar = false
 
 [custom_theme]
 base = "catppuccin-mocha"
