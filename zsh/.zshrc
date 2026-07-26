@@ -206,6 +206,8 @@ set_aliases()
   alias gca='git commit --amend'
   alias gcan="git commit --amend --no-edit"
   alias gcda="git commit -m 'The story so far: In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.'"
+  alias gd="git diff"
+  alias gdc="git diff --cached"
   alias gg='git graph'
   alias gl='git log'
   alias glo='git oneline'
@@ -213,6 +215,7 @@ set_aliases()
   alias gs='git status'
   alias h='hunk'
   alias hd='hunk diff'
+  alias hdc='hunk diff --cached'
   alias ll='ls -l'
   alias ls='eza'
   alias k='kubectl'
