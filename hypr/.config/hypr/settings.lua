@@ -83,7 +83,7 @@ hl.config({
         repeat_delay = 200,
 
         accel_profile = "adaptive",
-        sensitivity   = -0.6,
+        sensitivity   = -0.65,
         scroll_factor = 0.8,
         follow_mouse  = 1,
         mouse_refocus = false,
