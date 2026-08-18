@@ -101,7 +101,7 @@ def print_tree(node, prefix=""):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Show changed files since a base ref in tree or checklist format."
+        description="Show changed files since a base ref in tree or checkbox format."
     )
     parser.add_argument(
         "base_ref",
@@ -110,10 +110,10 @@ def parse_args():
         help="Base ref to compare against (default: origin/main)",
     )
     parser.add_argument(
-        "--format",
-        choices=["tree", "checklist"],
-        default="checklist",
-        help="Output format (default: checklist)",
+        "-c",
+        "--checkboxes",
+        action="store_true",
+        help="Display checkbox output instead of tree view",
     )
     return parser.parse_args()
 
@@ -123,10 +123,10 @@ def main():
     lines = run_git_diff(args.base_ref)
     tree = build_tree(lines)
 
-    if args.format == "tree":
-        print_tree(tree)
-    else:
+    if args.checkboxes:
         print_checklist(tree)
+    else:
+        print_tree(tree)
 
 
 if __name__ == "__main__":
