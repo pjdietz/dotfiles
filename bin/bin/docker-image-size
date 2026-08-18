@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+images=()
+tags=()
+refs=()
+
+usage() {
+  local script_name
+  script_name=$(basename "$0")
+
+  cat <<EOF
+Usage:
+  $script_name [REF ...]
+  $script_name -i IMAGE -t TAG...
+
+Examples:
+  $script_name ubuntu:latest alpine:stable
+  $script_name -i ubuntu -i alpine -t latest -t stable
+EOF
+}
+
+while (($#)); do
+  case "$1" in
+    -i|--image)
+      [[ $# -ge 2 ]] || { echo "Missing value for $1" >&2; exit 1; }
+      images+=("$2")
+      shift 2
+      ;;
+    -t|--tag)
+      [[ $# -ge 2 ]] || { echo "Missing value for $1" >&2; exit 1; }
+      tags+=("$2")
+      shift 2
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --)
+      shift
+      refs+=("$@")
+      break
+      ;;
+    -*)
+      echo "Unknown option: $1" >&2
+      usage >&2
+      exit 1
+      ;;
+    *)
+      refs+=("$1")
+      shift
+      ;;
+  esac
+done
+
+if ((${#refs[@]} == 0)); then
+  if ((${#images[@]} == 0 || ${#tags[@]} == 0)); then
+    echo "Provide either refs as positional arguments or both --image and --tag" >&2
+    usage
+    exit 1
+  fi
+
+  for image in "${images[@]}"; do
+    for tag in "${tags[@]}"; do
+      refs+=("${image}:${tag}")
+    done
+  done
+fi
+
+for ref in "${refs[@]}"; do
+  docker pull "$ref" >/dev/null
+  size_bytes=$(docker image inspect "$ref" --format='{{.Size}}')
+  size_mib=$(echo "scale=2; $size_bytes / 1024 / 1024" | bc)
+  printf "%s:\t%s MiB\n" "$ref" "$size_mib"
+done
