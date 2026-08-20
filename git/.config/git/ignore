@@ -6,4 +6,7 @@
 .phpunit.result.cache
 .php-cs-fixer.cache
 *.swp
-**/k9s/config.yml
+*__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/*/k9s/config.yml

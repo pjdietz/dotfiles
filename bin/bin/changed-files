@@ -15,8 +15,13 @@ STATUS_COLORS = {
 }
 
 
-def run_git_diff(base_ref: str):
-    cmd = ["git", "diff", "--name-status", f"{base_ref}...HEAD"]
+def run_git_diff(refs, cached: bool):
+    cmd = ["git", "diff", "--name-status"]
+
+    if cached:
+        cmd.append("--cached")
+
+    cmd.extend(refs)
     result = subprocess.run(cmd, capture_output=True, text=True)
 
     if result.returncode != 0:
@@ -126,13 +131,12 @@ def print_tree(node, no_color: bool, prefix=""):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Show changed files since a base ref in tree or checkbox format."
+        description="Show changed files from git diff in tree or checkbox format."
     )
     parser.add_argument(
-        "base_ref",
-        nargs="?",
-        default="origin/main",
-        help="Base ref to compare against (default: origin/main)",
+        "refs",
+        nargs="*",
+        help="Git refs to diff, like git diff [ref1] [ref2]",
     )
     parser.add_argument(
         "-c",
@@ -145,12 +149,26 @@ def parse_args():
         action="store_true",
         help="Disable colored output",
     )
-    return parser.parse_args()
+    parser.add_argument(
+        "--cached",
+        action="store_true",
+        help="Show staged changes",
+    )
+
+    args = parser.parse_args()
+
+    if len(args.refs) > 2:
+        parser.error("expected at most two refs")
+
+    if args.cached and len(args.refs) == 2:
+        parser.error("--cached supports at most one ref")
+
+    return args
 
 
 def main():
     args = parse_args()
-    lines = run_git_diff(args.base_ref)
+    lines = run_git_diff(args.refs, args.cached)
     tree = build_tree(lines)
 
     if args.checkboxes:
