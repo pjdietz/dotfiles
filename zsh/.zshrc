@@ -213,6 +213,7 @@ set_aliases()
   alias glo='git oneline'
   alias gpu='git push -u origin HEAD'
   alias gs='git status'
+  alias gt="changed-files"
   alias h='hunk'
   alias hd='hunk diff'
   alias hdc='hunk diff --cached'
