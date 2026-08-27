@@ -101,17 +101,6 @@ def format_entry(status: str, name: str, no_color: bool, extra=None) -> str:
     return f"{color}{entry}{RESET}"
 
 
-def print_checklist(node, no_color: bool, indent=0):
-    for name, child in sort_items(node):
-        if "__status__" in child:
-            status = child["__status__"]
-            extra = child["__extra__"]
-            print("  " * indent + f"- [ ] {format_entry(status, name, no_color, extra)}")
-        else:
-            print("  " * indent + f"- [ ] {name}/")
-            print_checklist(child, no_color, indent + 1)
-
-
 def print_tree(node, no_color: bool, prefix=""):
     items = sort_items(node)
 
@@ -131,18 +120,12 @@ def print_tree(node, no_color: bool, prefix=""):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Show changed files from git diff in tree or checkbox format."
+        description="Show changed files from git diff in tree format."
     )
     parser.add_argument(
         "refs",
         nargs="*",
         help="Git refs to diff, like git diff [ref1] [ref2]",
-    )
-    parser.add_argument(
-        "-c",
-        "--checkboxes",
-        action="store_true",
-        help="Display checkbox output instead of tree view",
     )
     parser.add_argument(
         "--no-color",
@@ -170,11 +153,7 @@ def main():
     args = parse_args()
     lines = run_git_diff(args.refs, args.cached)
     tree = build_tree(lines)
-
-    if args.checkboxes:
-        print_checklist(tree, args.no_color)
-    else:
-        print_tree(tree, args.no_color)
+    print_tree(tree, args.no_color)
 
 
 if __name__ == "__main__":
