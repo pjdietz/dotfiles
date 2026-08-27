@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+
+import argparse
+import re
+import sys
+
+
+TREE_LINE_RE = re.compile(r"^(?P<indent>(?:│   |    )*)(?P<branch>[├└]── )(?P<name>.+)$")
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Convert a list or tree-style text into a markdown checklist."
+    )
+    parser.add_argument("path", nargs="?", help="Read input from a file instead of stdin")
+    return parser.parse_args()
+
+
+def read_lines(path: str | None):
+    if path is None:
+        return sys.stdin.readlines()
+
+    try:
+        with open(path, encoding="utf-8") as handle:
+            return handle.readlines()
+    except OSError as exc:
+        print(f"checklist: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+
+class Formatter:
+    def __init__(self):
+        self.tree_depth_offset = 0
+        self.last_line_was_plain = False
+
+    def format_line(self, line: str) -> str | None:
+        text = line.rstrip("\n")
+
+        if not text.strip():
+            return None
+
+        match = TREE_LINE_RE.match(text)
+        if match:
+            if self.last_line_was_plain and self.tree_depth_offset == 0:
+                self.tree_depth_offset = 1
+
+            depth = len(match.group("indent")) // 4 + self.tree_depth_offset
+            self.last_line_was_plain = False
+            name = match.group("name")
+            return f"{'  ' * depth}- [ ] {name}"
+
+        self.tree_depth_offset = 0
+        self.last_line_was_plain = True
+        return f"- [ ] {text.strip()}"
+
+
+def main():
+    args = parse_args()
+    formatter = Formatter()
+
+    for line in read_lines(args.path):
+        formatted = formatter.format_line(line)
+        if formatted is not None:
+            print(formatted)
+
+
+if __name__ == "__main__":
+    main()
