@@ -12,6 +12,7 @@ STATUS_COLORS = {
     "M": "\033[33m",
     "R": "\033[33m",
     "D": "\033[31m",
+    "?": "\033[32m",
 }
 
 
@@ -29,6 +30,17 @@ def run_git_diff(refs, cached: bool):
         sys.exit(result.returncode)
 
     return result.stdout.splitlines()
+
+
+def run_git_untracked():
+    cmd = ["git", "ls-files", "--others", "--exclude-standard", "--", "."]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+
+    if result.returncode != 0:
+        print(result.stderr.strip(), file=sys.stderr)
+        sys.exit(result.returncode)
+
+    return [f"?\t{line}" for line in result.stdout.splitlines() if line.strip()]
 
 
 def normalize_status(status: str) -> str:
@@ -137,6 +149,11 @@ def parse_args():
         action="store_true",
         help="Show staged changes",
     )
+    parser.add_argument(
+        "--untracked",
+        action="store_true",
+        help="Include untracked files under the current directory",
+    )
 
     args = parser.parse_args()
 
@@ -152,6 +169,10 @@ def parse_args():
 def main():
     args = parse_args()
     lines = run_git_diff(args.refs, args.cached)
+
+    if args.untracked:
+        lines.extend(run_git_untracked())
+
     tree = build_tree(lines)
     print_tree(tree, args.no_color)
 
