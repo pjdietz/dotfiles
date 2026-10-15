@@ -4,6 +4,12 @@ theme = "custom"
 
 line_numbers = true
 menu_bar = false
+mode = "unified"
+wrap_lines = false
+hunk_headers = true
+agent_notes = false
+copy_decorations = false
+cursor_line = "row"
 
 [custom_theme]
 base = "catppuccin-mocha"
