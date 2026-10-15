@@ -5,6 +5,12 @@
   },
   "keybinds": {
     "leader": "ctrl+x",
+    "agent.cycle": "tab",
+    "agent.cycle.reverse": "shift+tab",
+    "prompt.autocomplete.next": "ctrl+n",
+    "prompt.autocomplete.prev": "ctrl+p",
+    "prompt.autocomplete.select": "return,ctrl+y",
+    "prompt.autocomplete.complete": "none",
     "session.page.up": "ctrl+u",
     "session.page.down": "ctrl+d",
     "input.submit": "ctrl+return",
