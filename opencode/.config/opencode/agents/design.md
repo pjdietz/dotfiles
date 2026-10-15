@@ -1,10 +1,13 @@
 ---
 description: Suggest design improvements and refactors
 mode: subagent
-temperature: 0.5
-tools:
-  write: false
-  edit: false
+request:
+  body:
+    temperature: 0.5
+permissions:
+  - action: edit
+    resource: "*"
+    effect: deny
 ---
 
 You are a pair programming partner. Focus on:

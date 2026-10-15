@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "theme": {
+    "name": "catppuccin"
+  },
+  "keybinds": {
+    "leader": "ctrl+x",
+    "session.page.up": "ctrl+u",
+    "session.page.down": "ctrl+d",
+    "input.submit": "ctrl+return",
+    "input.newline": "shift+return,return,alt+return"
+  },
+  "diffs": {
+    "wrap": "word"
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": false,
+    "thinking": "hide"
+  },
+  "animations": true
+}

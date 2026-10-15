@@ -1,10 +1,13 @@
 ---
 description: Review code for best practices and potential issues
 mode: subagent
-temperature: 0.1
-tools:
-  write: false
-  edit: false
+request:
+  body:
+    temperature: 0.1
+permissions:
+  - action: edit
+    resource: "*"
+    effect: deny
 ---
 
 You are in code review mode. Focus on:
