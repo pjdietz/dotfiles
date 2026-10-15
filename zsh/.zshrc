@@ -26,6 +26,7 @@ declare -a PATH_DIRS=(
   "${HOME}/.cargo/bin"
   "${HOME}/.krew/bin"
   "${HOME}/.dotnet"
+  "${HOME}/.opencode/bin"
 )
 
 if command -v go &> /dev/null; then
@@ -275,7 +276,6 @@ tmux_wrap_command() {
 }
 
 tmux_wrap_command hunk
-tmux_wrap_command opencode
 
 gdf() {
   preview="git diff $@ --color=always -- {-1}"
