@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VPN=AZURE_VLAN_001
+VPN=primary-eus-vpn
 
 # Update the sketchybar item.
 draw()
