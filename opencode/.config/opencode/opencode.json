@@ -1,4 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "lsp": true
+  "lsp": true,
+  "permissions": [
+    { "action": "read", "resource": ".env", "effect": "deny" },
+    { "action": "read", "resource": "*/.env", "effect": "deny" },
+    { "action": "read", "resource": ".envrc", "effect": "deny" },
+    { "action": "read", "resource": "*/.envrc", "effect": "deny" }
+  ]
 }
