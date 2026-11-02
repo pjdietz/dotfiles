@@ -197,6 +197,7 @@ set_aliases()
   alias dclt='docker compose logs -f --timestamps'
   alias dcr='docker compose run --rm'
   alias dce='docker compose exec'
+  alias dr='docker run --rm'
   alias dropbox='dropbox-cli'
   alias flush-dns='sudo killall -HUP mDNSResponder'
   alias gitgraph='git graph'
@@ -214,7 +215,7 @@ set_aliases()
   alias glo='git oneline'
   alias gpu='git push -u origin HEAD'
   alias gs='git status'
-  alias gt="changed-files"
+  alias gt="changed-files --untracked"
   alias h='hunk'
   alias hd='hunk diff'
   alias hdc='hunk diff --cached'
@@ -284,6 +285,35 @@ gdf() {
 
 gaf() {
   git add $@ $(gdf)
+}
+
+gaw() {
+  local -a gitopts patterns
+  while (( $# )); do
+    case "$1" in
+      --) shift; break ;;
+      -*) gitopts+=("$1"); shift ;;
+      *)  break ;;
+    esac
+  done
+  patterns=("$@")
+
+  if (( ${#patterns} == 0 )); then
+    echo "usage: ${0} [<git add flags>] <pattern> [<pattern>...]" >&2
+    return 1
+  fi
+
+  local pattern
+  local -a wrapped=()
+  for pattern in "${patterns[@]}"; do
+    wrapped+=("*${pattern}*")
+  done
+
+  git add "${gitopts[@]}" -- "${wrapped[@]}"
+}
+
+gawp() {
+  gaw -p "$@"
 }
 
 db() {
