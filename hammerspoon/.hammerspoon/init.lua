@@ -16,6 +16,10 @@ modtap.init({
   }
 })
 
+hs.hotkey.bind({"ctrl", "cmd"}, "q", function()
+  -- intentionally do nothing
+end)
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()
 end)
