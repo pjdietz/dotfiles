@@ -228,6 +228,8 @@ set_aliases()
   alias kpf='kubectl port-forward'
   alias krc='kubectl resource-capacity'
   alias oc='opencode'
+  alias p='ocrun'
+  alias prn='ocrun --execute'
   alias t='task'
   alias tms='tmux-session'
   alias tmw='tmux-window'

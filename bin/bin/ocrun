@@ -1,0 +1,54 @@
+#!/bin/zsh
+
+# Run a one-off prompt in OpenCode and delete the session when done.
+# Use `opencode models` to view list.
+model="openai/gpt-6-luna-fast"
+# model="openai/gpt-6.1-terra-fast"
+# model="opencode-go/deepseek-v4.1-flash"
+
+agent="command-suggest"
+if [[ "$1" == "--execute" ]]; then
+  agent="command-help"
+  shift
+fi
+if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+  printf 'Usage: ocrun [--execute] [--] <prompt...>\nDefault: suggest a command without executing it.\n--execute: use the execution-capable agent.\n'
+  exit 0
+fi
+if [[ "$1" == "--" ]]; then
+  shift
+fi
+if (( $# == 0 )); then
+  printf 'Usage: ocrun [--execute] [--] <prompt...>\n' >&2
+  exit 1
+fi
+
+if [[ "${agent}" == "command-help" ]]; then
+  set -- "Execute the following request rather than only suggesting a command. Keep the existing safety restrictions; ask for confirmation before destructive actions. Request:" "$@"
+fi
+
+session_id="ses_$(python3 -c 'import uuid; print(uuid.uuid4().hex)')" || exit 1
+
+cleanup() {
+  local attempt
+  for attempt in 1 2 3; do
+    if opencode session delete "${session_id}" >/dev/null; then
+      return
+    fi
+    if [ "${attempt}" -lt 3 ]; then
+      sleep 1
+    fi
+  done
+  printf "Could not delete session %s\n" "${session_id}" >&2
+}
+
+set -o pipefail
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+opencode run \
+  --session "${session_id}" \
+  --model "${model}" \
+  --agent "${agent}" \
+  "$@" | glow
